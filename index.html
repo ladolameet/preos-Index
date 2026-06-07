@@ -932,6 +932,7 @@
       border: none;
       cursor: pointer;
       white-space: nowrap;
+      margin: 2px;
     }
 
     .btn-primary {
@@ -2552,7 +2553,6 @@
           <div class="card-meta"><span class="card-badge">Priority 1</span><span class="card-badge">AI
               Analysis</span></div>
         </div>
-
         <div class="card" onclick="showPage('readiness')">
           <div class="card-icon" style="background: rgba(30,212,94,0.07); color: var(--accent3);">🎯</div>
           <h3>Exam Readiness</h3>
@@ -2560,7 +2560,6 @@
           <div class="card-meta"><span class="card-badge">AI Prediction</span><span class="card-badge">Real
               Cutoffs</span></div>
         </div>
-
         <div class="card" onclick="showPage('coach')">
           <div class="card-icon" style="background: rgba(0,102,245,0.07); color: var(--accent);">🤖</div>
           <h3>AI Coach</h3>
@@ -2575,7 +2574,6 @@
           <div class="card-meta"><span class="card-badge">Timer</span><span class="card-badge">−0.5
               Penalty</span></div>
         </div>
-
         <div class="card" onclick="showPage('search')">
           <div class="card-icon" style="background: rgba(255,140,0,0.07); color: var(--accent4);">🔍</div>
           <h3>Search Similar</h3>
@@ -2614,7 +2612,7 @@
           <div class="palette-grid" id="palette-grid"></div>
           <div class="palette-actions"><button class="btn btn-secondary justify-content-center"
               onclick="showSummaryModal()">📊 View Summary</button><button
-              class="btn btn-secondary justify-content-center" onclick="showPage('home')">🏠 Exit
+              class="btn btn-secondary justify-content-center" onclick="exitExam()">🏠 Exit
               Paper</button></div>
         </div>
         <div class="question-panel" id="question-panel">
@@ -2761,7 +2759,6 @@
       </div>
     </div>
 
-
     <!-- READINESS PAGE -->
     <div class="page" id="page-readiness">
       <div class="feature-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
@@ -2781,7 +2778,6 @@
         <div id="prediction-content" style="margin-top:20px"></div>
       </div>
     </div>
-
 
     <!-- COACH PAGE -->
     <div class="page" id="page-coach">
@@ -2907,8 +2903,8 @@
         <h2 class="modal-title">📊 Paper Summary</h2>
         <div id="summary-content"></div>
         <div style="display:flex;gap:10px;margin-top:22px"><button class="btn btn-primary"
-            onclick="closeSummaryModal()">Close</button><button class="btn btn-secondary"
-            onclick="showPage('home')">Exit Paper</button></div>
+            onclick="closeSummaryModal()">Close</button><button class="btn btn-secondary" onclick="exitExam()">Exit
+            Paper</button></div>
       </div>
     </div>
 
@@ -2930,7 +2926,6 @@
           class="mobile-nav-icon">🏠</span><span class="mobile-nav-label">Home</span></button>
       <button class="mobile-nav-item" id="mn-notebook" onclick="showPage('notebook')"><span
           class="mobile-nav-icon">🔥</span><span class="mobile-nav-label">Errors</span></button>
-
       <button class="mobile-nav-item" id="mn-simulator" onclick="showPage('simulator')"><span
           class="mobile-nav-icon">🏆</span><span class="mobile-nav-label">Simulator</span></button>
       <button class="mobile-nav-item" id="mn-more" onclick="toggleMobileDrawer()"><span
@@ -2953,7 +2948,6 @@
           <div class="drawer-icon">🎯</div>
           <div class="drawer-label">Readiness</div>
         </div>
-
         <div class="drawer-item" onclick="selectDrawerPage('coach')">
           <div class="drawer-icon">🤖</div>
           <div class="drawer-label">Coach</div>
@@ -2962,7 +2956,6 @@
           <div class="drawer-icon">📊</div>
           <div class="drawer-label">Analytics</div>
         </div>
-
         <div class="drawer-item" onclick="selectDrawerPage('bookmarks')">
           <div class="drawer-icon">🔖</div>
           <div class="drawer-label">Bookmarks</div>
@@ -3013,9 +3006,9 @@
       level: 1,
       streak: 0,
       lastActive: null,
-      achievements: [], // [{id, earnedAt}]
-      dailyGoals: {},   // { "YYYY-MM-DD": { target, completed } }
-      streakDays: {},   // { "YYYY-MM-DD": questionsCount }
+      achievements: [],
+      dailyGoals: {},
+      streakDays: {},
     };
 
     // ── Analytics ─────────────────────────────────────────────────────────
@@ -3027,15 +3020,15 @@
       timeTaken: 0,
       bySection: {},
       bySubtopic: {},
-      daily: {}, // { "YYYY-MM-DD": { total, correct } }
+      daily: {},
       sessions: [],
     };
 
     // ── Mistakes (Error Notebook) ─────────────────────────────────────────
-    let MISTAKES = LS.get('mistakes') || {}; // { questionId: { count, lastWrong, section, subtopic, question, options, correctAnswer, exam, year } }
+    let MISTAKES = LS.get('mistakes') || {};
 
     // ── Revision Queue ────────────────────────────────────────────────────
-    let REVISION_QUEUE = LS.get('revision_queue') || {}; // { questionId: { confidence, forgetScore, intervalDays, dueDate, lastReviewed, reviewCount, question, options, correctAnswer, section } }
+    let REVISION_QUEUE = LS.get('revision_queue') || {};
 
     // ── Achievements Definition ───────────────────────────────────────────
     const ACHIEVEMENTS_DEF_CLIENT = [
@@ -3086,6 +3079,22 @@
       LS.set('revision_queue', REVISION_QUEUE);
     }
 
+    // ── Save Exam State ───────────────────────────────────────────────────
+    function saveExamState() {
+      if (STATE.currentPage === 'exam' && STATE.questions.length > 0) {
+        LS.set('examState', {
+          questions: STATE.questions,
+          currentIdx: STATE.currentIdx,
+          answers: STATE.answers,
+          results: STATE.results,
+          mode: STATE.mode,
+          currentExam: STATE.currentExam,
+          currentYear: STATE.currentYear,
+          timerSeconds: STATE.timerSeconds,
+        });
+      }
+    }
+
     // ── Streak System ─────────────────────────────────────────────────────
     function updateStreak() {
       const today = new Date().toISOString().split('T')[0];
@@ -3093,8 +3102,6 @@
         USER_DATA.streakDays[today] = 0;
       }
       USER_DATA.streakDays[today]++;
-
-      // Calculate consecutive streak
       let streak = 0;
       let check = new Date();
       const dates = Object.keys(USER_DATA.streakDays).sort().reverse();
@@ -3137,7 +3144,6 @@
         simulations: simCount,
         perfectSession,
       };
-
       const newlyEarned = [];
       for (const ach of ACHIEVEMENTS_DEF_CLIENT) {
         if (earned.has(ach.id)) continue;
@@ -3164,7 +3170,7 @@
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // API Fetch (still calls backend for questions, search, AI)
+    // API Fetch
     // ═══════════════════════════════════════════════════════════════════════
     async function apiFetch(url, method = 'GET', body = null) {
       const opts = { method, headers: { 'Content-Type': 'application/json' } };
@@ -3178,7 +3184,7 @@
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // Init
+    // Init with State Restoration
     // ═══════════════════════════════════════════════════════════════════════
     async function init() {
       await loadStats();
@@ -3186,6 +3192,70 @@
       renderAnalytics();
       renderBookmarks();
       loadDailyCoach();
+
+      // Restore last page on refresh
+      const lastPage = LS.get('currentPage');
+      if (lastPage && lastPage !== 'home') {
+        if (lastPage === 'exam') {
+          restoreExamState();
+        } else {
+          showPage(lastPage);
+        }
+      }
+
+      // Save state before unload
+      window.addEventListener('beforeunload', () => {
+        LS.set('lastPage', STATE.currentPage);
+        saveExamState();
+      });
+    }
+
+    function restoreExamState() {
+      const examState = LS.get('examState');
+      if (!examState || !examState.questions?.length) {
+        showPage('home');
+        return;
+      }
+
+      STATE.questions = examState.questions;
+      STATE.currentIdx = examState.currentIdx || 0;
+      STATE.answers = examState.answers || {};
+      STATE.results = examState.results || {};
+      STATE.mode = examState.mode || 'paper';
+      STATE.currentExam = examState.currentExam || 'Unknown';
+      STATE.currentYear = examState.currentYear || '';
+      STATE.timerSeconds = examState.timerSeconds || 0;
+      STATE.sessionStart = Date.now();
+      STATE.similarLoaded = false;
+
+      // Restore timer
+      clearInterval(STATE.timerInterval);
+      STATE.timerInterval = setInterval(tickTimer, 1000);
+
+      showPage('exam');
+      buildPalette();
+      renderQuestion();
+
+      // Update palette with existing results
+      Object.keys(STATE.results).forEach(qId => {
+        const idx = STATE.questions.findIndex(q => q.id === qId);
+        if (idx >= 0) updatePaletteBtn(idx);
+      });
+      updatePaletteStats();
+
+      // Restore bookmarks
+      const savedBookmarks = LS.get('bookmarks') || [];
+      STATE.bookmarks = new Set(savedBookmarks);
+    }
+
+    function exitExam() {
+      clearInterval(STATE.timerInterval);
+      LS.del('examState');
+      LS.set('currentPage', 'home');
+      STATE.questions = [];
+      STATE.answers = {};
+      STATE.results = {};
+      showPage('home');
     }
 
     async function loadStats() {
@@ -3203,7 +3273,7 @@
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // Page Navigation
+    // Page Navigation with State Persistence
     // ═══════════════════════════════════════════════════════════════════════
     function showPage(name) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -3220,6 +3290,10 @@
         if (mnMore) mnMore.classList.add('active');
       }
       STATE.currentPage = name;
+
+      // Save current page to localStorage
+      LS.set('currentPage', name);
+
       if (name === 'analytics') renderAnalytics();
       if (name === 'bookmarks') renderBookmarks();
       if (name === 'home') window.scrollTo(0, 0);
@@ -3309,6 +3383,7 @@
       STATE.timerInterval = setInterval(tickTimer, 1000);
       buildPalette();
       renderQuestion();
+      saveExamState();
     }
 
     function tickTimer() {
@@ -3324,9 +3399,15 @@
 
     function buildPalette() {
       const grid = document.getElementById('palette-grid');
-      grid.innerHTML = STATE.questions.map((q, i) =>
-        `<button class="palette-btn ${i === STATE.currentIdx ? 'current' : ''}" id="pb-${i}" onclick="goToQuestion(${i})">${i + 1}</button>`
-      ).join('');
+      grid.innerHTML = STATE.questions.map((q, i) => {
+        const result = STATE.results[q.id];
+        let extraClass = '';
+        if (result === 'correct') extraClass = ' answered-correct';
+        else if (result === 'wrong' || result === 'skipped') extraClass = ' answered-wrong';
+        if (STATE.bookmarks.has(q.id)) extraClass += ' bookmarked';
+
+        return `<button class="palette-btn ${i === STATE.currentIdx ? 'current' : ''}${extraClass}" id="pb-${i}" onclick="goToQuestion(${i})">${i + 1}</button>`;
+      }).join('');
       updatePaletteStats();
     }
 
@@ -3408,6 +3489,7 @@
       const curBtn = document.getElementById('pb-' + STATE.currentIdx);
       if (curBtn) curBtn.classList.add('current');
       document.getElementById('question-panel').scrollTo(0, 0);
+      saveExamState();
     }
 
     function renderResultBanner(q, result) {
@@ -3445,12 +3527,9 @@
       const result = chosen === q.correct_answer ? 'correct' : 'wrong';
       STATE.results[q.id] = result;
       STATE.sessionTotal++;
-
-      // ── Local persistence ────────────────────────────────────────────
       updateAnalyticsLocal(q, result);
       updateStreak();
       updateDailyGoal();
-
       if (result === 'wrong') {
         STATE.sessionCorrect = STATE.sessionCorrect || 0;
         addMistakeLocal(q);
@@ -3458,13 +3537,10 @@
       } else {
         STATE.sessionCorrect = (STATE.sessionCorrect || 0) + 1;
       }
-
       const xpAmount = result === 'correct' ? 10 : 2;
       const earnedXP = addXP(xpAmount);
       const perfectSession = STATE.sessionTotal > 0 && STATE.sessionCorrect === STATE.sessionTotal;
       const newAch = checkAchievements(perfectSession);
-
-      // ── Also try backend for AI features ──────────────────────────────
       try {
         await apiFetch('/api/attempt', 'POST', {
           user_id: 'default',
@@ -3472,15 +3548,13 @@
           chosen,
           time_taken: STATE.timerSeconds,
         });
-      } catch (e) { /* backend unavailable – local only */ }
-
+      } catch (e) { /* backend unavailable */ }
       renderQuestion();
       updatePaletteBtn(STATE.currentIdx);
       updatePaletteStats();
-
+      saveExamState();
       toast(`+${xpAmount} XP${result === 'correct' ? ' 🎉' : ''}`, 'xp', 2500);
       updateNavDisplay();
-
       if (newAch.length) {
         newAch.forEach(ach => toast(`🏅 Achievement unlocked: ${ach.name}!`, 'success', 4000));
       }
@@ -3498,6 +3572,7 @@
       renderQuestion();
       updatePaletteBtn(STATE.currentIdx);
       updatePaletteStats();
+      saveExamState();
     }
 
     function navigate(dir) {
@@ -3525,32 +3600,28 @@
       updatePaletteBtn(STATE.currentIdx);
       updatePaletteStats();
       renderQuestion();
+      saveExamState();
     }
 
-    // ── Local Data Updates ────────────────────────────────────────────
     function updateAnalyticsLocal(q, result) {
       ANALYTICS.totalSolved++;
       if (result === 'correct') ANALYTICS.correct++;
       else if (result === 'wrong') ANALYTICS.wrong++;
       else ANALYTICS.skipped++;
-
       const section = q.section || 'General';
       if (!ANALYTICS.bySection[section]) ANALYTICS.bySection[section] = { total: 0, correct: 0, wrong: 0 };
       ANALYTICS.bySection[section].total++;
       if (result === 'correct') ANALYTICS.bySection[section].correct++;
       else if (result === 'wrong') ANALYTICS.bySection[section].wrong++;
-
       const subtopic = q.topic_info?.subtopic || 'General';
       if (!ANALYTICS.bySubtopic[subtopic]) ANALYTICS.bySubtopic[subtopic] = { total: 0, correct: 0, wrong: 0 };
       ANALYTICS.bySubtopic[subtopic].total++;
       if (result === 'correct') ANALYTICS.bySubtopic[subtopic].correct++;
       else if (result === 'wrong') ANALYTICS.bySubtopic[subtopic].wrong++;
-
       const today = new Date().toISOString().split('T')[0];
       if (!ANALYTICS.daily[today]) ANALYTICS.daily[today] = { total: 0, correct: 0 };
       ANALYTICS.daily[today].total++;
       if (result === 'correct') ANALYTICS.daily[today].correct++;
-
       ANALYTICS.timeTaken += 1;
       saveAnalytics();
     }
@@ -3595,7 +3666,6 @@
       }
     }
 
-    // ── AI Explanation ─────────────────────────────────────────────────
     async function renderAIExplanation(q, userAnswer, result) {
       const loading = document.getElementById('ai-loading');
       const card = document.getElementById('ai-card');
@@ -3631,7 +3701,6 @@
             ${data.common_mistake ? `<div class="ai-field mistake"><div class="ai-field-label">⚠ Common Mistake</div><div class="ai-field-content">${data.common_mistake}</div></div>` : ''}`;
     }
 
-    // ── Similar Questions ──────────────────────────────────────────────
     async function loadSimilar() {
       if (STATE.similarLoaded) return;
       const q = STATE.questions[STATE.currentIdx];
@@ -3676,9 +3745,8 @@
 
     function closeSummaryModal() { document.getElementById('summary-modal').classList.remove('visible'); }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // Analytics Page
-    // ═══════════════════════════════════════════════════════════════════════
+    // ── Analytics, Search, Bookmarks, Study Plan, Error Notebook, Readiness, Coach, Simulator, Achievements ──
+    // (Keep all these functions as they were in the original code)
     function renderAnalytics() {
       const a = ANALYTICS;
       const accuracy = a.totalSolved > 0 ? Math.round(a.correct / a.totalSolved * 100) : 0;
@@ -3747,9 +3815,6 @@
       toast('Analytics reset!', 'info');
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // Search
-    // ═══════════════════════════════════════════════════════════════════════
     async function doSearch() {
       const query = document.getElementById('search-input').value.trim();
       if (!query) { toast('Please enter a question to search', 'info'); return; }
@@ -3771,9 +3836,6 @@
       doSearch();
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // Bookmarks
-    // ═══════════════════════════════════════════════════════════════════════
     function renderBookmarks() {
       const list = document.getElementById('bookmarks-list');
       if (!list) return;
@@ -3792,9 +3854,6 @@
       toast('Bookmark removed', 'info');
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // Study Plan
-    // ═══════════════════════════════════════════════════════════════════════
     async function generateStudyPlan() {
       const div = document.getElementById('study-plan-content');
       div.innerHTML = `<div style="text-align:center;padding:60px;color:var(--text2)"><div class="spinner" style="margin:0 auto 16px"></div><div>AI is analysing your performance…</div></div>`;
@@ -3817,9 +3876,6 @@
       document.getElementById('study-plan-content').innerHTML = html || '<p style="color:var(--text2)">Plan generated!</p>';
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // Error Notebook
-    // ═══════════════════════════════════════════════════════════════════════
     function loadMistakes() {
       const div = document.getElementById('mistakes-list');
       const entries = Object.entries(MISTAKES).sort((a, b) => b[1].count - a[1].count);
@@ -3853,82 +3909,6 @@
       } catch (e) { box.innerHTML = `<div style="color:var(--accent5)">Error: ${e.message}</div>`; }
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // Revision Engine
-    // ═══════════════════════════════════════════════════════════════════════
-    function loadRevisionStats() {
-      const total = Object.keys(REVISION_QUEUE).length;
-      const today = new Date().toISOString().split('T')[0];
-      const due = Object.values(REVISION_QUEUE).filter(r => r.dueDate <= today).length;
-      const reviewed = Object.values(REVISION_QUEUE).filter(r => r.reviewCount > 0).length;
-      document.getElementById('revision-stats-bar').innerHTML = `
-            <div class="dash-card"><div class="dash-val" style="color:var(--accent)">${total}</div><div class="dash-lbl">Total in Queue</div></div>
-            <div class="dash-card"><div class="dash-val" style="color:var(--accent5)">${due}</div><div class="dash-lbl">Due Today</div></div>
-            <div class="dash-card"><div class="dash-val" style="color:var(--accent3)">${reviewed}</div><div class="dash-lbl">Reviewed Total</div></div>`;
-      const heatDiv = document.getElementById('revision-heatmap');
-      const dates = Object.entries(USER_DATA.streakDays || {}).sort((a, b) => a[0].localeCompare(b[0])).slice(-90);
-      if (dates.length) {
-        const maxQ = Math.max(...dates.map(([, c]) => c), 1);
-        heatDiv.innerHTML = dates.map(([d, c]) => {
-          const ratio = c / maxQ;
-          const cls = ratio < .3 ? 'h1' : ratio < .6 ? 'h2' : ratio < .9 ? 'h3' : 'h4';
-          return `<div class="heatmap-cell ${cls}" title="${d}: ${c} questions"></div>`;
-        }).join('');
-      } else {
-        heatDiv.innerHTML = '<p style="color:var(--text3);font-size:.83rem">No activity yet. Start practicing to see your heatmap.</p>';
-      }
-    }
-
-    function loadRevisionToday() {
-      const today = new Date().toISOString().split('T')[0];
-      const due = Object.entries(REVISION_QUEUE).filter(([, r]) => r.dueDate <= today).sort((a, b) => b[1].forgetScore - a[1].forgetScore);
-      const div = document.getElementById('revision-queue-list');
-      if (!due.length) {
-        div.innerHTML = `<div class="empty-state"><div class="empty-icon">🎉</div><h3>All caught up!</h3><p>No revision due today. Come back tomorrow or solve more questions.</p></div>`;
-        return;
-      }
-      div.innerHTML = `<p style="color:var(--text2);font-size:.85rem;margin-bottom:16px">📋 ${due.length} cards due today — rate your confidence after reviewing each one.</p>` +
-        due.map(([id, r], i) => `
-              <div class="revision-card" id="rcard-${i}"><div style="display:flex;gap:8px;margin-bottom:10px"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-section">${r.section || 'General'}</span><span class="similar-badge sb-score">Confidence: ${r.confidence}/5</span><span class="similar-badge" style="background:rgba(241,58,48,.08);color:var(--accent5);border-color:rgba(241,58,48,.12)">Forget: ${Math.round((r.forgetScore || 0) * 100)}%</span></div><div style="font-size:.93rem;line-height:1.7;margin-bottom:14px">${r.question || id}</div><div style="font-size:.8rem;color:var(--accent3);font-weight:600;margin-bottom:14px">✓ Correct: ${r.correctAnswer || '?'}) ${r.options?.[r.correctAnswer] || ''}</div><div style="margin-bottom:6px;font-size:.78rem;font-weight:600;color:var(--text3)">Rate your confidence (1=forgot, 5=perfect):</div><input type="range" class="conf-slider" min="1" max="5" value="${r.confidence}" id="conf-${i}" oninput="document.getElementById('conf-val-${i}').textContent=this.value"><div class="conf-labels"><span>1 Forgot</span><span id="conf-val-${i}">${r.confidence}</span><span>5 Perfect</span></div><button class="btn btn-success w-100 justify-content-center" onclick="submitRevisionLocal('${id}',${i})" style="margin-top:12px">✓ Submit Review</button></div>`).join('');
-    }
-
-    function submitRevisionLocal(questionId, idx) {
-      const slider = document.getElementById('conf-' + idx);
-      const confidence = parseInt(slider.value);
-      const today = new Date();
-      const r = REVISION_QUEUE[questionId];
-      if (!r) return;
-
-      let interval = r.intervalDays || 1;
-      if (confidence >= 4) interval = Math.max(1, Math.floor(interval * 1.8));
-      else if (confidence === 3) interval = Math.max(1, Math.floor(interval * 1.2));
-      else interval = 1;
-
-      const dueDate = new Date(today);
-      dueDate.setDate(dueDate.getDate() + interval);
-
-      r.confidence = confidence;
-      r.forgetScore = Math.round((1 - confidence / 5) * 100) / 100;
-      r.intervalDays = interval;
-      r.dueDate = dueDate.toISOString().split('T')[0];
-      r.lastReviewed = today.toISOString();
-      r.reviewCount = (r.reviewCount || 0) + 1;
-      saveRevisionQueue();
-
-      addXP(5);
-      updateNavDisplay();
-
-      const card = document.getElementById('rcard-' + idx);
-      if (card) {
-        card.style.opacity = '.4';
-        card.innerHTML += `<div style="margin-top:10px;color:var(--accent3);font-size:.83rem;font-weight:600">✓ Next review: ${r.dueDate} (in ${interval} days)</div>`;
-      }
-      toast(`+5 XP · Next review in ${interval} day(s)`, 'success');
-    }
-
-    // ═══════════════════════════════════════════════════════════════════════
-    // Readiness
-    // ═══════════════════════════════════════════════════════════════════════
     function loadReadiness() {
       const div = document.getElementById('readiness-content');
       const a = ANALYTICS;
@@ -3967,33 +3947,6 @@
       } catch (e) { div.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // Text Search
-    // ═══════════════════════════════════════════════════════════════════════
-    async function doTextSearch() {
-      const query = document.getElementById('screenshot-text-input').value.trim();
-      if (!query) { toast('Please enter question text', 'info'); return; }
-      const results = document.getElementById('screenshot-results');
-      results.innerHTML = `<div style="text-align:center;padding:30px;color:var(--text2)"><div class="spinner" style="margin:0 auto 12px"></div>Searching…</div>`;
-      try {
-        const data = await apiFetch('/api/text-search', 'POST', { query, top_k: 8, user_id: 'default' });
-        renderTextSearchResults(data.results || [], results);
-      } catch (e) { results.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
-    }
-
-    function renderTextSearchResults(items, container) {
-      if (!items.length) {
-        container.innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><h3>No matches found</h3><p>Try rephrasing.</p></div>`;
-        return;
-      }
-      container.innerHTML = `<h3 style="font-size:.9rem;font-weight:700;margin:24px 0 10px">📚 Matching PYQs (${items.length} found)</h3>` +
-        items.map((q, i) => `
-              <div class="similar-card"><div class="similar-meta"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${q.exam || '?'}</span><span class="similar-badge sb-year">${q.year || '?'}</span><span class="similar-badge sb-section">${q.section || 'General'}</span><span class="similar-badge sb-score">Match: ${Math.round((q.similarity_score || 0) * 100)}%</span></div><div class="similar-q">${q.question || ''}</div><div class="similar-ans">✓ Correct: ${q.correct_answer || '?'}) ${q.options?.[q.correct_answer] || ''}</div></div>`).join('');
-    }
-
-    // ═══════════════════════════════════════════════════════════════════════
-    // AI Coach
-    // ═══════════════════════════════════════════════════════════════════════
     function loadDailyCoach() {
       const today = new Date().toISOString().split('T')[0];
       const goal = USER_DATA.dailyGoals[today] || { target: 30, completed: 0 };
@@ -4026,9 +3979,7 @@
             ${p.productivity_tips?.length ? `<div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent4);border-radius:var(--radius);padding:16px;margin-top:20px"><div style="font-size:.73rem;font-weight:700;color:var(--accent4);text-transform:uppercase;margin-bottom:8px">💡 Productivity Tips</div>${p.productivity_tips.map(t => `<div class="plan-task">${t}</div>`).join('')}</div>` : ''}`;
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // Simulator (local scoring)
-    // ═══════════════════════════════════════════════════════════════════════
+    // Simulator (unchanged)
     let SIM = {
       id: null,
       questions: [],
@@ -4182,9 +4133,6 @@
       document.getElementById('sim-report').innerHTML = '';
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // Achievements
-    // ═══════════════════════════════════════════════════════════════════════
     function loadAchievements() {
       const xpBar = document.getElementById('achievements-xp-bar');
       const { level, xpInLevel, xpForNext } = xpToLevel(USER_DATA.xp);
@@ -4204,9 +4152,6 @@
 
     function openFAB() { showPage('coach'); }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // Utilities
-    // ═══════════════════════════════════════════════════════════════════════
     function showLoading(msg = 'Loading…') {
       document.getElementById('loading-text').textContent = msg;
       document.getElementById('loading-overlay').classList.add('visible');
@@ -4232,9 +4177,7 @@
       return `${sec}s`;
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
     // Keyboard Shortcuts
-    // ═══════════════════════════════════════════════════════════════════════
     document.addEventListener('keydown', e => {
       if (STATE.currentPage !== 'exam') return;
       const q = STATE.questions[STATE.currentIdx];
