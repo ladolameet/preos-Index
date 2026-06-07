@@ -2974,6 +2974,7 @@
        SSC AI PLATFORM – FRONTEND ENGINE (text-only screenshot, fixed simulator CSS)
        ═══════════════════════════════════════════════════════════════════════ */
     const API = 'https://preos.onrender.com';
+    const DEFAULT_USER = 'default';
     const LS = {
       get: k => { try { return JSON.parse(localStorage.getItem('ssc_' + k)); } catch { return null; } },
       set: (k, v) => localStorage.setItem('ssc_' + k, JSON.stringify(v)),
