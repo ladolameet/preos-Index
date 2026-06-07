@@ -17,10 +17,6 @@
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Tesseract.js for client-side OCR -->
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js">
-  </script>
-
   <style>
     /* ═══════════════════════════════ DESIGN TOKENS ═══════════════════════════════ */
     :root {
@@ -61,11 +57,11 @@
     *::after {
       box-sizing: border-box;
       margin: 0;
-      padding: 0
+      padding: 0;
     }
 
     html {
-      scroll-behavior: smooth
+      scroll-behavior: smooth;
     }
 
     body {
@@ -85,49 +81,49 @@
 
     a {
       text-decoration: none;
-      color: inherit
+      color: inherit;
     }
 
     button {
       cursor: pointer;
       font-family: inherit;
       border: none;
-      outline: none
+      outline: none;
     }
 
     input,
     textarea,
     select {
       font-family: inherit;
-      outline: none
+      outline: none;
     }
 
     img {
-      max-width: 100%
+      max-width: 100%;
     }
 
     ::-webkit-scrollbar {
       width: 6px;
-      height: 6px
+      height: 6px;
     }
 
     ::-webkit-scrollbar-track {
-      background: transparent
+      background: transparent;
     }
 
     ::-webkit-scrollbar-thumb {
       background: rgba(0, 0, 0, 0.1);
-      border-radius: 10px
+      border-radius: 10px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: rgba(0, 0, 0, 0.22)
+      background: rgba(0, 0, 0, 0.22);
     }
 
     .app {
       display: flex;
       flex-direction: column;
-      min-height: 100vh
+      min-height: 100vh;
     }
 
     /* ═══════════════════════════════ NAV ═════════════════════════════════════════ */
@@ -181,7 +177,7 @@
     }
 
     .nav-scroll::-webkit-scrollbar {
-      display: none
+      display: none;
     }
 
     .nav-link {
@@ -214,7 +210,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      flex-shrink: 0
+      flex-shrink: 0;
     }
 
     .xp-pill,
@@ -261,37 +257,37 @@
       flex: 1;
       padding: 28px;
       animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
-      max-width: 1320px;
+      max-width: 1400px;
       margin: 0 auto;
       width: 100%;
     }
 
     .page.active {
       display: flex;
-      flex-direction: column
+      flex-direction: column;
     }
 
     @keyframes fadeUp {
       from {
         opacity: 0;
-        transform: translateY(22px)
+        transform: translateY(22px);
       }
 
       to {
         opacity: 1;
-        transform: translateY(0)
+        transform: translateY(0);
       }
     }
 
     @keyframes fadeInScale {
       from {
         opacity: 0;
-        transform: scale(0.94)
+        transform: scale(0.94);
       }
 
       to {
         opacity: 1;
-        transform: scale(1)
+        transform: scale(1);
       }
     }
 
@@ -299,11 +295,11 @@
 
       0%,
       100% {
-        box-shadow: 0 0 0 0 rgba(0, 102, 245, 0.4)
+        box-shadow: 0 0 0 0 rgba(0, 102, 245, 0.4);
       }
 
       50% {
-        box-shadow: 0 0 0 14px rgba(0, 102, 245, 0)
+        box-shadow: 0 0 0 14px rgba(0, 102, 245, 0);
       }
     }
 
@@ -351,11 +347,11 @@
 
       0%,
       100% {
-        background-position: 0% 50%
+        background-position: 0% 50%;
       }
 
       50% {
-        background-position: 100% 50%
+        background-position: 100% 50%;
       }
     }
 
@@ -380,7 +376,7 @@
     .stat-pill {
       display: flex;
       flex-direction: column;
-      align-items: center
+      align-items: center;
     }
 
     .stat-num {
@@ -403,7 +399,7 @@
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(342px, 1fr));
       gap: 20px;
       padding: 28px 0 56px;
       width: 100%;
@@ -1072,6 +1068,12 @@
       width: 100%;
       min-height: 80px;
       line-height: 1.6;
+      border-radius: var(--radius);
+    }
+
+    .search-textarea:focus {
+      background: rgba(0, 102, 245, 0.015);
+      outline: 1px solid rgba(0, 102, 245, 0.15);
     }
 
     .search-textarea::placeholder {
@@ -1295,7 +1297,7 @@
       padding-left: 6px;
     }
 
-    /* ═══════════════════════════════ BOOKMARKS ═══════════════════════════════════ */
+    /* ═══════════════════════════════ SIMILAR / BOOKMARKS ═════════════════════════ */
     .similar-card {
       background: var(--surface-card);
       border: 1px solid var(--border);
@@ -1382,11 +1384,11 @@
 
     @keyframes fadeIn {
       from {
-        opacity: 0
+        opacity: 0;
       }
 
       to {
-        opacity: 1
+        opacity: 1;
       }
     }
 
@@ -1465,6 +1467,11 @@
       background: rgba(245, 248, 255, 0.96);
     }
 
+    .toast.warning {
+      border-left: 4px solid var(--accent4);
+      background: rgba(255, 250, 240, 0.96);
+    }
+
     .toast.xp {
       border-left: 4px solid var(--accent4);
       background: rgba(255, 250, 240, 0.96);
@@ -1524,10 +1531,91 @@
       letter-spacing: -0.2px;
     }
 
+    /* ═══════════════════════════════ AI LOADING DOTS ═════════════════════════════ */
+    .ai-loading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px;
+      color: var(--text2);
+      font-size: 0.84rem;
+    }
+
+    .ai-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: dotPulse 1.2s infinite ease-in-out;
+    }
+
+    .ai-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .ai-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes dotPulse {
+
+      0%,
+      80%,
+      100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+      }
+
+      40% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    /* ═══════════════════════════════ FILTER SELECTS (SIMULATOR) ══════════════════ */
+    .filter-label {
+      font-size: 0.73rem;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--text3);
+      margin-bottom: 6px;
+    }
+
+    .filter-select {
+      width: 100%;
+      padding: 10px 36px 10px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%238a8e99' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-size: 12px;
+    }
+
+    .filter-select:hover {
+      border-color: var(--accent);
+      background: rgba(0, 102, 245, 0.015);
+    }
+
+    .filter-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 102, 245, 0.08);
+      background: rgba(0, 102, 245, 0.02);
+    }
+
     /* ═══════════════════════════════ MISC ════════════════════════════════════════ */
     #ai-assistant-fab {
       position: fixed;
-      bottom: 28px;
+      bottom: 92px;
       right: 28px;
       width: 54px;
       height: 54px;
@@ -2000,58 +2088,6 @@
       opacity: 0.8;
     }
 
-    /* OCR DROPZONE STYLES */
-    .ocr-dropzone {
-      border: 2px dashed rgba(0, 102, 245, 0.25);
-      background: rgba(0, 102, 245, 0.015);
-      border-radius: var(--radius-lg);
-      padding: 36px 24px;
-      text-align: center;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      transition: all var(--transition);
-    }
-
-    .ocr-dropzone:hover,
-    .ocr-dropzone.dragover {
-      background: rgba(0, 102, 245, 0.04);
-      border-color: var(--accent);
-      border-style: solid;
-      transform: scale(0.98);
-    }
-
-    .ocr-dropzone.dragover {
-      background: rgba(0, 102, 245, 0.07);
-    }
-
-    .ocr-icon {
-      font-size: 2.4rem;
-      margin-bottom: 6px;
-    }
-
-    .ocr-text {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.2px;
-    }
-
-    .ocr-subtext {
-      font-size: 0.74rem;
-      color: var(--text3);
-    }
-
-    .ocr-status {
-      font-size: 0.77rem;
-      font-weight: 650;
-      color: var(--accent);
-      margin-top: 10px;
-      text-align: center;
-    }
-
     /* Result banner */
     .result-section {
       display: none;
@@ -2357,17 +2393,17 @@
       }
 
       .nav-scroll {
-        display: none
+        display: none;
       }
 
       .exam-layout {
-        flex-direction: column
+        flex-direction: column;
       }
 
       .palette-sidebar {
         width: 100%;
         min-width: unset;
-        max-height: 200px
+        max-height: 200px;
       }
 
       .cards-grid {
@@ -2379,26 +2415,26 @@
       }
 
       .hero h1 {
-        font-size: 1.9rem
+        font-size: 1.9rem;
       }
 
       .readiness-ring {
         width: 140px;
-        height: 140px
+        height: 140px;
       }
 
       .coach-grid {
-        grid-template-columns: 1fr 1fr
+        grid-template-columns: 1fr 1fr;
       }
     }
 
     @media(max-width:480px) {
       .cards-grid {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
       }
 
       .analytics-grid {
-        grid-template-columns: 1fr 1fr
+        grid-template-columns: 1fr 1fr;
       }
 
       .coach-grid {
@@ -2422,9 +2458,8 @@
 </head>
 
 <body>
-  <!-- Same HTML body content as original – unchanged -->
   <div class="app" id="app">
-    <!-- NAV unchanged -->
+    <!-- NAV -->
     <nav>
       <div class="nav-brand" onclick="showPage('home')">
         <svg width="26" height="26" viewBox="0 0 28 28" fill="none" style="margin-right: 6px;">
@@ -2443,12 +2478,9 @@
       <div class="nav-scroll">
         <span class="nav-link" id="nl-search" onclick="showPage('search')">Search</span>
         <span class="nav-link" id="nl-notebook" onclick="showPage('notebook')">Notebook</span>
-        <span class="nav-link" id="nl-revision" onclick="showPage('revision')">Revision</span>
         <span class="nav-link" id="nl-readiness" onclick="showPage('readiness')">Readiness</span>
-        <span class="nav-link" id="nl-screenshot" onclick="showPage('screenshot')">Ask PYQ</span>
         <span class="nav-link" id="nl-simulator" onclick="showPage('simulator')">Simulator</span>
         <span class="nav-link" id="nl-analytics" onclick="showPage('analytics')">Analytics</span>
-        <span class="nav-link" id="nl-achievements" onclick="showPage('achievements')">Achievements</span>
         <span class="nav-link" id="nl-bookmarks" onclick="showPage('bookmarks')">Bookmarks</span>
         <span class="nav-link" id="nl-plan" onclick="showPage('plan')">Study Plan</span>
       </div>
@@ -2460,16 +2492,19 @@
         </div>
       </div>
     </nav>
-    <!-- All pages, modals, mobile nav identical to original -->
+
+    <!-- HOME PAGE -->
     <div class="page active" id="page-home">
       <div class="hero">
-        <div class="hero-eyebrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <div class="hero-eyebrow">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
             <circle cx="6" cy="6" r="5" fill="#0066f5" opacity=".3" />
             <circle cx="6" cy="6" r="3" fill="#0066f5" />
           </svg>
-          AI-Powered SSC Preparation</div>
+          AI-Powered SSC Preparation
+        </div>
         <h1>Master SSC Exams With<br /><span>AI Intelligence</span></h1>
-        <p class="hero-sub">Practice from 20,000+ real SSC CGL & CHSL questions with AI explanations, smart
+        <p class="hero-sub">Practice from 15,000+ real SSC CGL & CHSL questions with AI explanations, smart
           search, spaced repetition revision, readiness predictor and personalised coaching.</p>
         <div class="hero-stats">
           <div class="stat-pill"><span class="stat-num" id="stat-total">—</span><span
@@ -2508,13 +2543,7 @@
           <div class="card-meta"><span class="card-badge">Priority 1</span><span class="card-badge">AI
               Analysis</span></div>
         </div>
-        <div class="card" onclick="showPage('revision')">
-          <div class="card-icon" style="background: rgba(91,77,251,0.07); color: var(--accent2);">🧠</div>
-          <h3>AI Revision Engine</h3>
-          <p>Spaced repetition system tracks confidence scores and serves due cards automatically.</p>
-          <div class="card-meta"><span class="card-badge">SM-2 Algorithm</span><span class="card-badge">Heatmap</span>
-          </div>
-        </div>
+
         <div class="card" onclick="showPage('readiness')">
           <div class="card-icon" style="background: rgba(30,212,94,0.07); color: var(--accent3);">🎯</div>
           <h3>Exam Readiness</h3>
@@ -2522,13 +2551,7 @@
           <div class="card-meta"><span class="card-badge">AI Prediction</span><span class="card-badge">Real
               Cutoffs</span></div>
         </div>
-        <div class="card" onclick="showPage('screenshot')">
-          <div class="card-icon" style="background: rgba(255,140,0,0.07); color: var(--accent4);">📷</div>
-          <h3>Ask Any PYQ</h3>
-          <p>Paste text or drag question screenshot. AI extracts and finds similar PYQs instantly.</p>
-          <div class="card-meta"><span class="card-badge">Image OCR</span><span class="card-badge">Instant
-              Match</span></div>
-        </div>
+
         <div class="card" onclick="showPage('coach')">
           <div class="card-icon" style="background: rgba(0,102,245,0.07); color: var(--accent);">🤖</div>
           <h3>AI Coach</h3>
@@ -2543,19 +2566,12 @@
           <div class="card-meta"><span class="card-badge">Timer</span><span class="card-badge">−0.5
               Penalty</span></div>
         </div>
-        <div class="card" onclick="showPage('achievements')">
-          <div class="card-icon" style="background: rgba(241,58,48,0.07); color: var(--accent5);">🎖</div>
-          <h3>Achievements</h3>
-          <p>Earn XP, unlock badges, maintain streaks and track your journey to SSC success.</p>
-          <div class="card-meta"><span class="card-badge">XP System</span><span class="card-badge">10
-              Badges</span></div>
-        </div>
+
         <div class="card" onclick="showPage('search')">
           <div class="card-icon" style="background: rgba(255,140,0,0.07); color: var(--accent4);">🔍</div>
           <h3>Search Similar</h3>
           <p>Paste any SSC question and instantly find similar questions from all years using BM25 + AI.</p>
-          <div class="card-meta"><span class="card-badge">BM25</span><span class="card-badge">RapidFuzz</span>
-          </div>
+          <div class="card-meta"><span class="card-badge">BM25</span><span class="card-badge">RapidFuzz</span></div>
         </div>
         <div class="card" onclick="showPage('plan')">
           <div class="card-icon" style="background: rgba(30,212,94,0.07); color: var(--accent3);">📅</div>
@@ -2566,7 +2582,8 @@
         </div>
       </div>
     </div>
-    <!-- Remaining HTML pages (select, exam, search, analytics, bookmarks, plan, notebook, revision, readiness, screenshot, coach, simulator, achievements) all identical to original -->
+
+    <!-- PAPER SELECT PAGE -->
     <div class="page" id="page-select">
       <div class="page-header"><button class="back-btn" onclick="showPage('home')">← Back to Home</button>
         <h2 class="page-title" id="select-title">Select Paper</h2>
@@ -2574,6 +2591,8 @@
       </div>
       <div class="year-grid" id="year-grid"></div>
     </div>
+
+    <!-- EXAM PAGE -->
     <div class="page" id="page-exam">
       <div class="exam-layout">
         <div class="palette-sidebar">
@@ -2607,7 +2626,8 @@
               <div class="result-banner" id="result-banner"><span id="result-icon">✓</span><span
                   id="result-text">Correct!</span></div>
               <div class="ai-explanation" id="ai-explanation">
-                <div class="ai-label"><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <div class="ai-label">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path
                       d="M7 13c3.3137 0 6-2.6863 6-6 0-3.3137-2.6863-6-6-6-3.3137 0-6 2.6863-6 6 0 3.3137 2.6863 6 6 6z"
                       stroke="currentColor" stroke-width="1.2" />
@@ -2638,7 +2658,8 @@
         </div>
       </div>
     </div>
-    <!-- All remaining pages, modals, and mobile drawer are identical to the original code -->
+
+    <!-- SEARCH PAGE -->
     <div class="page" id="page-search">
       <div class="search-page-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
         <h2 class="page-title">Search Similar Questions</h2>
@@ -2647,22 +2668,25 @@
         <div class="search-box"><textarea class="search-textarea" id="search-input"
             placeholder="Paste your SSC question here…&#10;&#10;Example: If the ratio of boys to girls is 3:2 and there are 40 students, how many girls are there?"
             rows="4"></textarea><button class="btn btn-primary" onclick="doSearch()"
-            style="align-self:flex-end;margin:8px"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"
-              style="margin-right: 4px;">
+            style="align-self:flex-end;margin:8px">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style="margin-right: 4px;">
               <circle cx="7" cy="7" r="5" stroke="white" stroke-width="1.8" />
               <path d="M11 11L14 14" stroke="white" stroke-width="2" stroke-linecap="round" />
-            </svg>Search</button></div>
+            </svg>Search
+          </button></div>
         <div class="chip-group"><span class="chip"
             onclick="fillExample('coding decoding blood relation sister brother')">Coding-Decoding</span>
           <span class="chip" onclick="fillExample('percentage profit loss discount selling price')">Profit &
             Loss</span><span class="chip"
             onclick="fillExample('synonym antonym word meaning vocabulary')">Vocabulary</span><span class="chip"
-            onclick="fillExample('time work efficiency pipe cistern')">Time & Work</span><span class="chip"
-            onclick="fillExample('ratio proportion mixture alligation')">Ratio</span>
+            onclick="fillExample('time work efficiency pipe cistern')">Time &
+            Work</span><span class="chip" onclick="fillExample('ratio proportion mixture alligation')">Ratio</span>
         </div>
         <div id="search-results" class="search-results"></div>
       </div>
     </div>
+
+    <!-- ANALYTICS PAGE -->
     <div class="page" id="page-analytics">
       <div class="analytics-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
         <h2 class="page-title">Performance Analytics</h2>
@@ -2687,6 +2711,8 @@
             Topics</button><button class="btn btn-danger" onclick="resetAnalytics()">🗑 Reset Data</button></div>
       </div>
     </div>
+
+    <!-- BOOKMARKS PAGE -->
     <div class="page" id="page-bookmarks">
       <div class="bookmarks-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
         <h2 class="page-title">Bookmarked Questions</h2>
@@ -2694,6 +2720,8 @@
         <div id="bookmarks-list"></div>
       </div>
     </div>
+
+    <!-- STUDY PLAN PAGE -->
     <div class="page" id="page-plan">
       <div class="study-plan-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
         <h2 class="page-title">AI Study Plan</h2>
@@ -2703,6 +2731,8 @@
         <div id="study-plan-content"></div>
       </div>
     </div>
+
+    <!-- ERROR NOTEBOOK PAGE -->
     <div class="page" id="page-notebook">
       <div class="feature-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
         <h2 class="page-title">🔥 AI Error Notebook</h2>
@@ -2721,23 +2751,10 @@
         </div>
       </div>
     </div>
-    <div class="page" id="page-revision">
-      <div class="feature-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
-        <h2 class="page-title">🧠 AI Revision Engine</h2>
-        <p class="page-sub" style="margin-bottom:22px">Spaced repetition — the scientifically proven way to never
-          forget what you've learned.</p>
-        <div id="revision-stats-bar"
-          style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:24px">
-        </div>
-        <div id="revision-heatmap-wrap" class="chart-wrap" style="margin-bottom:24px">
-          <div class="chart-title">📅 Study Activity Heatmap (last 90 days)</div>
-          <div id="revision-heatmap" class="heatmap-grid"></div>
-        </div>
-        <div style="display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap"><button class="btn btn-primary"
-            onclick="loadRevisionToday()">📋 Load Today's Queue</button></div>
-        <div id="revision-queue-list"></div>
-      </div>
-    </div>
+
+
+
+    <!-- READINESS PAGE -->
     <div class="page" id="page-readiness">
       <div class="feature-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
         <h2 class="page-title">🎯 Exam Readiness Score</h2>
@@ -2756,24 +2773,9 @@
         <div id="prediction-content" style="margin-top:20px"></div>
       </div>
     </div>
-    <div class="page" id="page-screenshot">
-      <div class="feature-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
-        <h2 class="page-title">Ask Any PYQ</h2>
-        <p class="page-sub" style="margin-bottom:22px">Write text — AI
-          extracts it and finds matching PYQs instantly.</p>
-        <div class="text-input-zone">
-          <div class="text-input-label"
-            style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text3); margin-bottom: 6px;">
-            📝 Question Text</div><textarea id="screenshot-text-input" class="search-textarea"
-            placeholder="Question text will be extracted here. You can also paste manually…&#10;&#10;Example: A train travelling at 72 km/h crosses a platform in 30 seconds..."
-            rows="5"
-            style="width:100%; margin-bottom:16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); padding: 12px;"></textarea>
-          <button class="btn btn-primary" onclick="doTextSearch()" style="width:100%;justify-content:center">🔍 Find
-            Similar PYQs</button>
-        </div>
-        <div id="screenshot-results"></div>
-      </div>
-    </div>
+
+
+    <!-- COACH PAGE -->
     <div class="page" id="page-coach">
       <div class="feature-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
         <h2 class="page-title">🤖 AI Coach</h2>
@@ -2791,25 +2793,27 @@
         </div>
       </div>
     </div>
+
+    <!-- SIMULATOR PAGE -->
     <div class="page" id="page-simulator">
       <div class="feature-inner" id="sim-setup"><button class="back-btn" onclick="showPage('home')">← Back</button>
         <h2 class="page-title">🏆 Exam Simulator</h2>
         <p class="page-sub" style="margin-bottom:22px">Full mock exam with timer, negative marking and AI
           performance report.</p>
         <div
-          style="background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;max-width:500px;box-shadow:var(--shadow);">
+          style="background:var(--surface-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;max-width:520px;box-shadow:var(--shadow);">
           <h3 style="font-weight:800;font-size:1.15rem;margin-bottom:18px">Configure Your Mock Exam</h3>
           <div style="margin-bottom:14px">
-            <div class="filter-label" style="margin-bottom:6px">Exam</div><select class="filter-select" id="sim-exam"
-              style="width:100%">
+            <div class="filter-label">Exam</div>
+            <select class="filter-select" id="sim-exam">
               <option value="">Mixed (All Exams)</option>
               <option value="CGL">SSC CGL</option>
               <option value="CHSL">SSC CHSL</option>
             </select>
           </div>
           <div style="margin-bottom:14px">
-            <div class="filter-label" style="margin-bottom:6px">Section</div><select class="filter-select"
-              id="sim-section" style="width:100%">
+            <div class="filter-label">Section</div>
+            <select class="filter-select" id="sim-section">
               <option value="">All Sections</option>
               <option value="Reasoning">Reasoning</option>
               <option value="Maths">Maths</option>
@@ -2818,18 +2822,16 @@
             </select>
           </div>
           <div style="margin-bottom:14px">
-            <div class="filter-label" style="margin-bottom:6px">Number of Questions</div><select class="filter-select"
-              id="sim-count" style="width:100%">
-              <option value="25">25
-                Questions</option>
+            <div class="filter-label">Number of Questions</div>
+            <select class="filter-select" id="sim-count">
+              <option value="25">25 Questions</option>
               <option value="50">50 Questions</option>
-              <option value="100">100
-                Questions (Full Mock)</option>
+              <option value="100">100 Questions (Full Mock)</option>
             </select>
           </div>
           <div style="margin-bottom:22px">
-            <div class="filter-label" style="margin-bottom:6px">Time Limit</div><select class="filter-select"
-              id="sim-time" style="width:100%">
+            <div class="filter-label">Time Limit</div>
+            <select class="filter-select" id="sim-time">
               <option value="900">15 minutes</option>
               <option value="1500" selected>25 minutes</option>
               <option value="3600">60 minutes</option>
@@ -2838,8 +2840,9 @@
           </div>
           <div
             style="background:rgba(241,58,48,.08);border:1px solid rgba(241,58,48,.15);border-radius:10px;padding:12px;margin-bottom:18px;font-size:.83rem;color:var(--accent5);font-weight:600">
-            ⚠️ Negative marking: −0.5 per wrong answer, +2 per correct answer</div><button
-            class="btn btn-primary w-100 justify-content-center" onclick="startSimulator()">🚀 Start Mock
+            ⚠️ Negative marking: −0.5 per wrong answer, +2 per correct answer
+          </div>
+          <button class="btn btn-primary w-100 justify-content-center" onclick="startSimulator()">🚀 Start Mock
             Exam</button>
         </div>
       </div>
@@ -2877,6 +2880,8 @@
         </div>
       </div>
     </div>
+
+    <!-- ACHIEVEMENTS PAGE -->
     <div class="page" id="page-achievements">
       <div class="feature-inner"><button class="back-btn" onclick="showPage('home')">← Back</button>
         <h2 class="page-title">🎖 Achievements & Progress</h2>
@@ -2887,6 +2892,8 @@
         <div class="achievements-grid" id="achievements-grid"></div>
       </div>
     </div>
+
+    <!-- SUMMARY MODAL -->
     <div class="modal-overlay" id="summary-modal">
       <div class="modal">
         <h2 class="modal-title">📊 Paper Summary</h2>
@@ -2896,23 +2903,32 @@
             onclick="showPage('home')">Exit Paper</button></div>
       </div>
     </div>
+
+    <!-- LOADING OVERLAY -->
     <div class="loading-overlay" id="loading-overlay">
       <div class="spinner"></div>
       <div class="loading-text" id="loading-text">Loading questions…</div>
     </div>
+
+    <!-- TOAST CONTAINER -->
     <div id="toast-container"></div>
+
+    <!-- AI FAB -->
     <button id="ai-assistant-fab" onclick="openFAB()" title="AI Coach">🤖</button>
-    <div class="mobile-nav" id="mobile-nav"><button class="mobile-nav-item active" id="mn-home"
-        onclick="showPage('home')"><span class="mobile-nav-icon">🏠</span><span
-          class="mobile-nav-label">Home</span></button><button class="mobile-nav-item" id="mn-notebook"
-        onclick="showPage('notebook')"><span class="mobile-nav-icon">🔥</span><span
-          class="mobile-nav-label">Errors</span></button><button class="mobile-nav-item" id="mn-revision"
-        onclick="showPage('revision')"><span class="mobile-nav-icon">🧠</span><span
-          class="mobile-nav-label">Revision</span></button><button class="mobile-nav-item" id="mn-simulator"
-        onclick="showPage('simulator')"><span class="mobile-nav-icon">🏆</span><span
-          class="mobile-nav-label">Simulator</span></button><button class="mobile-nav-item" id="mn-more"
-        onclick="toggleMobileDrawer()"><span class="mobile-nav-icon">☰</span><span
-          class="mobile-nav-label">More</span></button></div>
+
+    <!-- MOBILE NAV -->
+    <div class="mobile-nav" id="mobile-nav">
+      <button class="mobile-nav-item active" id="mn-home" onclick="showPage('home')"><span
+          class="mobile-nav-icon">🏠</span><span class="mobile-nav-label">Home</span></button>
+      <button class="mobile-nav-item" id="mn-notebook" onclick="showPage('notebook')"><span
+          class="mobile-nav-icon">🔥</span><span class="mobile-nav-label">Errors</span></button>
+      <button class="mobile-nav-item" id="mn-simulator" onclick="showPage('simulator')"><span
+          class="mobile-nav-icon">🏆</span><span class="mobile-nav-label">Simulator</span></button>
+      <button class="mobile-nav-item" id="mn-more" onclick="toggleMobileDrawer()"><span
+          class="mobile-nav-icon">☰</span><span class="mobile-nav-label">More</span></button>
+    </div>
+
+    <!-- MOBILE DRAWER -->
     <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="toggleMobileDrawer()"></div>
     <div class="mobile-drawer" id="mobile-drawer">
       <div class="mobile-drawer-header">
@@ -2928,10 +2944,7 @@
           <div class="drawer-icon">🎯</div>
           <div class="drawer-label">Readiness</div>
         </div>
-        <div class="drawer-item" onclick="selectDrawerPage('screenshot')">
-          <div class="drawer-icon">📷</div>
-          <div class="drawer-label">Ask PYQ</div>
-        </div>
+
         <div class="drawer-item" onclick="selectDrawerPage('coach')">
           <div class="drawer-icon">🤖</div>
           <div class="drawer-label">Coach</div>
@@ -2955,17 +2968,19 @@
       </div>
     </div>
   </div>
+
   <script>
     /* ═══════════════════════════════════════════════════════════════════════
-       SSC AI PLATFORM v3.2 – FRONTEND ENGINE (Updated for multi-LLM backend)
+       SSC AI PLATFORM – FRONTEND ENGINE (text-only screenshot, fixed simulator CSS)
        ═══════════════════════════════════════════════════════════════════════ */
-    const API = 'https://preos.onrender.com';
+    const API = window.location.protocol === 'file:' ? 'http://127.0.0.1:8000' : '';
     const DEFAULT_USER = 'default';
     const LS = {
-      get: k => { try { return JSON.parse(localStorage.getItem('ssc_' + k)) } catch { return null } },
+      get: k => { try { return JSON.parse(localStorage.getItem('ssc_' + k)); } catch { return null; } },
       set: (k, v) => localStorage.setItem('ssc_' + k, JSON.stringify(v)),
       del: k => localStorage.removeItem('ssc_' + k),
     };
+
     let STATE = {
       currentPage: 'home',
       currentExam: null,
@@ -2982,6 +2997,7 @@
       similarLoaded: false,
       simState: null,
     };
+
     let ANALYTICS = LS.get('analytics') || {
       totalSolved: 0,
       correct: 0,
@@ -2992,54 +3008,74 @@
       bySubtopic: {},
       sessions: [],
     };
+
+    const ACHIEVEMENTS_DEF_CLIENT = [
+      { id: 'first_answer', name: 'First Step', icon: '🎯' },
+      { id: 'ten_correct', name: 'Sharp Mind', icon: '🧠' },
+      { id: 'fifty_correct', name: 'Knowledge Seeker', icon: '📚' },
+      { id: 'streak_3', name: 'On Fire', icon: '🔥' },
+      { id: 'streak_7', name: 'Weekly Warrior', icon: '⚔️' },
+      { id: 'revision_10', name: 'Recall Master', icon: '🔄' },
+      { id: 'perfect_session', name: 'Flawless', icon: '💎' },
+      { id: 'simulator_1', name: 'Exam Ready', icon: '🏆' },
+    ];
+
     async function init() {
       await loadStats();
       renderAnalytics();
       renderBookmarks();
       loadDashboardXP();
       loadDailyCoach();
-      initOCR();
     }
+
     async function loadStats() {
       try {
         const data = await apiFetch('/api/stats');
-        document.getElementById('stat-total').textContent = data.total_questions.toLocaleString(); const cgl =
-          Object.values(data.exam_year_counts['CGL'] || {}).reduce((a, b) => a + b, 0); const chsl = Object
-            .values(data.exam_year_counts['CHSL'] || {}).reduce((a, b) => a + b, 0);
+        document.getElementById('stat-total').textContent = data.total_questions.toLocaleString();
+        const cgl = Object.values(data.exam_year_counts['CGL'] || {}).reduce((a, b) => a + b, 0);
+        const chsl = Object.values(data.exam_year_counts['CHSL'] || {}).reduce((a, b) => a + b, 0);
         document.getElementById('cgl-count').textContent = cgl.toLocaleString() + ' questions';
         document.getElementById('chsl-count').textContent = chsl.toLocaleString() + ' questions';
         window._statsData = data;
       } catch (e) {
-        document.getElementById('stat-total').textContent =
-          'Offline';
+        document.getElementById('stat-total').textContent = 'Offline';
       }
     }
+
     async function loadDashboardXP() {
       try {
         const d = await apiFetch('/api/dashboard?user_id=' + DEFAULT_USER);
         document.getElementById('nav-level').textContent = d.level;
         document.getElementById('nav-xp-val').textContent = d.xp.toLocaleString();
         document.getElementById('nav-streak-val').textContent = d.streak;
-      } catch (e) { }
+      } catch (e) { /* offline – ignore */ }
     }
 
     function showPage(name) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
       document.querySelectorAll('.mobile-nav-item').forEach(l => l.classList.remove('active'));
-      const page = document.getElementById('page-' + name); if (!page) return;
+      const page = document.getElementById('page-' + name);
+      if (!page) return;
       page.classList.add('active');
-      const nl = document.getElementById('nl-' + name); if (nl) nl.classList.add('active');
-      const mn = document.getElementById('mn-' + name); if (mn) { mn.classList.add('active'); } else {
-        const mnMore =
-          document.getElementById('mn-more'); if (mnMore) mnMore.classList.add('active');
+      const nl = document.getElementById('nl-' + name);
+      if (nl) nl.classList.add('active');
+      const mn = document.getElementById('mn-' + name);
+      if (mn) { mn.classList.add('active'); } else {
+        const mnMore = document.getElementById('mn-more');
+        if (mnMore) mnMore.classList.add('active');
       }
-      STATE.currentPage = name; if (name === 'analytics') {
+      STATE.currentPage = name;
+      if (name === 'analytics') {
         renderAnalytics();
         loadAdvancedAnalytics();
-      } if (name === 'bookmarks') renderBookmarks(); if (name === 'home') window
-        .scrollTo(0, 0); if (name === 'notebook') loadMistakes(); if (name === 'revision') { loadRevisionStats(); }
-      if (name === 'achievements') loadAchievements(); if (name === 'coach') loadCoach();
+      }
+      if (name === 'bookmarks') renderBookmarks();
+      if (name === 'home') window.scrollTo(0, 0);
+      if (name === 'notebook') loadMistakes();
+      if (name === 'revision') loadRevisionStats();
+      if (name === 'achievements') loadAchievements();
+      if (name === 'coach') loadCoach();
     }
 
     function toggleMobileDrawer() {
@@ -3061,31 +3097,30 @@
       const grid = document.getElementById('year-grid');
       const data = window._statsData;
       grid.innerHTML = [2021, 2022, 2023, 2024].map(y => {
-        const count = data?.exam_year_counts?.[exam]?.[y] ||
-          '—'; return `<div class="year-card" onclick="startPaper('${exam}',${y})">
-          <div class="year-exam">${exam}</div><div class="year-num">${y}</div><div class="year-count">${typeof count === 'number' ? count.toLocaleString() : count} questions</div></div>`;
-      }).join(
-        '');
+        const count = data?.exam_year_counts?.[exam]?.[y] || '—';
+        return `<div class="year-card" onclick="startPaper('${exam}',${y})">
+              <div class="year-exam">${exam}</div><div class="year-num">${y}</div><div class="year-count">${typeof count === 'number' ? count.toLocaleString() : count} questions</div></div>`;
+      }).join('');
       showPage('select');
     }
+
     async function startPaper(exam, year) {
-      showLoading('Loading paper…'); try {
-        const data = await apiFetch(
-          `/api/paper?exam=${exam}&year=${year}`);
+      showLoading('Loading paper…');
+      try {
+        const data = await apiFetch(`/api/paper?exam=${exam}&year=${year}`);
         STATE.questions = data.questions;
         STATE.mode = 'paper';
         STATE.currentExam = exam;
         STATE.currentYear = year;
         initExamSession();
         showPage('exam');
-      } catch (e) { toast('Failed to load paper: ' + e.message, 'error'); } finally {
-        hideLoading();
-      }
+      } catch (e) { toast('Failed to load paper: ' + e.message, 'error'); } finally { hideLoading(); }
     }
+
     async function startQuickPractice() {
-      showLoading('Loading questions…'); try {
-        const data = await apiFetch(
-          '/api/quick-practice?count=25');
+      showLoading('Loading questions…');
+      try {
+        const data = await apiFetch('/api/quick-practice?count=25');
         STATE.questions = data.questions;
         STATE.mode = 'quick';
         STATE.currentExam = 'Mixed';
@@ -3094,14 +3129,14 @@
         showPage('exam');
       } catch (e) { toast('Failed to load: ' + e.message, 'error'); } finally { hideLoading(); }
     }
+
     async function startWeakPractice() {
-      const weakSections = Object.entries(ANALYTICS.bySection || {}).filter(([,
-        v
-      ]) => v.total > 0 && (v.correct / v.total) < 0.6).map(([k]) => k); const topics = weakSections.length >
-        0 ? weakSections.join(',') : 'Reasoning,Maths';
-      showLoading('Finding weak topic questions…'); try {
-        const data = await apiFetch(
-          `/api/weak-practice?topics=${encodeURIComponent(topics)}&count=20`);
+      const weakSections = Object.entries(ANALYTICS.bySection || {}).filter(([, v]) => v.total > 0 && (v.correct / v
+        .total) < 0.6).map(([k]) => k);
+      const topics = weakSections.length > 0 ? weakSections.join(',') : 'Reasoning,Maths';
+      showLoading('Finding weak topic questions…');
+      try {
+        const data = await apiFetch(`/api/weak-practice?topics=${encodeURIComponent(topics)}&count=20`);
         STATE.questions = data.questions;
         STATE.mode = 'weak';
         STATE.currentExam = 'Weak Topics';
@@ -3129,7 +3164,8 @@
       const h = Math.floor(STATE.timerSeconds / 3600);
       const m = Math.floor((STATE.timerSeconds % 3600) / 60);
       const s = STATE.timerSeconds % 60;
-      const display = document.getElementById('timer-display'); if (!display) return;
+      const display = document.getElementById('timer-display');
+      if (!display) return;
       display.textContent = h > 0 ? `⏱ ${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}` :
         `⏱ ${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
       display.className = 'timer-display';
@@ -3156,16 +3192,19 @@
     }
 
     function updatePaletteBtn(idx) {
-      const btn = document.getElementById('pb-' + idx); if (!btn) return;
+      const btn = document.getElementById('pb-' + idx);
+      if (!btn) return;
       const q = STATE.questions[idx];
       const result = STATE.results[q.id];
-      btn.className = 'palette-btn' + (idx === STATE.currentIdx ? ' current' : ''); if (result === 'correct') btn
-        .classList.add('answered-correct'); else if (result === 'wrong' || result === 'skipped') btn.classList.add(
-          'answered-wrong'); if (STATE.bookmarks.has(q.id)) btn.classList.add('bookmarked');
+      btn.className = 'palette-btn' + (idx === STATE.currentIdx ? ' current' : '');
+      if (result === 'correct') btn.classList.add('answered-correct');
+      else if (result === 'wrong' || result === 'skipped') btn.classList.add('answered-wrong');
+      if (STATE.bookmarks.has(q.id)) btn.classList.add('bookmarked');
     }
 
     function renderQuestion() {
-      const q = STATE.questions[STATE.currentIdx]; if (!q) return;
+      const q = STATE.questions[STATE.currentIdx];
+      if (!q) return;
       STATE.similarLoaded = false;
       document.getElementById('q-number').textContent =
         `Question ${STATE.currentIdx + 1} of ${STATE.questions.length}`;
@@ -3176,7 +3215,8 @@
       const diffEl = document.getElementById('q-difficulty-badge');
       diffEl.textContent = diff;
       const diffColors = {
-        Easy: 'rgba(30,212,94,.1)/var(--accent3)', Medium: 'rgba(255,140,0,.1)/var(--accent4)',
+        Easy: 'rgba(30,212,94,.1)/var(--accent3)',
+        Medium: 'rgba(255,140,0,.1)/var(--accent4)',
         Hard: 'rgba(241,58,48,.1)/var(--accent5)'
       };
       const [bg, color] = (diffColors[diff] || diffColors.Medium).split('/');
@@ -3186,17 +3226,21 @@
       const answered = STATE.answers[q.id];
       const result = STATE.results[q.id];
       grid.innerHTML = ['A', 'B', 'C', 'D'].map(letter => {
-        const text = q.options?.[letter]; if (!text) return '';
-        let cls = 'option-btn'; if (result) {
-          if (letter === q.correct_answer) cls += ' correct'; else if (
-            letter === answered && letter !== q.correct_answer) cls += ' wrong'; else if (letter ===
-              answered) cls += ' selected';
-        } else if (letter === answered) cls += ' selected'; return `<button class="${cls}" ${result ? 'disabled' : ''} onclick="selectOption('${letter}')" id="opt-${letter}">
-          <span class="option-letter">${letter}</span><span>${text}</span></button>`;
+        const text = q.options?.[letter];
+        if (!text) return '';
+        let cls = 'option-btn';
+        if (result) {
+          if (letter === q.correct_answer) cls += ' correct';
+          else if (letter === answered && letter !== q.correct_answer) cls += ' wrong';
+          else if (letter === answered) cls += ' selected';
+        } else if (letter === answered) cls += ' selected';
+        return `<button class="${cls}" ${result ? 'disabled' : ''} onclick="selectOption('${letter}')" id="opt-${letter}">
+              <span class="option-letter">${letter}</span><span>${text}</span></button>`;
       }).join('');
       const resultSec = document.getElementById('result-section');
       const similarSec = document.getElementById('similar-section');
-      const submitBtn = document.getElementById('submit-btn'); if (result) {
+      const submitBtn = document.getElementById('submit-btn');
+      if (result) {
         resultSec.classList.add('visible');
         renderResultBanner(q, result);
         renderAIExplanation(q, answered, result);
@@ -3204,8 +3248,7 @@
         submitBtn.style.display = 'none';
         document.getElementById('skip-btn').style.display = 'none';
       } else {
-        resultSec.classList.remove(
-          'visible');
+        resultSec.classList.remove('visible');
         similarSec.style.display = 'none';
         submitBtn.style.display = '';
         document.getElementById('skip-btn').style.display = '';
@@ -3214,28 +3257,26 @@
       document.getElementById('prev-btn').disabled = STATE.currentIdx === 0;
       document.getElementById('next-btn').disabled = STATE.currentIdx === STATE.questions.length - 1;
       document.querySelectorAll('.palette-btn').forEach(b => b.classList.remove('current'));
-      const curBtn = document.getElementById('pb-' + STATE.currentIdx); if (curBtn) curBtn.classList.add(
-        'current');
+      const curBtn = document.getElementById('pb-' + STATE.currentIdx);
+      if (curBtn) curBtn.classList.add('current');
       document.getElementById('question-panel').scrollTo(0, 0);
     }
 
     function renderResultBanner(q, result) {
       const banner = document.getElementById('result-banner');
       const icon = document.getElementById('result-icon');
-      const text = document.getElementById('result-text'); if (result === 'correct') {
-        banner.className =
-          'result-banner correct';
+      const text = document.getElementById('result-text');
+      if (result === 'correct') {
+        banner.className = 'result-banner correct';
         icon.textContent = '✓';
         text.textContent = 'Correct! Well done.';
       } else if (result === 'wrong') {
-        banner.className =
-          'result-banner wrong';
+        banner.className = 'result-banner wrong';
         icon.textContent = '✗';
         text.textContent =
           `Wrong. Correct answer: ${q.correct_answer}) ${q.options?.[q.correct_answer] || ''}`;
       } else {
-        banner
-          .className = 'result-banner skipped';
+        banner.className = 'result-banner skipped';
         icon.textContent = '⏭';
         text.textContent =
           `Skipped. Correct answer: ${q.correct_answer}) ${q.options?.[q.correct_answer] || ''}`;
@@ -3243,38 +3284,44 @@
     }
 
     function selectOption(letter) {
-      const q = STATE.questions[STATE.currentIdx]; if (STATE.results[q.id]) return;
+      const q = STATE.questions[STATE.currentIdx];
+      if (STATE.results[q.id]) return;
       STATE.answers[q.id] = letter;
       document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-      const btn = document.getElementById('opt-' + letter); if (btn) btn.classList.add('selected');
+      const btn = document.getElementById('opt-' + letter);
+      if (btn) btn.classList.add('selected');
     }
+
     async function submitAnswer() {
       const q = STATE.questions[STATE.currentIdx];
-      const chosen = STATE.answers[q.id]; if (!chosen) { toast('Please select an option first', 'info'); return; }
+      const chosen = STATE.answers[q.id];
+      if (!chosen) { toast('Please select an option first', 'info'); return; }
       const result = chosen === q.correct_answer ? 'correct' : 'wrong';
       STATE.results[q.id] = result;
       updateAnalytics(q, result, chosen);
       renderQuestion();
       updatePaletteBtn(STATE.currentIdx);
-      updatePaletteStats(); try {
+      updatePaletteStats();
+      try {
         const resp = await apiFetch('/api/attempt', 'POST', {
           user_id: DEFAULT_USER,
-          question_id: q.id, chosen, time_taken: STATE.timerSeconds,
-        }); if (resp.xp_earned) {
-          toast(
-            `+${resp.xp_earned} XP${result === 'correct' ? ' 🎉' : ''}`, 'xp', 2500);
+          question_id: q.id,
+          chosen,
+          time_taken: STATE.timerSeconds,
+        });
+        if (resp.xp_earned) {
+          toast(`+${resp.xp_earned} XP${result === 'correct' ? ' 🎉' : ''}`, 'xp', 2500);
           document.getElementById('nav-xp-val').textContent = resp.total_xp?.toLocaleString() || '0';
           document.getElementById('nav-level').textContent = resp.level || 1;
           document.getElementById('nav-streak-val').textContent = resp.streak || 0;
-        } if (resp
-          .new_achievements?.length) {
+        }
+        if (resp.new_achievements?.length) {
           resp.new_achievements.forEach(id => {
-            const ach =
-              ACHIEVEMENTS_DEF_CLIENT.find(a => a.id === id); if (ach) toast(
-                `🏅 Achievement unlocked: ${ach.name}!`, 'success', 4000);
+            const ach = ACHIEVEMENTS_DEF_CLIENT.find(a => a.id === id);
+            if (ach) toast(`🏅 Achievement unlocked: ${ach.name}!`, 'success', 4000);
           });
         }
-      } catch (e) { }
+      } catch (e) { /* non-critical */ }
     }
 
     function skipQuestion() {
@@ -3287,8 +3334,8 @@
     }
 
     function navigate(dir) {
-      const newIdx = STATE.currentIdx + dir; if (newIdx < 0 || newIdx >= STATE.questions
-        .length) return;
+      const newIdx = STATE.currentIdx + dir;
+      if (newIdx < 0 || newIdx >= STATE.questions.length) return;
       STATE.currentIdx = newIdx;
       renderQuestion();
     }
@@ -3299,9 +3346,9 @@
     }
 
     function toggleBookmark() {
-      const q = STATE.questions[STATE.currentIdx]; if (STATE.bookmarks.has(q.id)) {
-        STATE
-          .bookmarks.delete(q.id);
+      const q = STATE.questions[STATE.currentIdx];
+      if (STATE.bookmarks.has(q.id)) {
+        STATE.bookmarks.delete(q.id);
         toast('Bookmark removed', 'info');
       } else {
         STATE.bookmarks.add(q.id);
@@ -3312,23 +3359,27 @@
       updatePaletteStats();
       renderQuestion();
     }
+
     async function renderAIExplanation(q, userAnswer, result) {
       const loading = document.getElementById('ai-loading');
       const card = document.getElementById('ai-card');
       loading.style.display = 'flex';
       card.style.display = 'none';
       const cacheKey = 'explain_' + q.id;
-      const cached = LS.get(cacheKey); if (cached) { showExplanation(cached); return; } try {
-        const data =
-          await apiFetch('/api/explain', 'POST', {
-            question_id: q.id, question: q.question, options: q.options,
-            correct_answer: q.correct_answer, user_answer: userAnswer,
-          });
+      const cached = LS.get(cacheKey);
+      if (cached) { showExplanation(cached); return; }
+      try {
+        const data = await apiFetch('/api/explain', 'POST', {
+          question_id: q.id,
+          question: q.question,
+          options: q.options,
+          correct_answer: q.correct_answer,
+          user_answer: userAnswer,
+        });
         LS.set(cacheKey, data);
         showExplanation(data);
       } catch (e) {
-        loading.innerHTML =
-          `<span style="color:var(--accent5)">AI unavailable: ${e.message}</span>`;
+        loading.innerHTML = `<span style="color:var(--accent5)">AI unavailable: ${e.message}</span>`;
       }
     }
 
@@ -3337,12 +3388,13 @@
       const card = document.getElementById('ai-card');
       card.style.display = 'flex';
       card.innerHTML = `
-        <div class="ai-field"><div class="ai-field-label">📌 Concept</div><div class="ai-field-content"><strong>${data.concept || '—'}</strong> · ${data.difficulty || ''}</div></div>
-        <div class="ai-field"><div class="ai-field-label">📖 Explanation</div><div class="ai-field-content">${data.explanation || '—'}</div></div>
-        ${data.solution ? `<div class="ai-field"><div class="ai-field-label">💡 Solution</div><div class="ai-field-content">${data.solution}</div></div>` : ''}
-        ${data.shortcut ? `<div class="ai-field shortcut"><div class="ai-field-label">⚡ Shortcut</div><div class="ai-field-content">${data.shortcut}</div></div>` : ''}
-        ${data.common_mistake ? `<div class="ai-field mistake"><div class="ai-field-label">⚠ Common Mistake</div><div class="ai-field-content">${data.common_mistake}</div></div>` : ''}`;
+            <div class="ai-field"><div class="ai-field-label">📌 Concept</div><div class="ai-field-content"><strong>${data.concept || '—'}</strong> · ${data.difficulty || ''}</div></div>
+            <div class="ai-field"><div class="ai-field-label">📖 Explanation</div><div class="ai-field-content">${data.explanation || '—'}</div></div>
+            ${data.solution ? `<div class="ai-field"><div class="ai-field-label">💡 Solution</div><div class="ai-field-content">${data.solution}</div></div>` : ''}
+            ${data.shortcut ? `<div class="ai-field shortcut"><div class="ai-field-label">⚡ Shortcut</div><div class="ai-field-content">${data.shortcut}</div></div>` : ''}
+            ${data.common_mistake ? `<div class="ai-field mistake"><div class="ai-field-label">⚠ Common Mistake</div><div class="ai-field-content">${data.common_mistake}</div></div>` : ''}`;
     }
+
     async function loadSimilar() {
       if (STATE.similarLoaded) return;
       const q = STATE.questions[STATE.currentIdx];
@@ -3351,23 +3403,24 @@
       btn.textContent = 'Loading…';
       btn.disabled = true;
       list.innerHTML =
-        `<div style="text-align:center;padding:20px;color:var(--text2)"><div class="spinner" style="margin:0 auto 10px"></div>Searching all papers…</div>`; try {
-          const data =
-            await apiFetch('/api/similar', 'POST', { question_id: q.id, top_k: 5 });
-          STATE.similarLoaded = true;
-          btn.style.display = 'none'; if (!data.similar?.length) {
-            list.innerHTML =
-              `<div class="empty-state" style="padding:24px"><div class="empty-icon">🔍</div><p>No similar questions found.</p></div>`; return;
-          }
-          list.innerHTML = data.similar.map((sim, i) => `
-          <div class="similar-card"><div class="similar-meta"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${sim.exam || '?'}</span><span class="similar-badge sb-year">${sim.year || '?'}</span><span class="similar-badge sb-section">${sim.section || 'General'}</span><span class="similar-badge sb-score">Score: ${(sim.similarity_score || 0).toFixed(2)}</span></div><div class="similar-q">${sim.question || ''}</div><div class="similar-ans">✓ ${sim.correct_answer || '?'}) ${sim.options?.[sim.correct_answer] || ''}</div></div>`)
-            .join('');
-        } catch (e) {
+        `<div style="text-align:center;padding:20px;color:var(--text2)"><div class="spinner" style="margin:0 auto 10px"></div>Searching all papers…</div>`;
+      try {
+        const data = await apiFetch('/api/similar', 'POST', { question_id: q.id, top_k: 5 });
+        STATE.similarLoaded = true;
+        btn.style.display = 'none';
+        if (!data.similar?.length) {
           list.innerHTML =
-            `<div style="color:var(--accent5);padding:12px">Error: ${e.message}</div>`;
-          btn.textContent = 'Retry';
-          btn.disabled = false;
+            `<div class="empty-state" style="padding:24px"><div class="empty-icon">🔍</div><p>No similar questions found.</p></div>`;
+          return;
         }
+        list.innerHTML = data.similar.map((sim, i) => `
+              <div class="similar-card"><div class="similar-meta"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${sim.exam || '?'}</span><span class="similar-badge sb-year">${sim.year || '?'}</span><span class="similar-badge sb-section">${sim.section || 'General'}</span><span class="similar-badge sb-score">Score: ${(sim.similarity_score || 0).toFixed(2)}</span></div><div class="similar-q">${sim.question || ''}</div><div class="similar-ans">✓ ${sim.correct_answer || '?'}) ${sim.options?.[sim.correct_answer] || ''}</div></div>`)
+          .join('');
+      } catch (e) {
+        list.innerHTML = `<div style="color:var(--accent5);padding:12px">Error: ${e.message}</div>`;
+        btn.textContent = 'Retry';
+        btn.disabled = false;
+      }
     }
 
     function showSummaryModal() {
@@ -3381,27 +3434,28 @@
       const circ = 2 * Math.PI * r;
       const offset = circ - (accuracy / 100) * circ;
       document.getElementById('summary-content').innerHTML = `
-        <div class="d-flex justify-content-center"><div class="score-ring" style="width:100px;height:100px"><svg width="100" height="100"><circle class="track" cx="50" cy="50" r="${r}" stroke-width="8"/><circle class="fill" cx="50" cy="50" r="${r}" stroke-width="8" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="score-center" style="font-size:.88rem"><strong style="font-size:1.4rem;color:var(--accent3)">${accuracy}%</strong><span style="color:var(--text2)">Accuracy</span></div></div></div>
-        <div class="analytics-grid" style="grid-template-columns:repeat(2,1fr);margin-top:16px"><div class="metric-card"><div class="metric-value" style="color:var(--accent)">${total}</div><div class="metric-label">Total</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent3)">${correct}</div><div class="metric-label">Correct</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent5)">${wrong}</div><div class="metric-label">Wrong</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent4)">${skipped}</div><div class="metric-label">Skipped</div></div></div>
-        <p style="font-size:.83rem;color:var(--text2);margin-top:14px;text-align:center">Time: ${formatSeconds(STATE.timerSeconds)} · Score: ${correct * 2 - wrong * 0.5}/${total * 2}</p>`;
+            <div class="d-flex justify-content-center"><div class="score-ring" style="width:100px;height:100px"><svg width="100" height="100"><circle class="track" cx="50" cy="50" r="${r}" stroke-width="8"/><circle class="fill" cx="50" cy="50" r="${r}" stroke-width="8" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="score-center" style="font-size:.88rem"><strong style="font-size:1.4rem;color:var(--accent3)">${accuracy}%</strong><span style="color:var(--text2)">Accuracy</span></div></div></div>
+            <div class="analytics-grid" style="grid-template-columns:repeat(2,1fr);margin-top:16px"><div class="metric-card"><div class="metric-value" style="color:var(--accent)">${total}</div><div class="metric-label">Total</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent3)">${correct}</div><div class="metric-label">Correct</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent5)">${wrong}</div><div class="metric-label">Wrong</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent4)">${skipped}</div><div class="metric-label">Skipped</div></div></div>
+            <p style="font-size:.83rem;color:var(--text2);margin-top:14px;text-align:center">Time: ${formatSeconds(STATE.timerSeconds)} · Score: ${correct * 2 - wrong * 0.5}/${total * 2}</p>`;
       document.getElementById('summary-modal').classList.add('visible');
     }
 
     function closeSummaryModal() { document.getElementById('summary-modal').classList.remove('visible'); }
 
     function updateAnalytics(q, result, chosen) {
-      ANALYTICS.totalSolved++; if (result === 'correct') ANALYTICS
-        .correct++; else if (result === 'wrong') ANALYTICS.wrong++; else ANALYTICS.skipped++;
-      const section = q.section || 'General'; if (!ANALYTICS.bySection[section]) ANALYTICS.bySection[section] = {
-        total: 0,
-        correct: 0,
-        wrong: 0
-      };
-      ANALYTICS.bySection[section].total++; if (result === 'correct') ANALYTICS.bySection[section].correct++; else if (
-        result === 'wrong') ANALYTICS.bySection[section].wrong++;
-      const subtopic = q.topic_info?.subtopic || 'General'; if (!ANALYTICS.bySubtopic[subtopic]) ANALYTICS
-        .bySubtopic[subtopic] = { total: 0, correct: 0, wrong: 0 };
-      ANALYTICS.bySubtopic[subtopic].total++; if (result === 'correct') ANALYTICS.bySubtopic[subtopic].correct++;
+      ANALYTICS.totalSolved++;
+      if (result === 'correct') ANALYTICS.correct++;
+      else if (result === 'wrong') ANALYTICS.wrong++;
+      else ANALYTICS.skipped++;
+      const section = q.section || 'General';
+      if (!ANALYTICS.bySection[section]) ANALYTICS.bySection[section] = { total: 0, correct: 0, wrong: 0 };
+      ANALYTICS.bySection[section].total++;
+      if (result === 'correct') ANALYTICS.bySection[section].correct++;
+      else if (result === 'wrong') ANALYTICS.bySection[section].wrong++;
+      const subtopic = q.topic_info?.subtopic || 'General';
+      if (!ANALYTICS.bySubtopic[subtopic]) ANALYTICS.bySubtopic[subtopic] = { total: 0, correct: 0, wrong: 0 };
+      ANALYTICS.bySubtopic[subtopic].total++;
+      if (result === 'correct') ANALYTICS.bySubtopic[subtopic].correct++;
       else if (result === 'wrong') ANALYTICS.bySubtopic[subtopic].wrong++;
       ANALYTICS.timeTaken += 1;
       LS.set('analytics', ANALYTICS);
@@ -3410,54 +3464,57 @@
     function renderAnalytics() {
       const a = ANALYTICS;
       const accuracy = a.totalSolved > 0 ? Math.round(a.correct / a.totalSolved * 100) : 0;
-      const grid = document.getElementById('analytics-grid'); if (!grid) return;
+      const grid = document.getElementById('analytics-grid');
+      if (!grid) return;
       const r = 36;
       const circ = 2 * Math.PI * r;
       const offset = circ - (accuracy / 100) * circ;
       grid.innerHTML = `
-        <div class="metric-card"><div class="score-ring"><svg width="80" height="80"><circle class="track" cx="40" cy="40" r="${r}" stroke-width="7"/><circle class="fill" cx="40" cy="40" r="${r}" stroke-width="7" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="score-center"><strong style="color:var(--accent3)">${accuracy}%</strong><span style="color:var(--text2);font-size:.65rem">Accuracy</span></div></div><div class="metric-label">Overall Accuracy</div></div>
-        <div class="metric-card"><div class="metric-value" style="color:var(--accent)">${a.totalSolved.toLocaleString()}</div><div class="metric-label">Total Solved</div></div>
-        <div class="metric-card"><div class="metric-value" style="color:var(--accent3)">${a.correct.toLocaleString()}</div><div class="metric-label">Correct</div><div class="metric-sub">+2 per correct</div></div>
-        <div class="metric-card"><div class="metric-value" style="color:var(--accent5)">${a.wrong.toLocaleString()}</div><div class="metric-label">Wrong</div><div class="metric-sub">−0.5 per wrong</div></div>
-        <div class="metric-card"><div class="metric-value" style="color:var(--accent4)">${a.skipped.toLocaleString()}</div><div class="metric-label">Skipped</div></div>
-        <div class="metric-card"><div class="metric-value" style="color:var(--accent2)">${formatSeconds(a.timeTaken * 60)}</div><div class="metric-label">Total Time</div></div>`;
-      const secDiv = document.getElementById('section-performance'); if (!secDiv) return;
-      const sections = Object.entries(a.bySection); if (!sections.length) {
+            <div class="metric-card"><div class="score-ring"><svg width="80" height="80"><circle class="track" cx="40" cy="40" r="${r}" stroke-width="7"/><circle class="fill" cx="40" cy="40" r="${r}" stroke-width="7" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="score-center"><strong style="color:var(--accent3)">${accuracy}%</strong><span style="color:var(--text2);font-size:.65rem">Accuracy</span></div></div><div class="metric-label">Overall Accuracy</div></div>
+            <div class="metric-card"><div class="metric-value" style="color:var(--accent)">${a.totalSolved.toLocaleString()}</div><div class="metric-label">Total Solved</div></div>
+            <div class="metric-card"><div class="metric-value" style="color:var(--accent3)">${a.correct.toLocaleString()}</div><div class="metric-label">Correct</div><div class="metric-sub">+2 per correct</div></div>
+            <div class="metric-card"><div class="metric-value" style="color:var(--accent5)">${a.wrong.toLocaleString()}</div><div class="metric-label">Wrong</div><div class="metric-sub">−0.5 per wrong</div></div>
+            <div class="metric-card"><div class="metric-value" style="color:var(--accent4)">${a.skipped.toLocaleString()}</div><div class="metric-label">Skipped</div></div>
+            <div class="metric-card"><div class="metric-value" style="color:var(--accent2)">${formatSeconds(a.timeTaken * 60)}</div><div class="metric-label">Total Time</div></div>`;
+      const secDiv = document.getElementById('section-performance');
+      if (!secDiv) return;
+      const sections = Object.entries(a.bySection);
+      if (!sections.length) {
         secDiv.innerHTML =
           `<div class="empty-state" style="padding:24px"><div class="empty-icon">📊</div><p>Start solving questions to see section performance.</p></div>`;
       } else {
         secDiv.innerHTML = sections.map(([sec, v]) => {
-          const acc = v.total > 0 ? Math.round(v.correct / v
-            .total * 100) : 0;
+          const acc = v.total > 0 ? Math.round(v.correct / v.total * 100) : 0;
           const color = acc >= 70 ? 'var(--accent3)' : acc >= 50 ? 'var(--accent4)' : 'var(--accent5)';
           return `<div class="topic-row"><div class="topic-name">${sec}</div><div class="topic-right"><div class="progress-bar-wrap"><div class="progress-bar" style="width:${acc}%;background:${color}"></div></div><div class="topic-stats"><span>${v.correct} correct</span><span>${v.wrong} wrong</span><span>${acc}% accuracy</span></div></div></div>`;
-        })
-          .join('');
+        }).join('');
       }
-      const weakDiv = document.getElementById('weak-topics-list'); if (!weakDiv) return;
+      const weakDiv = document.getElementById('weak-topics-list');
+      if (!weakDiv) return;
       const subtopics = Object.entries(a.bySubtopic).filter(([, v]) => v.total >= 3).sort((a, b) => (a[1].correct / a[
-        1].total) - (b[1].correct / b[1].total)); if (!subtopics.length) {
-          weakDiv.innerHTML =
-            `<div class="empty-state" style="padding:24px"><div class="empty-icon">🎯</div><p>Solve more questions to identify weak topics.</p></div>`;
-        } else {
+        1].total) - (b[1].correct / b[1].total));
+      if (!subtopics.length) {
+        weakDiv.innerHTML =
+          `<div class="empty-state" style="padding:24px"><div class="empty-icon">🎯</div><p>Solve more questions to identify weak topics.</p></div>`;
+      } else {
         weakDiv.innerHTML = subtopics.slice(0, 8).map(([name, v]) => {
-          const acc = Math.round(v.correct / v
-            .total * 100);
+          const acc = Math.round(v.correct / v.total * 100);
           const tag = acc < 40 ? '🔴 Weak' : acc < 65 ? '🟡 Average' : '🟢 Strong';
           return `<div class="topic-row"><div class="topic-name">${name}</div><div class="topic-right"><div style="display:flex;align-items:center;gap:8px"><div class="progress-bar-wrap" style="flex:1"><div class="progress-bar" style="width:${acc}%;background:${acc < 40 ? 'var(--accent5)' : acc < 65 ? 'var(--accent4)' : 'var(--accent3)'}"></div></div><span style="font-size:.76rem;font-weight:700;min-width:60px">${tag}</span></div><div class="topic-stats"><span>${v.total} solved</span><span>${acc}% accuracy</span></div></div></div>`;
-        })
-          .join('');
+        }).join('');
       }
     }
+
     async function loadAdvancedAnalytics() {
       try {
-        const data = await apiFetch('/api/analytics?user_id=' +
-          DEFAULT_USER); if (data.daily?.length) renderDailyChart(data.daily);
-      } catch (e) { }
+        const data = await apiFetch('/api/analytics?user_id=' + DEFAULT_USER);
+        if (data.daily?.length) renderDailyChart(data.daily);
+      } catch (e) { /* ignore */ }
     }
 
     function renderDailyChart(daily) {
-      const svg = document.getElementById('daily-chart'); if (!svg) return;
+      const svg = document.getElementById('daily-chart');
+      if (!svg) return;
       const width = svg.parentElement?.offsetWidth || 700;
       const height = 80;
       const max = Math.max(...daily.map(d => d.total), 1);
@@ -3468,8 +3525,7 @@
         const y = height - barH - 10;
         const color = d.total > 0 ? 'var(--accent)' : 'var(--border2)';
         return `<rect x="${x + 1}" y="${y}" width="${Math.max(step - 2, 2)}" height="${barH}" rx="3" fill="${color}" opacity=".8"><title>${d.day}: ${d.total} questions</title></rect>`;
-      })
-        .join('');
+      }).join('');
       svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
       svg.innerHTML = bars;
     }
@@ -3477,34 +3533,37 @@
     function resetAnalytics() {
       if (!confirm('Reset all analytics data? This cannot be undone.')) return;
       ANALYTICS = {
-        totalSolved: 0, correct: 0, wrong: 0, skipped: 0, timeTaken: 0, bySection: {}, bySubtopic: {},
+        totalSolved: 0,
+        correct: 0,
+        wrong: 0,
+        skipped: 0,
+        timeTaken: 0,
+        bySection: {},
+        bySubtopic: {},
         sessions: []
       };
       LS.set('analytics', ANALYTICS);
       renderAnalytics();
       toast('Analytics reset!', 'info');
     }
+
     async function doSearch() {
-      const query = document.getElementById('search-input').value.trim(); if (!query) {
-        toast(
-          'Please enter a question to search', 'info'); return;
-      }
+      const query = document.getElementById('search-input').value.trim();
+      if (!query) { toast('Please enter a question to search', 'info'); return; }
       const results = document.getElementById('search-results');
       results.innerHTML =
-        `<div style="text-align:center;padding:40px;color:var(--text2)"><div class="spinner" style="margin:0 auto 12px"></div>Searching…</div>`; try {
-          const data =
-            await apiFetch('/api/search', 'POST', { query, top_k: 10 }); if (!data.results?.length) {
-              results
-                .innerHTML =
-                `<div class="empty-state"><div class="empty-icon">🔍</div><h3>No results found</h3><p>Try different keywords.</p></div>`; return;
-            }
-          results.innerHTML = data.results.map((q, i) => `
-          <div class="similar-card" style="animation:fadeUp .3s ease ${i * .05}s both"><div class="similar-meta"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${q.exam}</span><span class="similar-badge sb-year">${q.year}</span><span class="similar-badge sb-section">${q.section}</span><span class="similar-badge sb-score">Match: ${Math.round((q.similarity_score || 0) * 100)}%</span></div><div class="similar-q">${q.question}</div><div class="similar-ans">✓ ${q.correct_answer}) ${q.options?.[q.correct_answer] || ''}</div></div>`)
-            .join('');
-        } catch (e) {
+        `<div style="text-align:center;padding:40px;color:var(--text2)"><div class="spinner" style="margin:0 auto 12px"></div>Searching…</div>`;
+      try {
+        const data = await apiFetch('/api/search', 'POST', { query, top_k: 10 });
+        if (!data.results?.length) {
           results.innerHTML =
-            `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`;
+            `<div class="empty-state"><div class="empty-icon">🔍</div><h3>No results found</h3><p>Try different keywords.</p></div>`;
+          return;
         }
+        results.innerHTML = data.results.map((q, i) => `
+              <div class="similar-card" style="animation:fadeUp .3s ease ${i * .05}s both"><div class="similar-meta"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${q.exam}</span><span class="similar-badge sb-year">${q.year}</span><span class="similar-badge sb-section">${q.section}</span><span class="similar-badge sb-score">Match: ${Math.round((q.similarity_score || 0) * 100)}%</span></div><div class="similar-q">${q.question}</div><div class="similar-ans">✓ ${q.correct_answer}) ${q.options?.[q.correct_answer] || ''}</div></div>`)
+          .join('');
+      } catch (e) { results.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
     }
 
     function fillExample(text) {
@@ -3513,14 +3572,16 @@
     }
 
     function renderBookmarks() {
-      const list = document.getElementById('bookmarks-list'); if (!list) return; if (!STATE
-        .bookmarks.size) {
+      const list = document.getElementById('bookmarks-list');
+      if (!list) return;
+      if (!STATE.bookmarks.size) {
         list.innerHTML =
-          `<div class="empty-state"><div class="empty-icon">🔖</div><h3>No bookmarks yet</h3><p>Bookmark questions while practicing to review them here.</p></div>`; return;
+          `<div class="empty-state"><div class="empty-icon">🔖</div><h3>No bookmarks yet</h3><p>Bookmark questions while practicing to review them here.</p></div>`;
+        return;
       }
       list.innerHTML = '<div style="display:flex;flex-direction:column;gap:12px">' + [...STATE.bookmarks].slice(0,
         50).map((id, i) => `
-          <div class="similar-card"><div class="similar-meta"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${id.split('_')[0].toUpperCase()}</span><span class="similar-badge sb-year">${id.split('_')[1] || '?'}</span></div><div class="similar-q" style="color:var(--text2)">${id}</div><button class="btn btn-danger" onclick="removeBookmark('${id}')" style="font-size:.73rem;padding:4px 10px;margin-top:8px">Remove</button></div>`)
+              <div class="similar-card"><div class="similar-meta"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${id.split('_')[0].toUpperCase()}</span><span class="similar-badge sb-year">${id.split('_')[1] || '?'}</span></div><div class="similar-q" style="color:var(--text2)">${id}</div><button class="btn btn-danger" onclick="removeBookmark('${id}')" style="font-size:.73rem;padding:4px 10px;margin-top:8px">Remove</button></div>`)
         .join('') + '</div>';
     }
 
@@ -3530,135 +3591,116 @@
       renderBookmarks();
       toast('Bookmark removed', 'info');
     }
+
     async function generateStudyPlan() {
       const div = document.getElementById('study-plan-content');
       div.innerHTML =
-        `<div style="text-align:center;padding:60px;color:var(--text2)"><div class="spinner" style="margin:0 auto 16px"></div><div>AI is analysing your performance…</div></div>`; try {
-          const data =
-            await apiFetch('/api/study-plan', 'POST', { analytics: ANALYTICS });
-          renderStudyPlan(data);
-        } catch (e) {
-          div.innerHTML =
-            `<div style="color:var(--accent5);padding:16px">Error generating plan: ${e.message}</div>`;
-        }
+        `<div style="text-align:center;padding:60px;color:var(--text2)"><div class="spinner" style="margin:0 auto 16px"></div><div>AI is analysing your performance…</div></div>`;
+      try {
+        const data = await apiFetch('/api/study-plan', 'POST', { analytics: ANALYTICS });
+        renderStudyPlan(data);
+      } catch (e) { div.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
     }
 
     function renderStudyPlan(data) {
-      let html = ''; if (data.assessment) html +=
-        `<div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);padding:16px;margin-bottom:18px"><div style="font-size:.73rem;font-weight:700;color:var(--accent);text-transform:uppercase;margin-bottom:6px">📊 Assessment</div><p style="color:var(--text2);line-height:1.7;font-size:.88rem;margin:0">${data.assessment}</p></div>`; if (
-        data.priority_topics?.length) html +=
-          `<div style="margin-bottom:18px"><h3 style="font-size:.88rem;font-weight:700;margin-bottom:8px;color:var(--accent5)">🔥 Priority Topics</h3><div class="chip-group">${data.priority_topics.map(t => `<span class="chip active">${t}</span>`).join('')}</div></div>`; if (
-        data.daily_plan?.length) {
-        html +=
-          `<h3 style="font-size:.95rem;font-weight:700;margin-bottom:12px">📅 7-Day Plan</h3>`;
+      let html = '';
+      if (data.assessment) html +=
+        `<div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--radius);padding:16px;margin-bottom:18px"><div style="font-size:.73rem;font-weight:700;color:var(--accent);text-transform:uppercase;margin-bottom:6px">📊 Assessment</div><p style="color:var(--text2);line-height:1.7;font-size:.88rem;margin:0">${data.assessment}</p></div>`;
+      if (data.priority_topics?.length) html +=
+        `<div style="margin-bottom:18px"><h3 style="font-size:.88rem;font-weight:700;margin-bottom:8px;color:var(--accent5)">🔥 Priority Topics</h3><div class="chip-group">${data.priority_topics.map(t => `<span class="chip active">${t}</span>`).join('')}</div></div>`;
+      if (data.daily_plan?.length) {
+        html += `<h3 style="font-size:.95rem;font-weight:700;margin-bottom:12px">📅 7-Day Plan</h3>`;
         html += data.daily_plan.map((day, i) => `
-          <div class="plan-day"><div class="plan-day-header"><div class="plan-day-num">${i + 1}</div><div class="plan-day-focus">${day.day || 'Day ' + (i + 1)} · ${day.focus || ''}</div><div class="plan-day-q">${day.questions || 0} questions</div></div><div class="plan-tasks">${(day.tasks || []).map(t => `<div class="plan-task">${t}</div>`).join('')}</div></div>`)
+              <div class="plan-day"><div class="plan-day-header"><div class="plan-day-num">${i + 1}</div><div class="plan-day-focus">${day.day || 'Day ' + (i + 1)} · ${day.focus || ''}</div><div class="plan-day-q">${day.questions || 0} questions</div></div><div class="plan-tasks">${(day.tasks || []).map(t => `<div class="plan-task">${t}</div>`).join('')}</div></div>`)
           .join('');
-      } if (data.tips?.length) html +=
+      }
+      if (data.tips?.length) html +=
         `<div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent3);border-radius:var(--radius);padding:16px;margin-top:18px"><div style="font-size:.73rem;font-weight:700;color:var(--accent3);text-transform:uppercase;margin-bottom:8px">💡 Expert Tips</div>${data.tips.map(t => `<div class="plan-task">${t}</div>`).join('')}</div>`;
       document.getElementById('study-plan-content').innerHTML = html ||
         '<p style="color:var(--text2)">Plan generated!</p>';
     }
-    const ACHIEVEMENTS_DEF_CLIENT = [{ id: 'first_answer', name: 'First Step', icon: '🎯' }, {
-      id: 'ten_correct',
-      name: 'Sharp Mind', icon: '🧠'
-    }, { id: 'fifty_correct', name: 'Knowledge Seeker', icon: '📚' }, {
-      id: 'streak_3',
-      name: 'On Fire', icon: '🔥'
-    }, { id: 'streak_7', name: 'Weekly Warrior', icon: '⚔️' }, {
-      id: 'revision_10',
-      name: 'Recall Master', icon: '🔄'
-    }, { id: 'perfect_session', name: 'Flawless', icon: '💎' }, {
-      id: 'simulator_1',
-      name: 'Exam Ready', icon: '🏆'
-    },];
+
     async function loadMistakes() {
       const div = document.getElementById('mistakes-list');
       div.innerHTML =
-        `<div style="text-align:center;padding:30px;color:var(--text2)"><div class="spinner" style="margin:0 auto 10px"></div>Loading mistakes…</div>`; try {
-          const data =
-            await apiFetch('/api/mistakes?user_id=' + DEFAULT_USER); if (!data.mistakes?.length) {
-              div.innerHTML =
-                `<div class="empty-state"><div class="empty-icon">✅</div><h3>No mistakes yet!</h3><p>Start practicing – your errors will appear here for review.</p></div>`; return;
-            }
-          div.innerHTML = data.mistakes.map((m, i) => {
-            return `<div class="revision-card" style="margin-bottom:12px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${m.exam || '?'}</span><span class="similar-badge sb-section">${m.section || 'General'}</span><span class="similar-badge sb-score" style="background:rgba(241,58,48,.08);color:var(--accent5);border-color:rgba(241,58,48,.12)">${m.mistake_count || 1}× wrong</span><span style="font-size:.72rem;color:var(--text3);margin-left:auto">${m.last_wrong?.substring(0, 10) || ''}</span></div><div style="font-size:.9rem;line-height:1.7;margin-bottom:10px">${m.question || m.question_id}</div>${m.correct_answer ? `<div style="font-size:.8rem;color:var(--accent3);font-weight:600">✓ Correct: ${m.correct_answer}) ${m.options?.[m.correct_answer] || ''}</div>` : ''}</div>`;
-          }).join('');
-        } catch (e) {
+        `<div style="text-align:center;padding:30px;color:var(--text2)"><div class="spinner" style="margin:0 auto 10px"></div>Loading mistakes…</div>`;
+      try {
+        const data = await apiFetch('/api/mistakes?user_id=' + DEFAULT_USER);
+        if (!data.mistakes?.length) {
           div.innerHTML =
-            `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`;
+            `<div class="empty-state"><div class="empty-icon">✅</div><h3>No mistakes yet!</h3><p>Start practicing – your errors will appear here for review.</p></div>`;
+          return;
         }
+        div.innerHTML = data.mistakes.map((m, i) => {
+          return `<div class="revision-card" style="margin-bottom:12px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${m.exam || '?'}</span><span class="similar-badge sb-section">${m.section || 'General'}</span><span class="similar-badge sb-score" style="background:rgba(241,58,48,.08);color:var(--accent5);border-color:rgba(241,58,48,.12)">${m.mistake_count || 1}× wrong</span><span style="font-size:.72rem;color:var(--text3);margin-left:auto">${m.last_wrong?.substring(0, 10) || ''}</span></div><div style="font-size:.9rem;line-height:1.7;margin-bottom:10px">${m.question || m.question_id}</div>${m.correct_answer ? `<div style="font-size:.8rem;color:var(--accent3);font-weight:600">✓ Correct: ${m.correct_answer}) ${m.options?.[m.correct_answer] || ''}</div>` : ''}</div>`;
+        }).join('');
+      } catch (e) { div.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
     }
+
     async function runErrorAnalysis() {
       const box = document.getElementById('error-analysis-box');
       box.style.display = 'block';
       box.innerHTML =
-        `<div class="ai-loading" style="display:flex;gap:4px;align-items:center"><div class="spinner" style="width:20px;height:20px;border-width:2px;"></div><span>AI analysing your error patterns…</span></div>`; try {
-          const data =
-            await apiFetch('/api/error-analysis?user_id=' + DEFAULT_USER, 'POST');
-          const a = data.analysis; if (typeof a === 'string') {
-            box.innerHTML =
-              `<p style="color:var(--text2)">${a}</p>`; return;
-          }
-          box.innerHTML = `<div class="ai-label">🤖 AI Error Analysis</div>
-          <div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Primary Weakness</div><div class="ai-field-content"><strong>${a.primary_weakness || '—'}</strong></div></div>
-          <div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Error Patterns</div><div class="ai-field-content">${(a.error_patterns || []).map(p => `<div>→ ${p}</div>`).join('')}</div></div>
-          <div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Immediate Actions</div><div class="ai-field-content">${(a.immediate_actions || []).map(p => `<div>→ ${p}</div>`).join('')}</div></div>
-          <div class="ai-field"><div class="ai-field-label">Estimated Improvement</div><div class="ai-field-content" style="color:var(--accent3)">${a.estimated_improvement || '—'}</div></div>`;
-        } catch (e) {
-          box.innerHTML =
-            `<div style="color:var(--accent5)">Error: ${e.message}</div>`;
-        }
+        `<div class="ai-loading" style="display:flex;gap:4px;align-items:center"><div class="spinner" style="width:20px;height:20px;border-width:2px;"></div><span>AI analysing your error patterns…</span></div>`;
+      try {
+        const data = await apiFetch('/api/error-analysis?user_id=' + DEFAULT_USER, 'POST');
+        const a = data.analysis;
+        if (typeof a === 'string') { box.innerHTML = `<p style="color:var(--text2)">${a}</p>`; return; }
+        box.innerHTML = `<div class="ai-label">🤖 AI Error Analysis</div>
+              <div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Primary Weakness</div><div class="ai-field-content"><strong>${a.primary_weakness || '—'}</strong></div></div>
+              <div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Error Patterns</div><div class="ai-field-content">${(a.error_patterns || []).map(p => `<div>→ ${p}</div>`).join('')}</div></div>
+              <div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Immediate Actions</div><div class="ai-field-content">${(a.immediate_actions || []).map(p => `<div>→ ${p}</div>`).join('')}</div></div>
+              <div class="ai-field"><div class="ai-field-label">Estimated Improvement</div><div class="ai-field-content" style="color:var(--accent3)">${a.estimated_improvement || '—'}</div></div>`;
+      } catch (e) { box.innerHTML = `<div style="color:var(--accent5)">Error: ${e.message}</div>`; }
     }
+
     async function loadRevisionStats() {
       try {
-        const data = await apiFetch('/api/revision/stats?user_id=' +
-          DEFAULT_USER);
+        const data = await apiFetch('/api/revision/stats?user_id=' + DEFAULT_USER);
         document.getElementById('revision-stats-bar').innerHTML = `
-          <div class="dash-card"><div class="dash-val" style="color:var(--accent)">${data.total_in_queue}</div><div class="dash-lbl">Total in Queue</div></div>
-          <div class="dash-card"><div class="dash-val" style="color:var(--accent5)">${data.due_today}</div><div class="dash-lbl">Due Today</div></div>
-          <div class="dash-card"><div class="dash-val" style="color:var(--accent3)">${data.reviewed_total}</div><div class="dash-lbl">Reviewed Total</div></div>`;
+              <div class="dash-card"><div class="dash-val" style="color:var(--accent)">${data.total_in_queue}</div><div class="dash-lbl">Total in Queue</div></div>
+              <div class="dash-card"><div class="dash-val" style="color:var(--accent5)">${data.due_today}</div><div class="dash-lbl">Due Today</div></div>
+              <div class="dash-card"><div class="dash-val" style="color:var(--accent3)">${data.reviewed_total}</div><div class="dash-lbl">Reviewed Total</div></div>`;
         const heatmap = data.heatmap || [];
-        const heatDiv = document.getElementById('revision-heatmap'); if (heatmap.length) {
-          const maxQ = Math.max(
-            ...heatmap.map(h => h.count), 1);
+        const heatDiv = document.getElementById('revision-heatmap');
+        if (heatmap.length) {
+          const maxQ = Math.max(...heatmap.map(h => h.count), 1);
           heatDiv.innerHTML = heatmap.reverse().map(h => {
             const ratio = h.count / maxQ;
             const cls = ratio === 0 ? '' : ratio < .3 ? 'h1' : ratio < .6 ? 'h2' : ratio < .9 ? 'h3' :
               'h4';
             return `<div class="heatmap-cell ${cls}" title="${h.date}: ${h.count} questions"></div>`;
-          }).join(
-            '');
+          }).join('');
         } else {
           heatDiv.innerHTML =
             '<p style="color:var(--text3);font-size:.83rem">No activity yet. Start practicing to see your heatmap.</p>';
         }
-      } catch (
-      e) { }
+      } catch (e) { /* ignore */ }
     }
+
     async function loadRevisionToday() {
       const div = document.getElementById('revision-queue-list');
       div.innerHTML =
-        `<div style="text-align:center;padding:30px;color:var(--text2)"><div class="spinner" style="margin:0 auto 10px"></div>Loading due cards…</div>`; try {
-          const data =
-            await apiFetch('/api/revision/today?user_id=' + DEFAULT_USER); if (!data.questions?.length) {
-              div
-                .innerHTML =
-                `<div class="empty-state"><div class="empty-icon">🎉</div><h3>All caught up!</h3><p>No revision due today. Come back tomorrow or solve more questions.</p></div>`; return;
-            }
+        `<div style="text-align:center;padding:30px;color:var(--text2)"><div class="spinner" style="margin:0 auto 10px"></div>Loading due cards…</div>`;
+      try {
+        const data = await apiFetch('/api/revision/today?user_id=' + DEFAULT_USER);
+        if (!data.questions?.length) {
           div.innerHTML =
-            `<p style="color:var(--text2);font-size:.85rem;margin-bottom:16px">📋 ${data.due_today} cards due today — rate your confidence after reviewing each one.</p>` +
-            data.questions.map((q, i) => `
-          <div class="revision-card" id="rcard-${i}"><div style="display:flex;gap:8px;margin-bottom:10px"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-section">${q.section || 'General'}</span><span class="similar-badge sb-score">Confidence: ${q.confidence}/5</span><span class="similar-badge" style="background:rgba(241,58,48,.08);color:var(--accent5);border-color:rgba(241,58,48,.12)">Forget: ${Math.round((q.forget_score || 0) * 100)}%</span></div><div style="font-size:.93rem;line-height:1.7;margin-bottom:14px">${q.question}</div><div style="font-size:.8rem;color:var(--accent3);font-weight:600;margin-bottom:14px">✓ Correct: ${q.correct_answer}) ${q.options?.[q.correct_answer] || ''}</div><div style="margin-bottom:6px;font-size:.78rem;font-weight:600;color:var(--text3)">Rate your confidence (1=forgot, 5=perfect):</div><input type="range" class="conf-slider" min="1" max="5" value="${q.confidence}" id="conf-${i}" oninput="document.getElementById('conf-val-${i}').textContent=this.value"><div class="conf-labels"><span>1 Forgot</span><span id="conf-val-${i}">${q.confidence}</span><span>5 Perfect</span></div><button class="btn btn-success w-100 justify-content-center" onclick="submitRevision('${q.id}',${i})" style="margin-top:12px">✓ Submit Review</button></div>`)
-              .join('');
-        } catch (e) {
-          div.innerHTML =
-            `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`;
+            `<div class="empty-state"><div class="empty-icon">🎉</div><h3>All caught up!</h3><p>No revision due today. Come back tomorrow or solve more questions.</p></div>`;
+          return;
         }
+        div.innerHTML =
+          `<p style="color:var(--text2);font-size:.85rem;margin-bottom:16px">📋 ${data.due_today} cards due today — rate your confidence after reviewing each one.</p>` +
+          data.questions.map((q, i) => `
+              <div class="revision-card" id="rcard-${i}"><div style="display:flex;gap:8px;margin-bottom:10px"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-section">${q.section || 'General'}</span><span class="similar-badge sb-score">Confidence: ${q.confidence}/5</span><span class="similar-badge" style="background:rgba(241,58,48,.08);color:var(--accent5);border-color:rgba(241,58,48,.12)">Forget: ${Math.round((q.forget_score || 0) * 100)}%</span></div><div style="font-size:.93rem;line-height:1.7;margin-bottom:14px">${q.question}</div><div style="font-size:.8rem;color:var(--accent3);font-weight:600;margin-bottom:14px">✓ Correct: ${q.correct_answer}) ${q.options?.[q.correct_answer] || ''}</div><div style="margin-bottom:6px;font-size:.78rem;font-weight:600;color:var(--text3)">Rate your confidence (1=forgot, 5=perfect):</div><input type="range" class="conf-slider" min="1" max="5" value="${q.confidence}" id="conf-${i}" oninput="document.getElementById('conf-val-${i}').textContent=this.value"><div class="conf-labels"><span>1 Forgot</span><span id="conf-val-${i}">${q.confidence}</span><span>5 Perfect</span></div><button class="btn btn-success w-100 justify-content-center" onclick="submitRevision('${q.id}',${i})" style="margin-top:12px">✓ Submit Review</button></div>`)
+            .join('');
+      } catch (e) { div.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
     }
+
     async function submitRevision(questionId, idx) {
       const slider = document.getElementById('conf-' + idx);
-      const confidence = parseInt(slider.value); try {
+      const confidence = parseInt(slider.value);
+      try {
         const resp = await apiFetch('/api/revision', 'POST', {
           user_id: DEFAULT_USER,
           question_id: questionId,
@@ -3669,242 +3711,182 @@
         card.innerHTML +=
           `<div style="margin-top:10px;color:var(--accent3);font-size:.83rem;font-weight:600">✓ Next review: ${resp.next_review} (in ${resp.interval_days} days)</div>`;
         toast(`+${resp.xp_earned} XP · Next review in ${resp.interval_days} day(s)`, 'success');
-      } catch (e) {
-        toast(
-          'Error: ' + e.message, 'error');
-      }
+      } catch (e) { toast('Error: ' + e.message, 'error'); }
     }
+
     async function loadReadiness() {
       const div = document.getElementById('readiness-content');
       div.innerHTML =
-        `<div style="text-align:center;padding:40px;color:var(--text2)"><div class="spinner" style="margin:0 auto 14px"></div>Calculating readiness…</div>`; try {
-          const data =
-            await apiFetch('/api/readiness?user_id=' + DEFAULT_USER); if (!data.total_attempted) {
-              div.innerHTML =
-                `<div class="empty-state"><div class="empty-icon">🎯</div><h3>Attempt more questions</h3><p>Readiness is calculated from your practice performance. Solve at least 20 questions first.</p></div>`; return;
-            }
-          const r = 75;
-          const circ = 2 * Math.PI * r;
-          const offset = circ - (data.readiness / 100) * circ;
-          const color = data.readiness >= 70 ? 'var(--accent3)' : data.readiness >= 45 ? 'var(--accent4)' :
-            'var(--accent5)';
-          div.innerHTML = `<div class="readiness-main"><div class="readiness-ring"><svg width="160" height="160"><circle class="track" cx="80" cy="80" r="${r}" stroke-width="12"/><circle class="fill" cx="80" cy="80" r="${r}" stroke-width="12" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="readiness-pct"><strong style="color:${color}">${data.readiness}%</strong><span>Readiness</span></div></div><p style="color:var(--text2);font-size:.9rem;font-weight:600">${data.total_attempted.toLocaleString()} questions attempted · ${data.accuracy}% accuracy</p></div>
-          <div class="readiness-stats"><div class="metric-card"><div class="metric-value" style="color:var(--accent);font-size:1.4rem;">${data.expected_marks}/200</div><div class="metric-label" style="font-size:0.65rem;">Expected Marks</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent2);font-size:1.4rem;">${data.percentile}%</div><div class="metric-label" style="font-size:0.65rem;">Est. Percentile</div></div><div class="metric-card"><div class="metric-value" style="color:${data.selection_probability > 50 ? 'var(--accent3)' : 'var(--accent5)'};font-size:1.4rem;">${data.selection_probability}%</div><div class="metric-label" style="font-size:0.65rem;">Selection Prob.</div></div></div>
-          <h3 style="font-size:.9rem;font-weight:700;margin-bottom:12px">Section Scores</h3>${Object.entries(data.section_scores || {}).map(([sec, acc]) => `<div class="topic-row"><div class="topic-name">${sec}</div><div class="topic-right"><div class="progress-bar-wrap"><div class="progress-bar" style="width:${acc}%;background:${acc >= 70 ? 'var(--accent3)' : acc >= 50 ? 'var(--accent4)' : 'var(--accent5)'}"></div></div><div class="topic-stats"><span>${acc}% accuracy</span></div></div></div>`).join('')}`;
-        } catch (
-      e) { div.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
+        `<div style="text-align:center;padding:40px;color:var(--text2)"><div class="spinner" style="margin:0 auto 14px"></div>Calculating readiness…</div>`;
+      try {
+        const data = await apiFetch('/api/readiness?user_id=' + DEFAULT_USER);
+        if (!data.total_attempted) {
+          div.innerHTML =
+            `<div class="empty-state"><div class="empty-icon">🎯</div><h3>Attempt more questions</h3><p>Readiness is calculated from your practice performance. Solve at least 20 questions first.</p></div>`;
+          return;
+        }
+        const r = 75;
+        const circ = 2 * Math.PI * r;
+        const offset = circ - (data.readiness / 100) * circ;
+        const color = data.readiness >= 70 ? 'var(--accent3)' : data.readiness >= 45 ? 'var(--accent4)' :
+          'var(--accent5)';
+        div.innerHTML = `<div class="readiness-main"><div class="readiness-ring"><svg width="160" height="160"><circle class="track" cx="80" cy="80" r="${r}" stroke-width="12"/><circle class="fill" cx="80" cy="80" r="${r}" stroke-width="12" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="readiness-pct"><strong style="color:${color}">${data.readiness}%</strong><span>Readiness</span></div></div><p style="color:var(--text2);font-size:.9rem;font-weight:600">${data.total_attempted.toLocaleString()} questions attempted · ${data.accuracy}% accuracy</p></div>
+              <div class="readiness-stats"><div class="metric-card"><div class="metric-value" style="color:var(--accent);font-size:1.4rem;">${data.expected_marks}/200</div><div class="metric-label" style="font-size:0.65rem;">Expected Marks</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent2);font-size:1.4rem;">${data.percentile}%</div><div class="metric-label" style="font-size:0.65rem;">Est. Percentile</div></div><div class="metric-card"><div class="metric-value" style="color:${data.selection_probability > 50 ? 'var(--accent3)' : 'var(--accent5)'};font-size:1.4rem;">${data.selection_probability}%</div><div class="metric-label" style="font-size:0.65rem;">Selection Prob.</div></div></div>
+              <h3 style="font-size:.9rem;font-weight:700;margin-bottom:12px">Section Scores</h3>${Object.entries(data.section_scores || {}).map(([sec, acc]) => `<div class="topic-row"><div class="topic-name">${sec}</div><div class="topic-right"><div class="progress-bar-wrap"><div class="progress-bar" style="width:${acc}%;background:${acc >= 70 ? 'var(--accent3)' : acc >= 50 ? 'var(--accent4)' : 'var(--accent5)'}"></div></div><div class="topic-stats"><span>${acc}% accuracy</span></div></div></div>`).join('')}`;
+      } catch (e) { div.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
     }
+
     async function loadPrediction() {
       const div = document.getElementById('prediction-content');
       div.innerHTML =
-        `<div style="text-align:center;padding:30px;color:var(--text2)"><div class="spinner" style="margin:0 auto 12px"></div>AI is predicting your selection…</div>`; try {
-          const data =
-            await apiFetch('/api/predict?user_id=' + DEFAULT_USER);
-          const p = data.prediction; if (!p || p.raw) {
-            div.innerHTML =
-              `<div style="color:var(--text2);padding:16px">${p?.raw || 'Analysis failed.'}</div>`; return;
-          }
-          const vcolor = p.verdict === 'Likely' ? 'var(--accent3)' : p.verdict === 'Borderline' ? 'var(--accent4)' :
-            'var(--accent5)';
-          div.innerHTML = `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)"><div style="display:flex;align-items:center;gap:12px;margin-bottom:16px"><span style="font-size:1.8rem">🔮</span><div><div style="font-size:1.2rem;font-weight:800;color:${vcolor}">${p.verdict}</div><div style="font-size:.8rem;color:var(--text3)">AI Selection Prediction · ${p.confidence} confidence</div></div></div><p style="color:var(--text2);font-size:.88rem;line-height:1.7;margin-bottom:14px;margin-top:0">${p.prediction_text}</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div class="ai-field"><div class="ai-field-label">Marks Needed</div><div class="ai-field-content" style="color:var(--accent4)"><strong>${p.marks_needed || '—'}</strong></div></div><div class="ai-field"><div class="ai-field-label">Timeline</div><div class="ai-field-content" style="color:var(--accent3)"><strong>${p.timeline || '—'}</strong></div></div></div>${p.critical_gaps?.length ? `<div class="ai-field" style="margin-top:10px"><div class="ai-field-label">Critical Gaps</div><div class="ai-field-content">${p.critical_gaps.map(g => `<div>→ ${g}</div>`).join('')}</div></div>` : ''}</div>`;
-        } catch (
-      e) { div.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
+        `<div style="text-align:center;padding:30px;color:var(--text2)"><div class="spinner" style="margin:0 auto 12px"></div>AI is predicting your selection…</div>`;
+      try {
+        const data = await apiFetch('/api/predict?user_id=' + DEFAULT_USER);
+        const p = data.prediction;
+        if (!p || p.raw) { div.innerHTML = `<div style="color:var(--text2);padding:16px">${p?.raw || 'Analysis failed.'}</div>`; return; }
+        const vcolor = p.verdict === 'Likely' ? 'var(--accent3)' : p.verdict === 'Borderline' ? 'var(--accent4)' :
+          'var(--accent5)';
+        div.innerHTML = `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)"><div style="display:flex;align-items:center;gap:12px;margin-bottom:16px"><span style="font-size:1.8rem">🔮</span><div><div style="font-size:1.2rem;font-weight:800;color:${vcolor}">${p.verdict}</div><div style="font-size:.8rem;color:var(--text3)">AI Selection Prediction · ${p.confidence} confidence</div></div></div><p style="color:var(--text2);font-size:.88rem;line-height:1.7;margin-bottom:14px;margin-top:0">${p.prediction_text}</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div class="ai-field"><div class="ai-field-label">Marks Needed</div><div class="ai-field-content" style="color:var(--accent4)"><strong>${p.marks_needed || '—'}</strong></div></div><div class="ai-field"><div class="ai-field-label">Timeline</div><div class="ai-field-content" style="color:var(--accent3)"><strong>${p.timeline || '—'}</strong></div></div></div>${p.critical_gaps?.length ? `<div class="ai-field" style="margin-top:10px"><div class="ai-field-label">Critical Gaps</div><div class="ai-field-content">${p.critical_gaps.map(g => `<div>→ ${g}</div>`).join('')}</div></div>` : ''}</div>`;
+      } catch (e) { div.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
     }
+
     async function doTextSearch() {
-      const query = document.getElementById('screenshot-text-input').value.trim(); if (
-        !query) { toast('Please enter question text', 'info'); return; }
+      const query = document.getElementById('screenshot-text-input').value.trim();
+      if (!query) { toast('Please enter question text', 'info'); return; }
       const results = document.getElementById('screenshot-results');
       results.innerHTML =
-        `<div style="text-align:center;padding:30px;color:var(--text2)"><div class="spinner" style="margin:0 auto 12px"></div>Searching…</div>`; try {
-          const data =
-            await apiFetch('/api/text-search', 'POST', { query, top_k: 8, user_id: DEFAULT_USER });
-          renderTextSearchResults(data.results || [], results); if (data.results?.length) {
-            toast(
-              `Found ${data.results.length} matching PYQs!`, 'success');
-          } else {
-            toast(
-              'No matches found. Try different wording.', 'info');
-          }
-        } catch (e) {
-          results.innerHTML =
-            `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`;
+        `<div style="text-align:center;padding:30px;color:var(--text2)"><div class="spinner" style="margin:0 auto 12px"></div>Searching…</div>`;
+      try {
+        const data = await apiFetch('/api/text-search', 'POST', { query, top_k: 8, user_id: DEFAULT_USER });
+        renderTextSearchResults(data.results || [], results);
+        if (data.results?.length) { toast(`Found ${data.results.length} matching PYQs!`, 'success'); } else {
+          toast(
+            'No matches found. Try different wording.', 'info');
         }
+      } catch (e) { results.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
     }
 
     function renderTextSearchResults(items, container) {
       if (!items.length) {
         container.innerHTML =
-          `<div class="empty-state"><div class="empty-icon">🔍</div><h3>No matches found</h3><p>Try rephrasing your question or use fewer words.</p></div>`; return;
+          `<div class="empty-state"><div class="empty-icon">🔍</div><h3>No matches found</h3><p>Try rephrasing your question or use fewer words.</p></div>`;
+        return;
       }
       container.innerHTML =
         `<h3 style="font-size:.9rem;font-weight:700;margin:24px 0 10px">📚 Matching PYQs (${items.length} found)</h3>` +
         items.map((q, i) => `
-          <div class="similar-card"><div class="similar-meta"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${q.exam || '?'}</span><span class="similar-badge sb-year">${q.year || '?'}</span><span class="similar-badge sb-section">${q.section || 'General'}</span><span class="similar-badge" style="background:rgba(30,212,94,0.08);color:var(--accent3)">${q.topic_info?.difficulty || 'Medium'}</span><span class="similar-badge sb-score">Match: ${Math.round((q.similarity_score || 0) * 100)}%</span></div><div class="similar-q">${q.question || ''}</div><div class="similar-ans">✓ Correct Answer: ${q.correct_answer || '?'}) ${q.options?.[q.correct_answer] || ''}</div>${q.topic_info?.subtopic ? `<div style="margin-top:6px;font-size:.75rem;color:var(--text3)">Topic: ${q.topic_info.subtopic}</div>` : ''}</div>`)
+              <div class="similar-card"><div class="similar-meta"><span class="similar-badge" style="background:rgba(0,102,245,0.05);color:var(--accent);font-weight:700">Question #${i + 1}</span><span class="similar-badge sb-exam">${q.exam || '?'}</span><span class="similar-badge sb-year">${q.year || '?'}</span><span class="similar-badge sb-section">${q.section || 'General'}</span><span class="similar-badge" style="background:rgba(30,212,94,0.08);color:var(--accent3)">${q.topic_info?.difficulty || 'Medium'}</span><span class="similar-badge sb-score">Match: ${Math.round((q.similarity_score || 0) * 100)}%</span></div><div class="similar-q">${q.question || ''}</div><div class="similar-ans">✓ Correct Answer: ${q.correct_answer || '?'}) ${q.options?.[q.correct_answer] || ''}</div>${q.topic_info?.subtopic ? `<div style="margin-top:6px;font-size:.75rem;color:var(--text3)">Topic: ${q.topic_info.subtopic}</div>` : ''}</div>`)
           .join('');
     }
 
-    function initOCR() {
-      const dropzone = document.getElementById('ocr-dropzone');
-      const fileInput = document.getElementById('ocr-file-input'); if (!dropzone) return;
-      dropzone.addEventListener('click', () => fileInput.click());
-      fileInput.addEventListener('change', (e) => { if (e.target.files.length) handleOCRImage(e.target.files[0]); });
-      dropzone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropzone.classList.add('dragover');
-      });
-      dropzone.addEventListener('dragleave', () => { dropzone.classList.remove('dragover'); });
-      dropzone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropzone.classList.remove('dragover'); if (e.dataTransfer.files.length) handleOCRImage(e.dataTransfer
-          .files[0]);
-      });
-      document.addEventListener('paste', (e) => {
-        if (STATE.currentPage !== 'screenshot') return;
-        const items = e.clipboardData.items; for (let i = 0; i < items.length; i++) {
-          if (items[i].type
-            .indexOf('image') !== -1) {
-            const file = items[i].getAsFile();
-            handleOCRImage(file); break;
-          }
-        }
-      });
-    }
-    async function handleOCRImage(file) {
-      if (!file || !file.type.startsWith('image/')) {
-        toast(
-          'Please upload a valid image file', 'error'); return;
-      }
-      const progressWrap = document.getElementById('ocr-progress-wrap');
-      const progressBar = document.getElementById('ocr-progress-bar');
-      const statusEl = document.getElementById('ocr-status');
-      progressWrap.style.display = 'block';
-      progressBar.style.width = '0%';
-      statusEl.textContent = 'Loading OCR Engine…'; try {
-        if (typeof Tesseract === 'undefined') {
-          throw new Error(
-            'OCR Engine not loaded yet. Check internet connection.');
-        }
-        statusEl.textContent = 'Extracting text...';
-        const result = await Tesseract.recognize(file, 'eng', {
-          logger: m => {
-            if (m.status ===
-              'recognizing text') {
-              const pct = Math.round(m.progress * 100);
-              progressBar.style.width = pct + '%';
-              statusEl.textContent = `Processing Text: ${pct}%`;
-            } else {
-              statusEl.textContent = m
-                .status;
-            }
-          }
-        });
-        const text = result.data.text.trim();
-        document.getElementById('screenshot-text-input').value = text;
-        statusEl.textContent = 'OCR Completed Successfully!';
-        progressBar.style.width = '100%';
-        toast('Text extracted from image!', 'success'); if (text) { doTextSearch(); } else {
-          toast(
-            'No readable text found in image', 'warning');
-        }
-      } catch (err) {
-        console.error(err);
-        statusEl.textContent = 'OCR Failed: ' + err.message;
-        toast('OCR failed: ' + err.message, 'error');
-      }
-    }
     async function loadDailyCoach() {
       try {
         const data = await apiFetch('/api/coach/daily?user_id=' + DEFAULT_USER);
         const pct = data.goal_target > 0 ? Math.min(100, Math.round(data.goal_completed / data.goal_target *
           100)) : 0;
-        const strip = document.getElementById('coach-daily-strip'); if (!strip) return;
+        const strip = document.getElementById('coach-daily-strip');
+        if (!strip) return;
         strip.innerHTML = `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:18px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-size:.88rem;font-weight:700">📅 Today's Goal</span><span style="font-size:.78rem;color:var(--accent3);font-weight:700">${data.goal_completed}/${data.goal_target} questions</span></div><div class="progress-bar-wrap"><div class="progress-bar" style="width:${pct}%;background:linear-gradient(90deg,var(--accent3),var(--accent))"></div></div><p style="font-size:.8rem;color:var(--text2);margin-top:10px;font-style:italic;margin-bottom:0">"${data.motivational_msg}"</p></div>`;
-      } catch (
-      e) { }
+      } catch (e) { /* ignore */ }
     }
+
     async function loadCoach(forceRefresh = false) {
       const div = document.getElementById('coach-content');
-      const cached = LS.get('coach_plan'); if (cached && !forceRefresh) { renderCoachPlan(cached); return; }
+      const cached = LS.get('coach_plan');
+      if (cached && !forceRefresh) { renderCoachPlan(cached); return; }
       div.innerHTML =
-        `<div style="text-align:center;padding:40px;color:var(--text2)"><div class="spinner" style="margin:0 auto 14px"></div>AI Coach is preparing your plan…</div>`; try {
-          const data =
-            await apiFetch('/api/coach', 'POST', { user_id: DEFAULT_USER });
-          LS.set('coach_plan', data);
-          renderCoachPlan(data);
-        } catch (e) {
-          div.innerHTML =
-            `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`;
-        }
+        `<div style="text-align:center;padding:40px;color:var(--text2)"><div class="spinner" style="margin:0 auto 14px"></div>AI Coach is preparing your plan…</div>`;
+      try {
+        const data = await apiFetch('/api/coach', 'POST', { user_id: DEFAULT_USER });
+        LS.set('coach_plan', data);
+        renderCoachPlan(data);
+      } catch (e) { div.innerHTML = `<div style="color:var(--accent5);padding:16px">Error: ${e.message}</div>`; }
     }
 
     function renderCoachPlan(data) {
       const div = document.getElementById('coach-content');
-      const p = data.coach_plan; if (!p || p.raw) {
-        div.innerHTML =
-          `<div class="empty-state">Plan generated. ${p?.raw || ''}</div>`; return;
-      }
+      const p = data.coach_plan;
+      if (!p || p.raw) { div.innerHTML = `<div class="empty-state">Plan generated. ${p?.raw || ''}</div>`; return; }
       div.innerHTML = `<div style="background:linear-gradient(135deg,rgba(0,102,245,.04),rgba(91,77,251,.04));border:1px solid rgba(0,102,245,.12);border-radius:var(--radius);padding:20px;margin-bottom:24px"><div style="font-size:1.1rem;font-weight:700;margin-bottom:8px">🤖 Your Coach Says…</div><p style="color:var(--text2);line-height:1.7;font-size:0.92rem;margin:0">${p.coaching_message || ''}</p></div>
-        <div class="coach-grid"><div class="coach-card"><div class="coach-card-icon">⏰</div><div class="coach-card-title">Best Study Hours</div><div class="coach-card-val" style="font-size:.9rem">${(p.best_study_hours || []).join(' · ')}</div></div><div class="coach-card"><div class="coach-card-icon">🎯</div><div class="coach-card-title">Focus Duration</div><div class="coach-card-val">${p.focus_duration || '45'} min</div></div><div class="coach-card"><div class="coach-card-icon">📝</div><div class="coach-card-title">Daily Questions</div><div class="coach-card-val">${p.daily_targets?.questions || 30}</div></div><div class="coach-card"><div class="coach-card-icon">🔄</div><div class="coach-card-title">Revision Cards</div><div class="coach-card-val">${p.daily_targets?.revision_cards || 10}</div></div></div>
-        ${p.weekly_plan?.length ? `<h3 style="font-size:1rem;font-weight:700;margin:24px 0 12px">📅 Weekly Plan</h3><div style="display:flex;flex-direction:column;gap:12px">${p.weekly_plan.map(day => `<div class="plan-day"><div class="plan-day-header"><div class="plan-day-focus">${day.day}</div><div class="plan-day-q">${day.questions} questions</div></div><div style="font-size:.85rem;color:var(--text2)">Focus: <strong>${day.focus}</strong> · ${day.activity}</div></div>`).join('')}</div>` : ''}
-        ${p.productivity_tips?.length ? `<div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent4);border-radius:var(--radius);padding:16px;margin-top:20px"><div style="font-size:.73rem;font-weight:700;color:var(--accent4);text-transform:uppercase;margin-bottom:8px">💡 Productivity Tips</div>${p.productivity_tips.map(t => `<div class="plan-task">${t}</div>`).join('')}</div>` : ''}`;
+            <div class="coach-grid"><div class="coach-card"><div class="coach-card-icon">⏰</div><div class="coach-card-title">Best Study Hours</div><div class="coach-card-val" style="font-size:.9rem">${(p.best_study_hours || []).join(' · ')}</div></div><div class="coach-card"><div class="coach-card-icon">🎯</div><div class="coach-card-title">Focus Duration</div><div class="coach-card-val">${p.focus_duration || '45'} min</div></div><div class="coach-card"><div class="coach-card-icon">📝</div><div class="coach-card-title">Daily Questions</div><div class="coach-card-val">${p.daily_targets?.questions || 30}</div></div><div class="coach-card"><div class="coach-card-icon">🔄</div><div class="coach-card-title">Revision Cards</div><div class="coach-card-val">${p.daily_targets?.revision_cards || 10}</div></div></div>
+            ${p.weekly_plan?.length ? `<h3 style="font-size:1rem;font-weight:700;margin:24px 0 12px">📅 Weekly Plan</h3><div style="display:flex;flex-direction:column;gap:12px">${p.weekly_plan.map(day => `<div class="plan-day"><div class="plan-day-header"><div class="plan-day-focus">${day.day}</div><div class="plan-day-q">${day.questions} questions</div></div><div style="font-size:.85rem;color:var(--text2)">Focus: <strong>${day.focus}</strong> · ${day.activity}</div></div>`).join('')}</div>` : ''}
+            ${p.productivity_tips?.length ? `<div style="background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent4);border-radius:var(--radius);padding:16px;margin-top:20px"><div style="font-size:.73rem;font-weight:700;color:var(--accent4);text-transform:uppercase;margin-bottom:8px">💡 Productivity Tips</div>${p.productivity_tips.map(t => `<div class="plan-task">${t}</div>`).join('')}</div>` : ''}`;
     }
+
+    /* ═══════════════════════════ SIMULATOR LOGIC ═══════════════════════════ */
     let SIM = {
-      id: null, questions: [], answers: {}, currentIdx: 0, timerInterval: null, timeLeft: 1500, correct: 0,
-      wrong: 0, timeLimit: 1500
+      id: null,
+      questions: [],
+      answers: {},
+      currentIdx: 0,
+      timerInterval: null,
+      timeLeft: 1500,
+      correct: 0,
+      wrong: 0,
+      timeLimit: 1500
     };
+
     async function startSimulator() {
       const exam = document.getElementById('sim-exam').value;
       const section = document.getElementById('sim-section').value;
       const count = parseInt(document.getElementById('sim-count').value);
       const time = parseInt(document.getElementById('sim-time').value);
-      showLoading('Setting up mock exam…'); try {
-        const data = await apiFetch('/api/exam-simulator/start',
-          'POST', {
-          user_id: DEFAULT_USER, exam: exam || null, section: section || null, count,
+      showLoading('Setting up mock exam…');
+      try {
+        const data = await apiFetch('/api/exam-simulator/start', 'POST', {
+          user_id: DEFAULT_USER,
+          exam: exam || null,
+          section: section || null,
+          count,
           time_limit: time,
         });
         SIM = {
-          id: data.sim_id, questions: data.questions, answers: {}, currentIdx: 0, timeLeft: time,
-          correct: 0, wrong: 0, timerInterval: null, timeLimit: time
+          id: data.sim_id,
+          questions: data.questions,
+          answers: {},
+          currentIdx: 0,
+          timeLeft: time,
+          correct: 0,
+          wrong: 0,
+          timerInterval: null,
+          timeLimit: time
         };
         document.getElementById('sim-setup').style.display = 'none';
         document.getElementById('sim-active').style.display = 'flex';
         renderSimQuestion();
         SIM.timerInterval = setInterval(tickSimTimer, 1000);
         toast('Mock exam started! Good luck! 🍀', 'info');
-      } catch (e) {
-        toast('Error: ' + e.message,
-          'error');
-      } finally { hideLoading(); }
+      } catch (e) { toast('Error: ' + e.message, 'error'); } finally { hideLoading(); }
     }
 
     function tickSimTimer() {
       SIM.timeLeft--;
       const m = Math.floor(SIM.timeLeft / 60);
       const s = SIM.timeLeft % 60;
-      const el = document.getElementById('sim-timer'); if (!el) return;
+      const el = document.getElementById('sim-timer');
+      if (!el) return;
       el.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-      el.className = 'sim-timer' + (SIM.timeLeft < 60 ? ' danger' : SIM.timeLeft < 300 ? ' warning' : ''); if (SIM
-        .timeLeft <= 0) {
+      el.className = 'sim-timer' + (SIM.timeLeft < 60 ? ' danger' : SIM.timeLeft < 300 ? ' warning' : '');
+      if (SIM.timeLeft <= 0) {
         clearInterval(SIM.timerInterval);
         submitSimulator(true);
       }
     }
 
     function renderSimQuestion() {
-      const q = SIM.questions[SIM.currentIdx]; if (!q) return;
+      const q = SIM.questions[SIM.currentIdx];
+      if (!q) return;
       document.getElementById('sim-q-counter').textContent =
         `Question ${SIM.currentIdx + 1} of ${SIM.questions.length}`;
       document.getElementById('sim-q-badge').textContent = q.section || 'General';
       document.getElementById('sim-q-text').textContent = q.question;
       const chosen = SIM.answers[q.id];
       document.getElementById('sim-options-grid').innerHTML = ['A', 'B', 'C', 'D'].map(l => {
-        const text = q
-          .options?.[l]; if (!text) return '';
+        const text = q.options?.[l];
+        if (!text) return '';
         const sel = chosen === l ? 'selected' : '';
         return `<button class="option-btn ${sel}" onclick="simSelectOption('${l}')" id="sim-opt-${l}"><span class="option-letter">${l}</span><span>${text}</span></button>`;
-      })
-        .join('');
+      }).join('');
       document.getElementById('sim-prev-btn').disabled = SIM.currentIdx === 0;
       document.getElementById('sim-next-btn').disabled = SIM.currentIdx === SIM.questions.length - 1;
       updateSimScore();
@@ -3914,13 +3896,14 @@
       const q = SIM.questions[SIM.currentIdx];
       SIM.answers[q.id] = l;
       document.querySelectorAll('#sim-options-grid .option-btn').forEach(b => b.classList.remove('selected'));
-      const btn = document.getElementById('sim-opt-' + l); if (btn) btn.classList.add('selected');
+      const btn = document.getElementById('sim-opt-' + l);
+      if (btn) btn.classList.add('selected');
       updateSimScore();
     }
 
     function simNavigate(dir) {
-      const newIdx = SIM.currentIdx + dir; if (newIdx < 0 || newIdx >= SIM.questions
-        .length) return;
+      const newIdx = SIM.currentIdx + dir;
+      if (newIdx < 0 || newIdx >= SIM.questions.length) return;
       SIM.currentIdx = newIdx;
       renderSimQuestion();
     }
@@ -3931,7 +3914,9 @@
         score = 0;
       SIM.questions.forEach(q => {
         const chosen = SIM.answers[q.id];
-        const correct_a = q.correct_answer; if (!chosen) return; if (chosen === correct_a) {
+        const correct_a = q.correct_answer;
+        if (!chosen) return;
+        if (chosen === correct_a) {
           correct++;
           score += 2;
         } else {
@@ -3946,25 +3931,27 @@
       document.getElementById('sim-score-skip').textContent = SIM.questions.length - correct - wrong;
       document.getElementById('sim-live-score').textContent = score.toFixed(1);
     }
+
     async function submitSimulator(autoSubmit = false) {
-      clearInterval(SIM.timerInterval); if (!autoSubmit && !confirm(
-        'Submit the exam? This cannot be undone.')) {
-        SIM.timerInterval = setInterval(tickSimTimer,
-          1000); return;
+      clearInterval(SIM.timerInterval);
+      if (!autoSubmit && !confirm('Submit the exam? This cannot be undone.')) {
+        SIM.timerInterval = setInterval(tickSimTimer, 1000);
+        return;
       }
-      showLoading('Submitting exam…'); try {
-        const data = await apiFetch('/api/exam-simulator/submit',
-          'POST', {
-          sim_id: SIM.id, user_id: DEFAULT_USER, answers: SIM.answers, duration_s: SIM.timeLimit -
-            SIM.timeLeft,
+      showLoading('Submitting exam…');
+      try {
+        const data = await apiFetch('/api/exam-simulator/submit', 'POST', {
+          sim_id: SIM.id,
+          user_id: DEFAULT_USER,
+          answers: SIM.answers,
+          duration_s: SIM.timeLimit - SIM.timeLeft,
         });
         document.getElementById('sim-active').style.display = 'none';
         document.getElementById('sim-report-view').style.display = 'block';
         renderSimReport(data);
         toast(`Exam submitted! Score: ${data.score}`, 'success', 4000);
       } catch (e) {
-        toast(
-          'Submit error: ' + e.message, 'error');
+        toast('Submit error: ' + e.message, 'error');
         SIM.timerInterval = setInterval(tickSimTimer, 1000);
       } finally { hideLoading(); }
     }
@@ -3974,20 +3961,18 @@
       div.innerHTML =
         `<h3 style="font-size:1.15rem;font-weight:800;margin-bottom:16px">📊 Exam Report</h3><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:20px"><div class="metric-card"><div class="metric-value" style="color:var(--accent)">${data.score}</div><div class="metric-label">Score / ${data.max_score}</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent3)">${data.correct}</div><div class="metric-label">Correct</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent5)">${data.wrong}</div><div class="metric-label">Wrong</div></div><div class="metric-card"><div class="metric-value" style="color:var(--accent4)">${data.accuracy}%</div><div class="metric-label">Accuracy</div></div></div><button class="btn btn-primary w-100 justify-content-center" onclick="loadSimAIReport('${data.sim_id}')">🤖 Get AI Performance Report</button><div id="sim-ai-report" style="margin-top:16px"></div>`;
     }
+
     async function loadSimAIReport(simId) {
       const div = document.getElementById('sim-ai-report');
       div.innerHTML =
-        `<div style="text-align:center;padding:20px;color:var(--text2)"><div class="spinner" style="margin:0 auto 10px"></div>Generating AI report…</div>`; try {
-          const data =
-            await apiFetch(`/api/exam-simulator/report?sim_id=${simId}&user_id=${DEFAULT_USER}`);
-          const r = data.ai_report; if (!r || r.raw) {
-            div.innerHTML =
-              `<p style="color:var(--text2)">${r?.raw || 'Report unavailable.'}</p>`; return;
-          }
-          div.innerHTML =
-            `<div class="ai-explanation"><div class="ai-label">🤖 AI Performance Report</div><div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Verdict</div><div class="ai-field-content"><strong>${r.performance_verdict}</strong> · Predicted percentile: ${r.predicted_percentile || '—'}</div></div><div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Strengths</div><div class="ai-field-content">${(r.strengths || []).map(s => `<div>→ ${s}</div>`).join('')}</div></div><div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Weaknesses</div><div class="ai-field-content">${(r.weaknesses || []).map(s => `<div>→ ${s}</div>`).join('')}</div></div><div class="ai-field"><div class="ai-field-label">Suggestions</div><div class="ai-field-content">${(r.suggestions || []).map(s => `<div>→ ${s}</div>`).join('')}</div></div></div>`;
-        } catch (
-      e) { div.innerHTML = `<div style="color:var(--accent5)">Error: ${e.message}</div>`; }
+        `<div style="text-align:center;padding:20px;color:var(--text2)"><div class="spinner" style="margin:0 auto 10px"></div>Generating AI report…</div>`;
+      try {
+        const data = await apiFetch(`/api/exam-simulator/report?sim_id=${simId}&user_id=${DEFAULT_USER}`);
+        const r = data.ai_report;
+        if (!r || r.raw) { div.innerHTML = `<p style="color:var(--text2)">${r?.raw || 'Report unavailable.'}</p>`; return; }
+        div.innerHTML =
+          `<div class="ai-explanation"><div class="ai-label">🤖 AI Performance Report</div><div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Verdict</div><div class="ai-field-content"><strong>${r.performance_verdict}</strong> · Predicted percentile: ${r.predicted_percentile || '—'}</div></div><div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Strengths</div><div class="ai-field-content">${(r.strengths || []).map(s => `<div>→ ${s}</div>`).join('')}</div></div><div class="ai-field" style="margin-bottom:8px"><div class="ai-field-label">Weaknesses</div><div class="ai-field-content">${(r.weaknesses || []).map(s => `<div>→ ${s}</div>`).join('')}</div></div><div class="ai-field"><div class="ai-field-label">Suggestions</div><div class="ai-field-content">${(r.suggestions || []).map(s => `<div>→ ${s}</div>`).join('')}</div></div></div>`;
+      } catch (e) { div.innerHTML = `<div style="color:var(--accent5)">Error: ${e.message}</div>`; }
     }
 
     function exitSimulatorReport() {
@@ -3995,11 +3980,13 @@
       document.getElementById('sim-setup').style.display = '';
       document.getElementById('sim-report').innerHTML = '';
     }
+
     async function loadAchievements() {
       try {
-        const [achData, xpData] = await Promise.all([apiFetch(
-          '/api/achievements?user_id=' + DEFAULT_USER), apiFetch('/api/xp?user_id=' +
-            DEFAULT_USER),]);
+        const [achData, xpData] = await Promise.all([
+          apiFetch('/api/achievements?user_id=' + DEFAULT_USER),
+          apiFetch('/api/xp?user_id=' + DEFAULT_USER),
+        ]);
         const streakData = await apiFetch('/api/streaks?user_id=' + DEFAULT_USER);
         const xpBar = document.getElementById('achievements-xp-bar');
         const pct = Math.round(xpData.xp_in_level / xpData.xp_for_next * 100);
@@ -4010,29 +3997,25 @@
           `<div class="streak-fire">🔥</div><div><div class="streak-num">${streakData.current_streak}</div><div class="streak-label">Day Streak</div></div><div style="margin-left:auto;text-align:right"><div style="font-size:.78rem;color:var(--text3)">Keep going!</div><div style="font-size:.83rem;font-weight:600;color:var(--accent4)">Study every day</div></div>`;
         const grid = document.getElementById('achievements-grid');
         grid.innerHTML = achData.achievements.map(a => `
-          <div class="badge-card ${a.earned ? 'earned' : 'locked'}"><span class="badge-icon">${a.icon}</span><div class="badge-name">${a.name}</div><div class="badge-desc">${a.desc}</div><span class="badge-xp">+${a.xp} XP</span>${a.earned ? `<div style="font-size:.7rem;color:var(--accent3);margin-top:6px;font-weight:600;">✓ Earned ${a.earned_at?.substring(0, 10) || ''}</div>` : '<div style="font-size:.7rem;color:var(--text3);margin-top:6px;font-weight:600;">🔒 Locked</div>'}</div>`)
+              <div class="badge-card ${a.earned ? 'earned' : 'locked'}"><span class="badge-icon">${a.icon}</span><div class="badge-name">${a.name}</div><div class="badge-desc">${a.desc}</div><span class="badge-xp">+${a.xp} XP</span>${a.earned ? `<div style="font-size:.7rem;color:var(--accent3);margin-top:6px;font-weight:600;">✓ Earned ${a.earned_at?.substring(0, 10) || ''}</div>` : '<div style="font-size:.7rem;color:var(--text3);margin-top:6px;font-weight:600;">🔒 Locked</div>'}</div>`)
           .join('');
         document.getElementById('nav-level').textContent = xpData.level;
         document.getElementById('nav-xp-val').textContent = xpData.xp.toLocaleString();
         document.getElementById('nav-streak-val').textContent = streakData.current_streak;
-      } catch (e) {
-        console
-          .error(e);
-      }
+      } catch (e) { console.error(e); }
     }
 
     function openFAB() { showPage('coach'); }
+
     async function apiFetch(url, method = 'GET', body = null) {
-      const opts = {
-        method,
-        headers: { 'Content-Type': 'application/json' }
-      }; if (body) opts.body = JSON.stringify(body);
-      const resp = await fetch(API + url, opts); if (!resp.ok) {
-        const err = await resp.json().catch(() => ({
-          detail: resp.statusText
-        }));
+      const opts = { method, headers: { 'Content-Type': 'application/json' } };
+      if (body) opts.body = JSON.stringify(body);
+      const resp = await fetch(API + url, opts);
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({ detail: resp.statusText }));
         throw new Error(err.detail || resp.statusText);
-      } return resp.json();
+      }
+      return resp.json();
     }
 
     function showLoading(msg = 'Loading…') {
@@ -4043,8 +4026,7 @@
     function hideLoading() { document.getElementById('loading-overlay').classList.remove('visible'); }
 
     function toast(msg, type = 'info', duration = 3000) {
-      const container = document.getElementById(
-        'toast-container');
+      const container = document.getElementById('toast-container');
       const el = document.createElement('div');
       el.className = `toast ${type}`;
       el.textContent = msg;
@@ -4055,21 +4037,30 @@
     function formatSeconds(s) {
       const h = Math.floor(s / 3600);
       const m = Math.floor((s % 3600) / 60);
-      const sec = s % 60; if (h > 0) return `${h}h ${m}m`; if (m > 0) return `${m}m ${sec}s`; return `${sec}s`;
+      const sec = s % 60;
+      if (h > 0) return `${h}h ${m}m`;
+      if (m > 0) return `${m}m ${sec}s`;
+      return `${sec}s`;
     }
+
+    /* ═══════════════════════════ KEYBOARD SHORTCUTS ═══════════════════════════ */
     document.addEventListener('keydown', e => {
       if (STATE.currentPage !== 'exam') return;
-      const q = STATE.questions[STATE.currentIdx]; if (!q) return; if (!STATE.results[q.id]) {
-        if (['a', 'b', 'c',
-          'd'
-        ].includes(e.key.toLowerCase())) selectOption(e.key.toUpperCase()); if (e.key === 'Enter')
-          submitAnswer(); if (e.key === ' ') {
-            e.preventDefault();
-            skipQuestion();
-          }
-      } if (e.key === 'ArrowRight' || e.key === 'n') navigate(1); if (e.key ===
-        'ArrowLeft' || e.key === 'p') navigate(-1); if (e.key === 'b') toggleBookmark();
+      const q = STATE.questions[STATE.currentIdx];
+      if (!q) return;
+      if (!STATE.results[q.id]) {
+        if (['a', 'b', 'c', 'd'].includes(e.key.toLowerCase())) selectOption(e.key.toUpperCase());
+        if (e.key === 'Enter') submitAnswer();
+        if (e.key === ' ') {
+          e.preventDefault();
+          skipQuestion();
+        }
+      }
+      if (e.key === 'ArrowRight' || e.key === 'n') navigate(1);
+      if (e.key === 'ArrowLeft' || e.key === 'p') navigate(-1);
+      if (e.key === 'b') toggleBookmark();
     });
+
     init();
   </script>
 </body>
