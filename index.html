@@ -2959,7 +2959,7 @@
     /* ═══════════════════════════════════════════════════════════════════════
        SSC AI PLATFORM v3.2 – FRONTEND ENGINE (Updated for multi-LLM backend)
        ═══════════════════════════════════════════════════════════════════════ */
-    const API = window.location.protocol === 'file:' ? 'http://127.0.0.1:8000' : '';
+    const API = 'https://preos.onrender.com';
     const DEFAULT_USER = 'default';
     const LS = {
       get: k => { try { return JSON.parse(localStorage.getItem('ssc_' + k)) } catch { return null } },
