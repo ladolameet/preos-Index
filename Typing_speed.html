@@ -626,6 +626,19 @@
             body {
                 padding-bottom: 78px;
             }
+            .res-grid {
+            grid-template-columns: repeat(1, 1fr);
+            
+        }
+        .btn-ssc {
+    padding: 11px 16px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 0.70rem;
+    transition: 0.2s;
+    border: none;
+    cursor: pointer;
+}
         }
 
         .hidden-stats {
@@ -665,7 +678,7 @@
             <div style="font-weight:700; margin-bottom: 12px; display: flex; justify-content: space-between;">
                 <span>📜 SOURCE PASSAGE</span>
                 <span id="passageLengthBadge"
-                    style="font-size:0.7rem; background:#eef2ff; padding:4px 10px; border-radius:40px;"></span>
+                    style="font-size:0.7rem; background:#eef2ff; padding:4px 10px; border-radius:40px;" hidden></span>
             </div>
             <div class="passage-box" id="sourcePassageBox"></div>
 
