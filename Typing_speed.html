@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>SSC AI Platform – Smart Exam Preparation</title>
+    <title>PreOS Platform – Smart Exam Preparation</title>
     <meta name="description"
-        content="Typing test where difficulty scales with level — each minute mode has independent progression. Master level 1 to 10 with fresh, progressively harder paragraphs.">
+        content="SSC exam grade typing test: 2000+ character passage, 15 minutes timer, real-time metrics, anti-cheat paste protection, remaining words & characters counter.">
 
     <!-- Google Fonts & Bootstrap Reset -->
     <link
@@ -17,101 +17,15 @@
     <style>
         :root {
             --bg: #f0f2f9;
-            --surface: rgba(255, 255, 255, 0.75);
             --surface-card: rgba(255, 255, 255, 0.85);
             --border: rgba(0, 0, 0, 0.05);
-            --border-focus: rgba(0, 102, 255, 0.2);
             --accent: #1e6df2;
-            --accent-glow: #3b82f6;
-            --success: #10b981;
-            --warning: #f59e0b;
             --danger: #ef4444;
-            --text-main: #111827;
-            --text-muted: #6b7280;
-            --text-dim: #9ca3af;
+            --text: #111318;
+            --text2: #4a4d57;
             --radius-xl: 24px;
             --radius-card: 20px;
             --shadow-elegant: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
-            --bg: #f0f2f7;
-            --bg-alt: #f8f9fc;
-            --surface: rgba(255, 255, 255, 0.72);
-            --surface-card: rgba(255, 255, 255, 0.78);
-            --surface-sidebar: rgba(255, 255, 255, 0.88);
-            --glass: rgba(255, 255, 255, 0.55);
-            --border: rgba(0, 0, 0, 0.06);
-            --border2: rgba(0, 0, 0, 0.12);
-            --accent: #0066f5;
-            --accent-hover: #0052cc;
-            --accent2: #5b4dfb;
-            --accent3: #1ed45e;
-            --accent3-hover: #17b84d;
-            --accent4: #ff8c00;
-            --accent5: #f13a30;
-            --accent5-hover: #d42e25;
-            --text: #111318;
-            --text2: #4a4d57;
-            --text3: #8a8e99;
-            --text4: #b0b4bf;
-            --radius: 14px;
-            --radius-sm: 10px;
-            --radius-lg: 20px;
-            --radius-xl: 28px;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.03);
-            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.05);
-            --transition: 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
-            --transition-fast: 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            background-image:
-                radial-gradient(ellipse at 5% 5%, rgba(0, 102, 245, 0.04) 0px, transparent 55%),
-                radial-gradient(ellipse at 95% 95%, rgba(91, 77, 251, 0.04) 0px, transparent 55%),
-                radial-gradient(ellipse at 50% 40%, rgba(30, 212, 94, 0.02) 0px, transparent 60%);
-            background-attachment: fixed;
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        button {
-            cursor: pointer;
-            font-family: inherit;
-            border: none;
-            outline: none;
-        }
-
-        input,
-        textarea,
-        select {
-            font-family: inherit;
-            outline: none;
-        }
-
-        img {
-            max-width: 100%;
         }
 
         ::-webkit-scrollbar {
@@ -132,20 +46,26 @@
             background: rgba(0, 0, 0, 0.22);
         }
 
-        .app {
-            display: flex;
-            flex-direction: column;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            background-attachment: fixed;
+            color: var(--text);
             min-height: 100vh;
         }
 
-        /* ═══════════════════════════════ NAV ═════════════════════════════════════════ */
         nav {
             position: sticky;
             top: 0;
             z-index: 100;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(28px) saturate(160%);
-            -webkit-backdrop-filter: blur(28px) saturate(160%);
             border-bottom: 1px solid var(--border);
             padding: 0 28px;
             height: 68px;
@@ -153,8 +73,6 @@
             align-items: center;
             justify-content: space-between;
             gap: 18px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02);
-            transition: all var(--transition);
         }
 
         .nav-brand {
@@ -163,33 +81,18 @@
             gap: 10px;
             font-weight: 850;
             font-size: 1.3rem;
-            white-space: nowrap;
             cursor: pointer;
-            flex-shrink: 0;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            background: linear-gradient(135deg, var(--accent), #5b4dfb);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -0.3px;
-            transition: transform var(--transition-fast);
-        }
-
-        .nav-brand:hover {
-            transform: scale(1.03);
         }
 
         .nav-scroll {
             display: flex;
             gap: 2px;
-            overflow-x: auto;
             flex: 1;
             justify-content: center;
-            padding: 0 6px;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        .nav-scroll::-webkit-scrollbar {
-            display: none;
+            overflow-x: auto;
         }
 
         .nav-link {
@@ -198,31 +101,18 @@
             font-size: 0.84rem;
             font-weight: 600;
             color: var(--text2);
-            transition: all var(--transition-fast);
-            white-space: nowrap;
             cursor: pointer;
-            letter-spacing: -0.1px;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            background: rgba(0, 102, 245, 0.05);
-            color: var(--accent);
-            transform: translateY(-1px);
         }
 
         .nav-link.active {
             background: linear-gradient(135deg, var(--accent), #1a7aff);
-            color: #ffffff !important;
+            color: white !important;
             box-shadow: 0 4px 16px rgba(0, 102, 245, 0.25);
-            font-weight: 700;
         }
 
         .nav-right {
             display: flex;
-            align-items: center;
             gap: 10px;
-            flex-shrink: 0;
         }
 
         .xp-pill,
@@ -232,12 +122,9 @@
             gap: 6px;
             border-radius: 22px;
             padding: 6px 14px;
-            font-size: 0.76rem;
             font-weight: 700;
-            transition: all var(--transition-fast);
+            font-size: 0.76rem;
             cursor: pointer;
-            letter-spacing: -0.1px;
-            white-space: nowrap;
         }
 
         .xp-pill {
@@ -246,118 +133,62 @@
             color: var(--accent);
         }
 
-        .xp-pill:hover {
-            background: rgba(0, 102, 245, 0.14);
-            transform: translateY(-1.5px);
-            box-shadow: 0 4px 12px rgba(0, 102, 245, 0.15);
-        }
-
         .streak-pill {
             background: rgba(255, 140, 0, 0.07);
             border: 1px solid rgba(255, 140, 0, 0.12);
-            color: var(--accent4);
-        }
-
-        .streak-pill:hover {
-            background: rgba(255, 140, 0, 0.14);
-            transform: translateY(-1.5px);
-            box-shadow: 0 4px 12px rgba(255, 140, 0, 0.15);
+            color: #ff8c00;
         }
 
         .type-container {
-            max-width: 1000px;
+            max-width: 1480px;
             width: 100%;
-            margin: 0 auto;
+            margin: 20px auto 30px;
+            padding: 0 18px;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            margin-top: 20px;
-            margin-bottom: 30px;
         }
 
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-        }
-
-        .stat-tile {
-            background: var(--surface-card);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-card);
-            padding: 1rem 0.5rem;
-            text-align: center;
-            transition: all 0.2s ease;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-        }
-
-        .stat-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 0.03em;
-            margin-top: 4px;
-        }
-
-        .settings-bar {
+        .timer-bar {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.6rem;
+            justify-content: flex-end;
             align-items: center;
-            background: var(--surface-card);
+            margin-bottom: 0.5rem;
+        }
+
+        .timer-floating {
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(12px);
-            padding: 0.8rem 1rem;
+            padding: 6px 17px;
             border-radius: 60px;
-            border: 1px solid var(--border);
-        }
-
-        .chip-group {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .chip {
-            padding: 6px 14px;
-            border-radius: 40px;
-            background: rgba(0, 0, 0, 0.02);
-            border: 1px solid var(--border);
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-
-        .chip.active {
-            background: var(--accent);
-            border-color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 1rem;
             color: white;
-            box-shadow: 0 6px 12px -6px rgba(30, 109, 242, 0.3);
+            letter-spacing: 2px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .chip.locked {
-            opacity: 0.5;
-            cursor: not-allowed;
-            background: #eef2ff;
-            color: #4b5563;
-            pointer-events: none;
-            filter: grayscale(0.1);
+        .timer-floating.warning {
+            background: #ef4444;
+            animation: pulse 1s infinite;
         }
 
-        .divider {
-            width: 1px;
-            height: 26px;
-            background: #e2e8f0;
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.02);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .arena {
@@ -365,87 +196,131 @@
             backdrop-filter: blur(20px);
             border-radius: var(--radius-xl);
             border: 1px solid var(--border);
-            padding: 2rem 1.8rem;
+            padding: 1.8rem;
             box-shadow: var(--shadow-elegant);
-            transition: 0.2s;
         }
 
-        .text-display {
+        .passage-box {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 1.4rem;
+            border: 1px solid #e9eef3;
+            margin-bottom: 1.8rem;
+            max-height: 210px;
+            overflow-y: auto;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.3rem;
-            line-height: 1.7;
-            letter-spacing: 0.01em;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #1e293b;
+            white-space: pre-wrap;
             word-break: break-word;
-            user-select: none;
-            cursor: text;
-            margin-bottom: 1.2rem;
         }
 
-        .char {
-            display: inline;
-            border-radius: 4px;
-            transition: background 0.05s linear;
+        .typing-area label {
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--text2);
         }
 
-        .char.correct {
-            color: var(--success);
-            background: rgba(16, 185, 129, 0.08);
+        #userInput {
+            width: 100%;
+            min-height: 220px;
+            padding: 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            resize: vertical;
         }
 
-        .char.incorrect {
+        #userInput:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(30, 109, 242, 0.2);
+        }
+
+        #userInput:disabled {
+            background: #f1f5f9;
+            cursor: not-allowed;
+        }
+
+        .remaining-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            background: #f1f5f9;
+            padding: 10px 16px;
+            border-radius: 20px;
+            margin: 12px 0 10px 0;
+            font-size: 0.75rem;
+            font-weight: 550;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+
+        .remaining-stats span {
+            background: white;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .action-group {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-end;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-ssc {
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-submit {
+            background: var(--accent);
             color: white;
-            background: var(--danger);
-            border-radius: 3px;
         }
 
-        .char.current {
-            background: rgba(30, 109, 242, 0.25);
-            box-shadow: 0 0 0 2px var(--accent-glow);
-            border-radius: 3px;
-            animation: pulse-cursor 1s infinite;
+        .btn-submit:hover {
+            background: #0052cc;
+            transform: translateY(-2px);
         }
 
-        .char.remaining {
-            color: var(--text-dim);
-            opacity: 0.6;
+        .btn-reset {
+            background: white;
+            border: 1px solid #cbd5e1;
+            color: #1e293b;
         }
 
-        @keyframes pulse-cursor {
-            0% {
-                box-shadow: 0 0 0 1px var(--accent-glow);
-            }
-
-            100% {
-                box-shadow: 0 0 0 3px rgba(30, 109, 242, 0.5);
-            }
+        .btn-reset:hover {
+            background: #f8fafc;
+            border-color: var(--accent);
         }
 
-        .progress-bar {
-            height: 5px;
-            background: #e2e8f0;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 0.8rem 0;
+        .btn-refresh {
+            background: #eef2ff;
+            border: 1px solid #cbd5e1;
+            color: var(--accent);
         }
 
-        .progress-fill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), #8b5cf6);
-            transition: width 0.2s ease;
-        }
-
-        .hint-text {
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--text-dim);
-            font-weight: 500;
-        }
-
-        .hidden-input {
-            position: absolute;
-            opacity: 0;
-            left: -9999px;
+        .btn-refresh:hover {
+            background: #e0e7ff;
+            transform: translateY(-2px);
         }
 
         .results-panel {
@@ -455,7 +330,7 @@
             padding: 1.5rem;
             display: none;
             border: 1px solid var(--border);
-            animation: fadeSlide 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+            animation: fadeSlide 0.3s ease;
         }
 
         .results-panel.show {
@@ -496,32 +371,7 @@
         .res-label {
             font-size: 0.65rem;
             text-transform: uppercase;
-            color: var(--text-muted);
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: center;
-            margin-top: 0.5rem;
-        }
-
-        .btn-primary-custom {
-            background: var(--accent);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            color: white;
-            transition: 0.2s;
-        }
-
-        .btn-secondary-custom {
-            background: transparent;
-            border: 1px solid #cbd5e1;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 600;
+            color: #6b7280;
         }
 
         .history-card {
@@ -529,11 +379,15 @@
             backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 1.2rem;
+            margin-top: 20px;
         }
 
         .history-list {
-            max-height: 220px;
+            max-height: 240px;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .history-item {
@@ -541,11 +395,33 @@
             justify-content: space-between;
             align-items: center;
             background: rgba(0, 0, 0, 0.02);
-            padding: 8px 12px;
-            border-radius: 14px;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
+            padding: 12px 16px;
+            border-radius: 18px;
             font-size: 0.8rem;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .history-stats {
+            display: flex;
+            gap: 16px;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .history-badge {
+            background: white;
+            padding: 4px 10px;
+            border-radius: 26px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .history-time {
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: #4b5563;
         }
 
         .toast-msg {
@@ -557,10 +433,8 @@
             color: white;
             padding: 12px 20px;
             border-radius: 60px;
-            font-size: 0.85rem;
             font-weight: 500;
             backdrop-filter: blur(12px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             animation: toastIn 0.2s ease;
         }
 
@@ -576,21 +450,6 @@
             }
         }
 
-        @media (max-width: 680px) {
-            .stat-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .text-display {
-                font-size: 1rem;
-            }
-
-            .settings-bar {
-                border-radius: 28px;
-                gap: 0.4rem;
-            }
-        }
-
         .mobile-nav {
             display: none;
             position: fixed;
@@ -599,27 +458,20 @@
             right: 0;
             height: 68px;
             background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(28px) saturate(160%);
-            -webkit-backdrop-filter: blur(28px) saturate(160%);
+            backdrop-filter: blur(28px);
             border-top: 1px solid var(--border);
             z-index: 1000;
             justify-content: space-around;
             align-items: center;
-            padding-bottom: env(safe-area-inset-bottom);
-            box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.03);
         }
 
         .mobile-nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             background: none;
             border: none;
-            color: var(--text3);
-            padding: 6px 0;
-            width: 20%;
-            transition: all var(--transition-fast);
+            color: #8a8e99;
             cursor: pointer;
         }
 
@@ -629,126 +481,18 @@
 
         .mobile-nav-icon {
             font-size: 1.4rem;
-            margin-bottom: 2px;
         }
 
         .mobile-nav-label {
             font-size: 0.64rem;
             font-weight: 650;
-            letter-spacing: -0.1px;
         }
 
-        .mobile-drawer-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            z-index: 1001;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-drawer-overlay.visible {
-            display: block;
-            opacity: 1;
-        }
-
+        .mobile-drawer-overlay,
         .mobile-drawer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-top-left-radius: 28px;
-            border-top-right-radius: 28px;
-            box-shadow: 0 -12px 48px rgba(0, 0, 0, 0.12);
-            z-index: 1002;
-            transform: translateY(100%);
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            padding: 22px 22px calc(22px + env(safe-area-inset-bottom));
+            display: none;
         }
 
-        .mobile-drawer.visible {
-            transform: translateY(0);
-        }
-
-        .mobile-drawer-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 22px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 14px;
-        }
-
-        .mobile-drawer-title {
-            font-size: 1.15rem;
-            font-weight: 820;
-            color: var(--text);
-            letter-spacing: -0.3px;
-        }
-
-        .mobile-drawer-close {
-            background: rgba(0, 0, 0, 0.04);
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--text2);
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .mobile-drawer-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-
-        .drawer-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.015);
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            padding: 16px 10px;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .drawer-item:active {
-            background: rgba(0, 102, 245, 0.06);
-            transform: scale(0.94);
-            border-color: var(--accent);
-        }
-
-        .drawer-icon {
-            font-size: 1.5rem;
-            margin-bottom: 7px;
-        }
-
-        .drawer-label {
-            font-size: 0.71rem;
-            font-weight: 650;
-            color: var(--text);
-            text-align: center;
-            white-space: nowrap;
-            letter-spacing: -0.1px;
-        }
-
-        /* ========== HIDE DESKTOP NAV LINKS ON MOBILE ========== */
         @media (max-width: 768px) {
             .nav-scroll {
                 display: none;
@@ -763,40 +507,17 @@
             }
         }
 
-        /* Ensure XP and streak numbers are visible on mobile */
-        @media (max-width: 480px) {
-
-            .xp-pill span,
-            .streak-pill span {
-                display: inline-block;
-            }
-
-            .xp-pill,
-            .streak-pill {
-                padding: 4px 8px;
-                font-size: 0.7rem;
-            }
+        .hidden-stats {
+            display: none;
         }
     </style>
 </head>
 
 <body>
-
     <nav>
         <div class="nav-brand" onclick="redirectToIndex()">
-            <svg width="26" height="26" viewBox="0 0 28 28" fill="none" style="margin-right: 6px;">
-                <rect width="28" height="28" rx="8" fill="url(#ng)" />
-                <path d="M8 20L14 8L20 20" stroke="white" stroke-width="2.5" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M10 16h8" stroke="white" stroke-width="2" stroke-linecap="round" />
-                <defs>
-                    <linearGradient id="ng" x1="0" y1="0" x2="28" y2="28">
-                        <stop stop-color="#0066f5" />
-                        <stop offset="1" stop-color="#5b4dfb" />
-                    </linearGradient>
-                </defs>
-            </svg>
-            SSC AI
+
+            PreOS
         </div>
         <div class="nav-scroll">
             <span class="nav-link" onclick="redirectToIndex()">Search</span>
@@ -806,419 +527,314 @@
             <span class="nav-link" onclick="redirectToIndex()">Analytics</span>
             <span class="nav-link" onclick="redirectToIndex()">Bookmarks</span>
             <span class="nav-link" onclick="redirectToIndex()">Study Plan</span>
-            <a href="Typing_speed.html" class="nav-link active" style="pointer-events: none;">Typing Speed</a>
+            <a href="#" class="nav-link active" style="pointer-events: none;">Typing Speed</a>
         </div>
         <div class="nav-right">
-            <div class="streak-pill" id="nav-streak" onclick="redirectToIndex()">🔥 <span id="nav-streak-val">0</span>
-            </div>
-            <div class="xp-pill" id="nav-xp" onclick="redirectToIndex()">⭐ Lv<span id="nav-level">1</span> · <span
+            <div class="streak-pill" onclick="redirectToIndex()">🔥 <span id="nav-streak-val">0</span></div>
+            <div class="xp-pill" onclick="redirectToIndex()">⭐ Lv<span id="nav-level">1</span> · <span
                     id="nav-xp-val">0</span> XP</div>
         </div>
     </nav>
 
     <div class="type-container">
-        <div class="stat-grid">
-            <div class="stat-tile">
-                <div class="stat-number" id="liveWpm">0</div>
-                <div class="stat-label">WPM</div>
+        <div class="timer-bar">
+            <div class="timer-floating" id="floatingTimer">15:00</div>
+        </div>
+
+        <div class="arena">
+            <div style="font-weight:700; margin-bottom: 12px; display: flex; justify-content: space-between;">
+                <span>📜 SOURCE PASSAGE</span>
+                <span id="passageLengthBadge"
+                    style="font-size:0.7rem; background:#eef2ff; padding:4px 10px; border-radius:40px;"></span>
             </div>
-            <div class="stat-tile">
-                <div class="stat-number" id="liveAcc">100</div>
-                <div class="stat-label">Accuracy</div>
-            </div>
-            <div class="stat-tile">
-                <div class="stat-number" id="liveTimeLeft">30</div>
-                <div class="stat-label">Seconds left</div>
-            </div>
-            <div class="stat-tile">
-                <div class="stat-number" id="liveChars">0</div>
-                <div class="stat-label">Typed chars</div>
+            <div class="passage-box" id="sourcePassageBox"></div>
+
+            <div class="typing-area">
+                <textarea id="userInput" rows="7"
+                    placeholder="Click here and start typing... The timer will begin automatically when you type first character. (Paste disabled / real exam conditions)"
+                    disabled></textarea>
+
+                <div class="remaining-stats" id="remainingStatsPanel">
+                    <span>⌨️ REMAINING: <span id="remainingCharsCount">0</span> chars (~<span
+                            id="remainingWordsCount">0</span> words)</span>
+                    <span>📝 TYPED: <span id="typedLengthCount">0</span> / <span id="totalPassageLength">0</span>
+                        chars</span>
+                </div>
+
+                <div class="action-group">
+                    <button class="btn-ssc btn-refresh" id="newParagraphBtn">🔄 New Paragraph</button>
+                    <button class="btn-ssc btn-reset" id="resetTestBtn">⟳ Reset / Same Passage</button>
+                    <button class="btn-ssc btn-submit" id="submitTestBtn">📝 Submit & Evaluate</button>
+                </div>
             </div>
         </div>
 
-        <div class="settings-bar">
-            <span style="font-size:0.7rem; font-weight:700;">⏱️ TIME</span>
-            <div class="chip-group" id="timeGroup">
-                <span class="chip active" data-time="30">30s</span>
-                <span class="chip" data-time="60">1 min</span>
-                <span class="chip" data-time="120">2 min</span>
-                <span class="chip" data-time="300">5 min</span>
-            </div>
-            <div class="divider"></div>
-            <span style="font-size:0.7rem; font-weight:700;">📈 LEVEL</span>
-            <div class="chip-group" id="levelGroup"></div>
-            <div class="divider"></div>
-            <button class="chip" id="refreshTextBtn" style="background:#eef2ff;">⟳ New paragraph</button>
-        </div>
-
-        <div class="arena" id="arena" tabindex="0">
-            <div class="text-display" id="textDisplay"></div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <div class="hint-text" id="hintMsg">⌨️ Click & start typing — fresh paragraph per level</div>
-            <input type="text" class="hidden-input" id="hiddenInput" autocomplete="off" autocapitalize="off"
-                spellcheck="false">
+        <div class="hidden-stats">
+            <span id="typedCharCount"></span>
+            <span id="targetLength"></span>
+            <span id="liveStatus"></span>
         </div>
 
         <div class="results-panel" id="resultsPanel">
             <div style="text-align:center;">
-                <h3>✨ session complete ✨</h3>
-                <div id="verdictText" style="font-weight:600;"></div>
+                <h3>📊 SSC Typing Evaluation</h3>
+                <div id="verdictMsg" style="font-weight:600;"></div>
             </div>
             <div class="res-grid">
                 <div class="res-card">
-                    <div class="res-value" id="finalWpm">0</div>
-                    <div class="res-label">WPM</div>
+                    <div class="res-value" id="finalNetWpm">0</div>
+                    <div class="res-label">Net WPM</div>
                 </div>
                 <div class="res-card">
-                    <div class="res-value" id="finalAcc">100%</div>
+                    <div class="res-value" id="finalGrossWpm">0</div>
+                    <div class="res-label">Gross WPM</div>
+                </div>
+                <div class="res-card">
+                    <div class="res-value" id="finalAccuracy">0%</div>
                     <div class="res-label">Accuracy</div>
                 </div>
                 <div class="res-card">
-                    <div class="res-value" id="finalChars">0</div>
-                    <div class="res-label">Typed</div>
-                </div>
-                <div class="res-card">
-                    <div class="res-value" id="finalConsistency">—</div>
-                    <div class="res-label">Consistency</div>
+                    <div class="res-value" id="finalErrors">0</div>
+                    <div class="res-label">Error Count</div>
                 </div>
             </div>
-            <div class="btn-group"><button class="btn-primary-custom" id="resetBtn">🔄 Try again</button><button
-                    class="btn-secondary-custom" id="shareBtn">📋 Copy stats</button></div>
+            <div class="res-grid" style="margin-top:-0.5rem;">
+                <div class="res-card">
+                    <div class="res-value" id="finalCorrectChars">0</div>
+                    <div class="res-label">Correct chars</div>
+                </div>
+                <div class="res-card">
+                    <div class="res-value" id="finalTimeTaken">0:00</div>
+                    <div class="res-label">Time taken</div>
+                </div>
+                <div class="res-card">
+                    <div class="res-value" id="finalTypedLen">0</div>
+                    <div class="res-label">Total Typed</div>
+                </div>
+            </div>
+            <div class="btn-group d-flex justify-content-center gap-3 mt-2">
+                <button class="btn-ssc btn-reset" id="resultsResetBtn">🔄 New Test</button>
+                <button class="btn-ssc btn-submit" id="copyStatsBtn">📋 Copy Stats</button>
+            </div>
         </div>
 
         <div class="history-card">
-            <div style="font-weight:700; margin-bottom:12px;">📜 Level progression history</div>
-            <div class="history-list" id="historyList"></div>
+            <div style="font-weight:700; margin-bottom:12px;">📋 Typing Attempts History</div>
+            <div class="history-list" id="sscHistoryList">✨ No attempts yet. Complete a 15-min test!</div>
         </div>
     </div>
 
-    <!-- MOBILE NAVIGATION -->
-    <div class="mobile-nav" id="mobile-nav">
-        <button class="mobile-nav-item" id="mobile-home" onclick="redirectToIndex()">
-            <span class="mobile-nav-icon">🏠</span><span class="mobile-nav-label">Home</span>
-        </button>
-        <button class="mobile-nav-item" id="mobile-errors" onclick="redirectToIndex()">
-            <span class="mobile-nav-icon">🔥</span><span class="mobile-nav-label">Errors</span>
-        </button>
-        <button class="mobile-nav-item" id="mobile-simulator" onclick="redirectToIndex()">
-            <span class="mobile-nav-icon">🏆</span><span class="mobile-nav-label">Simulator</span>
-        </button>
-        <button class="mobile-nav-item active" id="mobile-typing" style="color:var(--accent);"
-            onclick="stayOnTypingPage()">
-            <span class="mobile-nav-icon">⌨️</span><span class="mobile-nav-label">Typing</span>
-        </button>
-        <button class="mobile-nav-item" id="mobile-more" onclick="toggleMobileDrawer()">
-            <span class="mobile-nav-icon">☰</span><span class="mobile-nav-label">More</span>
-        </button>
+    <div class="mobile-nav">
+        <button class="mobile-nav-item" onclick="redirectToIndex()"><span class="mobile-nav-icon">🏠</span><span
+                class="mobile-nav-label">Home</span></button>
+        <button class="mobile-nav-item" onclick="redirectToIndex()"><span class="mobile-nav-icon">🔥</span><span
+                class="mobile-nav-label">Errors</span></button>
+        <button class="mobile-nav-item" onclick="redirectToIndex()"><span class="mobile-nav-icon">🏆</span><span
+                class="mobile-nav-label">Simulator</span></button>
+        <button class="mobile-nav-item active" onclick="stayOnTypingPage()"><span class="mobile-nav-icon">⌨️</span><span
+                class="mobile-nav-label">Typing</span></button>
+        <button class="mobile-nav-item" onclick="toggleMobileDrawer()"><span class="mobile-nav-icon">☰</span><span
+                class="mobile-nav-label">More</span></button>
     </div>
-
-    <!-- MOBILE DRAWER -->
     <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="toggleMobileDrawer()"></div>
     <div class="mobile-drawer" id="mobile-drawer">
         <div class="mobile-drawer-header">
-            <div class="mobile-drawer-title">All Features</div>
-            <button class="mobile-drawer-close" onclick="toggleMobileDrawer()">✕</button>
+            <div class="mobile-drawer-title">All Features</div><button class="mobile-drawer-close"
+                onclick="toggleMobileDrawer()">✕</button>
         </div>
         <div class="mobile-drawer-grid">
-            <div class="drawer-item" onclick="redirectToIndex()">
-                <div class="drawer-icon">🔍</div>
-                <div class="drawer-label">Search</div>
-            </div>
-            <div class="drawer-item" onclick="redirectToIndex()">
-                <div class="drawer-icon">🎯</div>
-                <div class="drawer-label">Readiness</div>
-            </div>
-            <div class="drawer-item" onclick="redirectToIndex()">
-                <div class="drawer-icon">🤖</div>
-                <div class="drawer-label">Coach</div>
-            </div>
-            <div class="drawer-item" onclick="redirectToIndex()">
-                <div class="drawer-icon">📊</div>
-                <div class="drawer-label">Analytics</div>
-            </div>
-            <div class="drawer-item" onclick="redirectToIndex()">
-                <div class="drawer-icon">🔖</div>
-                <div class="drawer-label">Bookmarks</div>
-            </div>
-            <div class="drawer-item" onclick="redirectToIndex()">
-                <div class="drawer-icon">📅</div>
-                <div class="drawer-label">Study Plan</div>
-            </div>
+            <div class="drawer-item" onclick="redirectToIndex()">🔍 Search</div>
+            <div class="drawer-item" onclick="redirectToIndex()">🎯 Readiness</div>
+            <div class="drawer-item" onclick="redirectToIndex()">🤖 Coach</div>
+            <div class="drawer-item" onclick="redirectToIndex()">📊 Analytics</div>
+            <div class="drawer-item" onclick="redirectToIndex()">🔖 Bookmarks</div>
+            <div class="drawer-item" onclick="redirectToIndex()">📅 Study Plan</div>
         </div>
     </div>
 
     <script>
-        // ====================== IMPROVED XP/LEVEL INTEGRATION ======================
+        // ========== Helper functions (XP, nav, storage) ==========
         const LS = {
             get: k => { try { return JSON.parse(localStorage.getItem('ssc_' + k)); } catch (e) { return null; } },
             set: (k, v) => { try { localStorage.setItem('ssc_' + k, JSON.stringify(v)); } catch (e) { } }
         };
-
-        // Function to compute level from XP (same as main platform)
-        function computeLevelFromXP(xp) {
-            let level = 1;
-            let threshold = 100;
-            let xpTmp = xp;
-            while (xpTmp >= threshold) {
-                xpTmp -= threshold;
-                level++;
-                threshold = Math.floor(threshold * 1.4);
-            }
-            return level;
-        }
-
+        function computeLevelFromXP(xp) { let level = 1, threshold = 100, xpTmp = xp; while (xpTmp >= threshold) { xpTmp -= threshold; level++; threshold = Math.floor(threshold * 1.4); } return level; }
         function updateNavDisplay() {
-            let userData = LS.get('user_data');
-            if (!userData) {
-                userData = { xp: 0, level: 1, streak: 0 };
-            }
-            let xp = userData.xp || 0;
-            let level = userData.level || computeLevelFromXP(xp);
-            let streak = userData.streak || 0;
+            let userData = LS.get('user_data') || { xp: 0, level: 1, streak: 0 };
+            let xp = userData.xp || 0, level = userData.level || computeLevelFromXP(xp), streak = userData.streak || 0;
             document.getElementById('nav-level').textContent = level;
             document.getElementById('nav-xp-val').textContent = xp.toLocaleString();
             document.getElementById('nav-streak-val').textContent = streak;
         }
-
-        // Force update multiple times to ensure data is read (in case of late localStorage sync)
-        updateNavDisplay();
-        setTimeout(updateNavDisplay, 100);
-        setTimeout(updateNavDisplay, 500);
-        // Also listen for storage events (if another tab updates)
-        window.addEventListener('storage', function (e) {
-            if (e.key === 'ssc_user_data') {
-                updateNavDisplay();
-            }
-        });
-
+        updateNavDisplay(); window.addEventListener('storage', () => updateNavDisplay());
         function redirectToIndex() { window.location.href = 'index.html'; }
         function stayOnTypingPage() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
         function toggleMobileDrawer() {
-            const overlay = document.getElementById('mobile-drawer-overlay');
-            const drawer = document.getElementById('mobile-drawer');
-            overlay.classList.toggle('visible');
-            drawer.classList.toggle('visible');
+            const overlay = document.getElementById('mobile-drawer-overlay'), drawer = document.getElementById('mobile-drawer');
+            overlay.classList.toggle('visible'); drawer.classList.toggle('visible');
+            if (overlay.style.display === 'flex') overlay.style.display = 'none';
+            else { overlay.style.display = 'block'; drawer.style.display = 'block'; }
+        }
+        function toastMsg(msg, color = "#1e293b") { let div = document.createElement("div"); div.className = "toast-msg"; div.innerText = msg; div.style.backgroundColor = color; document.body.appendChild(div); setTimeout(() => div.remove(), 2400); }
+
+        // ========== LONG PASSAGES (>2000 chars) ==========
+        const PASSAGE_BANK = [
+            `India's digital transformation journey has redefined governance, financial inclusion, and public service delivery over the past decade. The Digital India initiative, launched with a vision to empower every citizen with digital access, has become one of the world's largest umbrella programs covering multiple government departments. From Aadhaar-based identity to the Unified Payments Interface (UPI), the country has created a robust digital infrastructure that processes billions of transactions monthly. This paradigm shift has not only reduced corruption but also increased transparency in welfare schemes. Furthermore, the rapid adoption of cloud computing and AI-driven analytics is enabling personalized learning, telemedicine, and precision agriculture in rural areas. According to recent reports, India's digital economy is poised to reach one trillion dollars by 2028, driven by startup innovation and widespread smartphone penetration. However, challenges such as digital literacy gaps, cybersecurity threats, and data privacy concerns demand continuous policy refinement. The government's focus on skill development under programs like 'FutureSkills Prime' aims to train millions in emerging technologies. For SSC aspirants, understanding this socio-technical evolution is crucial, as questions related to e-governance, digital rights, and the impact of technology on society frequently appear in general awareness sections. Moreover, typing proficiency remains an essential skill for clerical and administrative roles, where speed and accuracy directly affect productivity. Practicing with comprehensive, examination-oriented passages improves cognitive endurance and typing rhythm, directly translating to better performance in computer-based tests. This passage is designed to simulate the complexity and length of official SSC descriptive typing assessments, requiring sustained attention for 15 minutes. The ability to transcribe lengthy texts with minimal errors is a hallmark of efficient office work, and consistent practice yields measurable improvement over time. As you type this passage, focus on maintaining a steady pace, correct finger placement, and visual tracking to avoid re-reading. Remember, the official exam evaluates net speed (correct keystrokes per minute) and penalizes mistakes heavily. Thus, accuracy should never be sacrificed for raw speed. Adopting a relaxed posture and rhythmic breathing reduces fatigue during long typing sessions. This mock test mirrors real examination conditions, including a strict timer and submission protocol. Embrace the challenge and track your progress with each attempt. Ultimately, mastering typing will boost your confidence and open doors to prestigious government positions where efficiency is paramount.`,
+            `Climate resilience and sustainable development have emerged as defining priorities for twenty-first-century governance worldwide. Extreme weather events, rising sea levels, and biodiversity loss demand immediate, coordinated action across nations. In India, the National Action Plan on Climate Change (NAPCC) outlines eight missions that span solar energy, enhanced energy efficiency, water conservation, and sustaining the Himalayan ecosystem. The transition to renewable energy sources, particularly solar and wind, has accelerated rapidly, with India achieving its target of 40% installed electric capacity from non-fossil fuels well ahead of schedule. Additionally, the LiFE movement (Lifestyle for Environment) encourages citizens to adopt eco-friendly habits like reducing waste, conserving water, and using public transport. For SSC examinations, environmental topics are increasingly relevant, as the syllabus includes ecology, biodiversity, climate change agreements (Paris Accord, COP summits), and government schemes like the National Green Tribunal. Typing tests often incorporate such socially relevant themes, requiring candidates to demonstrate awareness alongside technical speed. This passage exceeds 2000 characters, offering ample practice for sustained focus. You must replicate every character, space, and punctuation exactly as shown—the evaluator's algorithm will compare each typed character against the source. Accuracy above 95% with net speed exceeding 35 WPM is considered competitive for most clerical cadre positions. Use the text area below to transcribe meticulously. The timer (15 minutes) begins automatically when you start typing. After time expires or you submit, a detailed performance report will highlight net WPM, gross speed, error count, and accuracy. Review your history to monitor improvements. Developing muscle memory through repeated long-form transcription reduces cognitive load and boosts confidence on exam day. Persistence and deliberate practice are your greatest allies.`,
+            `The Constitution of India is the supreme law of the land, embodying the values of justice, liberty, equality, and fraternity. Drafted by the Constituent Assembly under the chairmanship of Dr. B.R. Ambedkar, it came into effect on 26th January 1950. The Constitution originally had 395 articles and 8 schedules, and today it stands as a dynamic document with over 100 amendments. Fundamental Rights, Directive Principles, and Fundamental Duties form the core pillars that guide both the state and citizens. For SSC aspirants, deep understanding of constitutional provisions, landmark judgments, and recent amendments is indispensable for the General Studies paper. Furthermore, the parliamentary system, federal structure, and emergency provisions are frequently tested topics. Typing speed and accuracy are vital for the skill test component of various SSC exams like CHSL, CGL, and Stenographer. In the computer-based typing test, candidates are required to transcribe a given passage within a stipulated time. Any error, including extra spaces, incorrect punctuation, or case mismatch, reduces the net score. Therefore, consistent practice with authentic passages that mirror exam difficulty is essential. This passage provides realistic length and complexity, demanding high concentration and finger dexterity. Simulate exam conditions by timing yourself, avoiding backspace overuse, and focusing on even rhythm. Each practice session builds neural pathways that eventually make typing effortless. Strive for a net speed above 40 WPM with accuracy exceeding 92% to secure top rankings. Remember, every character counts, and systematic practice yields exponential improvement.`,
+            `Artificial Intelligence and Machine Learning are revolutionizing public administration, healthcare, and education in India. The government's 'AI for All' strategy aims to leverage AI for inclusive growth, with focus areas like agriculture, smart cities, and digital payments. NITI Aayog has identified key sectors where AI can drive transformation, including healthcare (predictive diagnostics), education (adaptive learning platforms), and infrastructure (traffic management). However, ethical concerns such as algorithmic bias, data privacy, and job displacement require robust regulatory frameworks. For SSC examinations, technology-related topics have gained prominence, especially in the computer awareness and current affairs sections. Aspirants should familiarize themselves with concepts like neural networks, natural language processing, and the role of AI in governance. Typing tests frequently incorporate such contemporary themes, evaluating both subject familiarity and transcription accuracy. This passage, exceeding 2000 characters, simulates the exact length you may encounter in the final exam. To maximize your net WPM, prioritize correct keystrokes over raw speed. Each mistake reduces effective speed, as errors are penalized. Use the provided text area to replicate the passage verbatim. The timer will start with your first keystroke and continue for 15 minutes. At the end, you'll receive detailed analytics including net WPM, gross WPM, error count, and accuracy percentage. Compare your results across attempts and aim for consistent improvement. With disciplined practice, you can achieve competitive scores and enhance your chances of securing a government position.`,
+        ];
+
+        let currentPassage = PASSAGE_BANK[0];
+        let testActive = false;
+        let timeLeftSeconds = 900;
+        let timerInterval = null;
+        let testFinished = false;
+        let finalResults = null;
+
+        const floatingTimer = document.getElementById('floatingTimer');
+        const sourceBox = document.getElementById('sourcePassageBox');
+        const userTextarea = document.getElementById('userInput');
+        const resultsPanel = document.getElementById('resultsPanel');
+        const resetBtn = document.getElementById('resetTestBtn');
+        const newParaBtn = document.getElementById('newParagraphBtn');
+        const submitBtn = document.getElementById('submitTestBtn');
+        const resultsResetBtn = document.getElementById('resultsResetBtn');
+        const copyStatsBtn = document.getElementById('copyStatsBtn');
+        const sscHistoryDiv = document.getElementById('sscHistoryList');
+        const passageLengthBadge = document.getElementById('passageLengthBadge');
+        const remainingCharsSpan = document.getElementById('remainingCharsCount');
+        const remainingWordsSpan = document.getElementById('remainingWordsCount');
+        const typedLengthSpan = document.getElementById('typedLengthCount');
+        const totalPassageLengthSpan = document.getElementById('totalPassageLength');
+
+        function updateRemainingStats() {
+            const sourceLen = currentPassage.length;
+            const typedLen = userTextarea.value.length;
+            const remaining = Math.max(0, sourceLen - typedLen);
+            const remainingWords = Math.floor(remaining / 5);
+            remainingCharsSpan.innerText = remaining;
+            remainingWordsSpan.innerText = remainingWords;
+            typedLengthSpan.innerText = typedLen;
+            totalPassageLengthSpan.innerText = sourceLen;
         }
 
-        // ====================== TYPING TEST CORE (unchanged, fully functional) ======================
-        const TIER_1 = ["The cat sleeps on the warm window sill every afternoon.", "She enjoys reading novels under the old oak tree.", "Walking through the park brings a sense of calm and peace.", "A hot cup of tea makes rainy days feel cozy.", "Birds sing lovely melodies at dawn each morning.", "He quickly finished his homework before dinner.", "The little boat floats gently across the blue lake.", "Stars twinkle brightly in the dark night sky."];
-        const TIER_2 = ["After the storm passed, the children ran outside to splash in puddles.", "Learning a new language requires patience and daily practice.", "The old library holds ancient books with secrets from the past.", "She painted a portrait using vibrant colors and bold strokes.", "Mountaineering demands both physical strength and mental resilience.", "The garden flourished after weeks of careful watering."];
-        const TIER_3 = ["Although the traffic was heavy, they arrived just in time for the premiere, which thrilled everyone.", "Climate change has intensified extreme weather events, forcing communities to adapt rapidly.", "The entrepreneur launched a startup that disrupted the entire retail market within months.", "Neuroscience reveals that consistent meditation reshapes neural pathways and improves focus.", "The symphony’s crescendo evoked powerful emotions, leaving the audience in absolute silence."];
-        const TIER_4 = ["The phenomenon of quantum entanglement challenges classical intuition, implying instantaneous correlations across vast distances.", "Cryptographic protocols ensure data integrity, yet quantum computing threatens to undermine conventional encryption.", "The geopolitical ramifications of resource scarcity are amplified by shifting demographic trends and climate migration.", "Metacognitive strategies enhance learning efficiency by enabling students to monitor their own comprehension.", "The architectural masterpiece integrates biophilic design with parametric modeling, redefining urban sustainability."];
-        const TIER_5 = ["The dialectic between phenomenological subjectivity and neural correlates remains a central quandary in contemporary philosophy of mind.", "Epigenetic modifications, influenced by environmental stressors, introduce phenotypic variability without altering genomic sequences.", "Hegemonic narratives embedded within postcolonial discourse often obscure subaltern agency and resistance.", "The synthesis of organometallic frameworks has catalyzed unprecedented catalytic cycles in asymmetric synthesis.", "Exaptation in evolutionary biology highlights how traits originally evolved for one function later acquire new adaptive purposes."];
-
-        function getParagraphForLevel(level) {
-            let tierPool = [];
-            if (level <= 2) tierPool = TIER_1;
-            else if (level <= 4) tierPool = [...TIER_1, ...TIER_2];
-            else if (level <= 6) tierPool = [...TIER_2, ...TIER_3];
-            else if (level <= 8) tierPool = [...TIER_3, ...TIER_4];
-            else tierPool = [...TIER_4, ...TIER_5];
-            let sentenceCount = 3 + Math.floor(level / 2.5);
-            sentenceCount = Math.min(sentenceCount, 7);
-            let selectedSentences = [];
-            for (let i = 0; i < sentenceCount; i++) selectedSentences.push(tierPool[Math.floor(Math.random() * tierPool.length)]);
-            let paragraph = selectedSentences.join(" ");
-            if (level >= 7 && Math.random() > 0.5) paragraph += " Furthermore, this challenge refines cognitive endurance.";
-            return paragraph;
+        function updatePassageUI() {
+            sourceBox.innerText = currentPassage;
+            const len = currentPassage.length;
+            passageLengthBadge.innerText = `📏 ${len} characters`;
+            updateRemainingStats();
         }
 
-        let state = { timeLimit: 30, currentLevel: 1, unlockedPerTime: { 30: 1, 60: 1, 120: 1, 300: 1 }, currentText: "", typedStatus: [], correctCount: 0, incorrectCount: 0, currentIndex: 0, isActive: false, finished: false, timerSeconds: 0, timerInterval: null, startTime: null, wpmSnapshots: [], totalKeystrokes: 0 };
-        let historyList = [];
+        function formatTime(sec) { let mins = Math.floor(sec / 60); let remainSec = sec % 60; return `${mins.toString().padStart(2, '0')}:${remainSec.toString().padStart(2, '0')}`; }
+        function updateTimerUI() { floatingTimer.innerText = formatTime(timeLeftSeconds); if (timeLeftSeconds <= 60) floatingTimer.classList.add('warning'); else floatingTimer.classList.remove('warning'); }
 
-        function loadUnlocked() { try { const saved = localStorage.getItem("echotype_unlocked"); if (saved) { let obj = JSON.parse(saved); if (obj[30]) state.unlockedPerTime[30] = obj[30]; if (obj[60]) state.unlockedPerTime[60] = obj[60]; if (obj[120]) state.unlockedPerTime[120] = obj[120]; if (obj[300]) state.unlockedPerTime[300] = obj[300]; } } catch (e) { } }
-        function saveUnlocked() { localStorage.setItem("echotype_unlocked", JSON.stringify(state.unlockedPerTime)); }
-        function loadHistory() { try { let hist = localStorage.getItem("echotype_history"); if (hist) historyList = JSON.parse(hist); } catch (e) { historyList = []; } }
-        function saveHistory() { localStorage.setItem("echotype_history", JSON.stringify(historyList.slice(0, 20))); }
-        function getCurrentUnlocked() { return state.unlockedPerTime[state.timeLimit] || 1; }
+        function stopTimerAndFinish(earlySubmit = false) {
+            if (testFinished) return;
+            if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+            if (!testActive && !earlySubmit && timeLeftSeconds === 900 && !testFinished) return;
+            testFinished = true; testActive = false;
+            const typedText = userTextarea.value;
+            const source = currentPassage;
+            const maxLen = Math.min(typedText.length, source.length);
+            let correctChars = 0;
+            for (let i = 0; i < maxLen; i++) if (typedText[i] === source[i]) correctChars++;
+            const extraChars = typedText.length > source.length ? typedText.length - source.length : 0;
+            const totalErrors = (typedText.length - correctChars) + extraChars;
+            const totalTyped = typedText.length;
+            const accuracy = totalTyped === 0 ? 0 : (correctChars / totalTyped) * 100;
+            let elapsedMinutes = (900 - timeLeftSeconds) / 60; if (elapsedMinutes <= 0) elapsedMinutes = 0.01;
+            const netWPM = Math.round((correctChars / 5) / elapsedMinutes);
+            const grossWPM = Math.round((totalTyped / 5) / elapsedMinutes);
+            const timeTakenFormatted = formatTime(900 - timeLeftSeconds);
+            finalResults = { netWPM, grossWPM, accuracy: accuracy.toFixed(1), errors: totalErrors, correctChars, totalTyped, timeTaken: timeTakenFormatted };
+            document.getElementById('finalNetWpm').innerText = netWPM;
+            document.getElementById('finalGrossWpm').innerText = grossWPM;
+            document.getElementById('finalAccuracy').innerText = accuracy.toFixed(1) + "%";
+            document.getElementById('finalErrors').innerText = totalErrors;
+            document.getElementById('finalCorrectChars').innerText = correctChars;
+            document.getElementById('finalTimeTaken').innerText = timeTakenFormatted;
+            document.getElementById('finalTypedLen').innerText = totalTyped;
+            let verdict = netWPM >= 45 && accuracy >= 92 ? "🏅 Elite performance" : (netWPM >= 35 ? "✅ Good, keep improving" : "📖 Practice more for SSC standards");
+            document.getElementById('verdictMsg').innerHTML = verdict;
+            resultsPanel.classList.add('show');
 
-        function updateLevelChipsUI() {
-            const levelGroup = document.getElementById("levelGroup");
-            const unlockedMax = getCurrentUnlocked();
-            levelGroup.innerHTML = "";
-            for (let lvl = 1; lvl <= 10; lvl++) {
-                let chip = document.createElement("span");
-                chip.className = "chip";
-                if (lvl === state.currentLevel) chip.classList.add("active");
-                if (lvl > unlockedMax) chip.classList.add("locked");
-                chip.textContent = lvl > unlockedMax ? `🔒 ${lvl}` : `${lvl}`;
-                chip.dataset.level = lvl;
-                chip.onclick = (e) => {
-                    e.stopPropagation();
-                    if (state.isActive && !state.finished) { toastMsg("Finish current test first", "#f59e0b"); return; }
-                    if (lvl > unlockedMax) { toastMsg(`Level ${lvl} locked. Complete level ${unlockedMax} first.`, "#ef4444"); return; }
-                    state.currentLevel = lvl;
-                    resetTest(true);
-                    updateLevelChipsUI();
-                };
-                levelGroup.appendChild(chip);
-            }
-        }
-
-        function generateFreshText() { return getParagraphForLevel(state.currentLevel); }
-
-        function resetTest(keepLevel = true) {
-            if (state.timerInterval) clearInterval(state.timerInterval);
-            state.isActive = false; state.finished = false; state.timerSeconds = 0; state.correctCount = 0; state.incorrectCount = 0; state.currentIndex = 0; state.totalKeystrokes = 0; state.wpmSnapshots = []; state.startTime = null;
-            state.currentText = generateFreshText();
-            state.typedStatus = new Array(state.currentText.length).fill(null);
-            renderTextDisplay();
-            updateStatsUI();
-            updateProgressFill();
-            document.getElementById("resultsPanel").classList.remove("show");
-            document.getElementById("hiddenInput").value = "";
-            document.getElementById("liveTimeLeft").innerText = state.timeLimit;
-            document.getElementById("hintMsg").style.display = "block";
-            if (state.timerInterval) clearInterval(state.timerInterval);
-            state.timerInterval = null;
-            updateTimeUI();
-            state.finished = false;
-        }
-
-        function renderTextDisplay() {
-            const container = document.getElementById("textDisplay");
-            let html = "";
-            for (let i = 0; i < state.currentText.length; i++) {
-                let ch = state.currentText[i];
-                let status = state.typedStatus[i];
-                let cls = "char";
-                if (status === "correct") cls += " correct";
-                else if (status === "incorrect") cls += " incorrect";
-                else if (i === state.currentIndex && !state.finished) cls += " current";
-                else if (i > state.currentIndex || (!state.finished && state.typedStatus[i] === null)) cls += " remaining";
-                let displayChar = ch === " " ? "&nbsp;" : escapeHtml(ch);
-                html += `<span class="${cls}" data-idx="${i}">${displayChar}</span>`;
-            }
-            container.innerHTML = html;
-        }
-        function escapeHtml(str) { return str.replace(/[&<>]/g, function (m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
-        function updateStatsUI() {
-            let totalTyped = state.correctCount + state.incorrectCount;
-            let acc = totalTyped === 0 ? 100 : Math.round((state.correctCount / totalTyped) * 100);
-            let minutes = state.isActive ? Math.max(0.01, (Date.now() - state.startTime) / 1000 / 60) : (state.timeLimit / 60);
-            let wpm = minutes > 0 ? Math.round((state.correctCount / 5) / minutes) : 0;
-            if (!state.isActive && !state.finished) { document.getElementById("liveWpm").innerText = "0"; document.getElementById("liveAcc").innerText = "100"; }
-            else { document.getElementById("liveWpm").innerText = wpm; document.getElementById("liveAcc").innerText = acc; }
-            document.getElementById("liveChars").innerText = totalTyped;
-            updateTimeUI();
-        }
-        function updateTimeUI() {
-            let remaining = state.isActive ? Math.max(0, state.timeLimit - state.timerSeconds) : state.timeLimit;
-            document.getElementById("liveTimeLeft").innerText = remaining;
-            let el = document.getElementById("liveTimeLeft");
-            if (remaining <= 5) el.style.color = "#ef4444";
-            else if (remaining <= 10) el.style.color = "#f59e0b";
-            else el.style.color = "var(--text-main)";
-        }
-        function updateProgressFill() { let pct = (state.correctCount + state.incorrectCount) / state.currentText.length * 100; document.getElementById("progressFill").style.width = pct + "%"; }
-
-        function finishTest() {
-            if (state.finished) return;
-            if (state.timerInterval) clearInterval(state.timerInterval);
-            state.isActive = false; state.finished = true;
-            let total = state.correctCount + state.incorrectCount;
-            let accuracy = total === 0 ? 100 : Math.round((state.correctCount / total) * 100);
-            let finalWpm = Math.round((state.correctCount / 5) / (state.timeLimit / 60));
-            let consistency = 100;
-            if (state.wpmSnapshots.length >= 4) {
-                let vals = state.wpmSnapshots.map(s => s.wpm);
-                let mean = vals.reduce((a, b) => a + b, 0) / vals.length;
-                let variance = vals.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / vals.length;
-                let cv = mean > 0 ? (Math.sqrt(variance) / mean) * 100 : 0;
-                consistency = Math.max(0, Math.round(100 - cv));
-            }
-            document.getElementById("finalWpm").innerText = finalWpm;
-            document.getElementById("finalAcc").innerText = accuracy + "%";
-            document.getElementById("finalChars").innerText = total;
-            document.getElementById("finalConsistency").innerText = consistency + "%";
-            document.getElementById("verdictText").innerText = finalWpm >= 70 && accuracy >= 92 ? "🏆 Elite typist" : (finalWpm >= 50 ? "⚡ Solid progress" : "📖 Keep practicing");
-            document.getElementById("resultsPanel").classList.add("show");
-            let currentUnlocked = state.unlockedPerTime[state.timeLimit];
-            if (state.currentLevel === currentUnlocked && currentUnlocked < 10 && accuracy >= 70) {
-                state.unlockedPerTime[state.timeLimit] = currentUnlocked + 1;
-                saveUnlocked();
-                updateLevelChipsUI();
-                toastMsg(`🎉 Level ${currentUnlocked + 1} unlocked for ${state.timeLimit}s mode!`, "#10b981");
-            }
-            historyList.unshift({ wpm: finalWpm, acc: accuracy, level: state.currentLevel, timeMode: state.timeLimit, date: Date.now() });
-            if (historyList.length > 20) historyList.pop();
-            saveHistory();
-            renderHistoryUI();
-            if (finalWpm >= 55 && accuracy >= 85) spawnConfettiEffect();
-            toastMsg(`✅ ${finalWpm} WPM · ${accuracy}% accuracy`, "#1e6df2");
-        }
-        function spawnConfettiEffect() { const container = document.createElement("div"); container.style.position = "fixed"; container.style.inset = 0; container.style.pointerEvents = "none"; container.style.zIndex = 9999; for (let i = 0; i < 80; i++) { let piece = document.createElement("div"); piece.style.position = "absolute"; piece.style.width = Math.random() * 8 + 5 + "px"; piece.style.height = Math.random() * 8 + 5 + "px"; piece.style.backgroundColor = ["#1e6df2", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"][Math.floor(Math.random() * 5)]; piece.style.left = Math.random() * 100 + "%"; piece.style.top = "-20px"; piece.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px"; piece.style.animation = `fall ${Math.random() * 2 + 2}s linear forwards`; container.appendChild(piece); } document.body.appendChild(container); setTimeout(() => container.remove(), 3000); let style = document.createElement("style"); style.textContent = `@keyframes fall { 0% { transform: translateY(0) rotate(0deg); opacity:1; } 100% { transform: translateY(100vh) rotate(720deg); opacity:0; } }`; document.head.appendChild(style); }
-        function renderHistoryUI() {
-            const histDiv = document.getElementById("historyList");
-            if (historyList.length === 0) { histDiv.innerHTML = "<div style='text-align:center;color:gray'>✨ No tests yet. Complete a level!</div>"; return; }
-            histDiv.innerHTML = historyList.map(h => `<div class="history-item"><span><strong>${h.wpm} WPM</strong> · ${h.acc}%</span><span>Lv.${h.level} · ${h.timeMode}s</span><span style="font-size:0.7rem;">${new Date(h.date).toLocaleTimeString()}</span></div>`).join("");
-        }
-        let typingHandler = (e) => {
-            if (state.finished) { document.getElementById("hiddenInput").value = ""; return; }
-            let val = e.target.value;
-            if (val.length === 0) return;
-            let typedChar = val[val.length - 1];
-            if (!state.isActive && !state.finished) {
-                state.isActive = true; state.startTime = Date.now(); state.timerSeconds = 0; state.wpmSnapshots = [];
-                state.timerInterval = setInterval(() => {
-                    if (state.finished) return;
-                    state.timerSeconds++;
-                    updateTimeUI(); updateStatsUI();
-                    if (state.timerSeconds >= state.timeLimit) finishTest();
-                    if (state.isActive && !state.finished) {
-                        let elapsed = (Date.now() - state.startTime) / 1000;
-                        let wpmNow = elapsed > 0 ? Math.round((state.correctCount / 5) / (elapsed / 60)) : 0;
-                        if (state.totalKeystrokes % 6 === 0) state.wpmSnapshots.push({ time: elapsed, wpm: wpmNow });
-                    }
-                    updateProgressFill();
-                }, 1000);
-            }
-            if (state.currentIndex < state.currentText.length) {
-                let expected = state.currentText[state.currentIndex];
-                state.totalKeystrokes++;
-                let isCorrect = (typedChar === expected);
-                if (isCorrect) { state.typedStatus[state.currentIndex] = "correct"; state.correctCount++; }
-                else { state.typedStatus[state.currentIndex] = "incorrect"; state.incorrectCount++; }
-                state.currentIndex++;
-                renderTextDisplay(); updateStatsUI(); updateProgressFill();
-                if (state.currentIndex >= state.currentText.length) finishTest();
-            }
-            document.getElementById("hiddenInput").value = "";
-        };
-        function attachEvents() {
-            const inputField = document.getElementById("hiddenInput");
-            inputField.addEventListener("input", typingHandler);
-            document.getElementById("arena").addEventListener("click", () => { if (!state.finished) inputField.focus(); });
-            document.getElementById("refreshTextBtn").addEventListener("click", () => { if (state.isActive && !state.finished) { toastMsg("Finish current test first", "#f59e0b"); return; } resetTest(true); });
-            document.getElementById("resetBtn").addEventListener("click", () => resetTest(true));
-            document.getElementById("shareBtn").addEventListener("click", () => { let w = document.getElementById("finalWpm").innerText; let a = document.getElementById("finalAcc").innerText; navigator.clipboard.writeText(`EchelonType: ${w} WPM · ${a} accuracy`).then(() => toastMsg("Copied to clipboard!", "#10b981")); });
-            document.querySelectorAll("[data-time]").forEach(el => {
-                el.addEventListener("click", (e) => {
-                    if (state.isActive && !state.finished) { toastMsg("Finish current test", "#f59e0b"); return; }
-                    let newTime = parseInt(el.dataset.time);
-                    state.timeLimit = newTime;
-                    state.currentLevel = Math.min(state.currentLevel, getCurrentUnlocked());
-                    if (state.currentLevel < 1) state.currentLevel = 1;
-                    resetTest(true);
-                    document.querySelectorAll("[data-time]").forEach(c => c.classList.remove("active"));
-                    el.classList.add("active");
-                    updateLevelChipsUI();
-                });
+            // Store history with timeTaken + remove error field from display (still saved for reference but not shown)
+            let history = LS.get('ssc_typing_history') || [];
+            history.unshift({
+                date: Date.now(),
+                netWPM,
+                grossWPM,
+                accuracy: accuracy.toFixed(1),
+                errors: totalErrors,    // kept internally but not rendered
+                charsTyped: totalTyped,
+                passageLen: source.length,
+                timeTaken: timeTakenFormatted  // store duration
             });
+            if (history.length > 15) history.pop();
+            LS.set('ssc_typing_history', history);
+            renderHistory();
+            userTextarea.disabled = true;
+            toastMsg(`Test completed! Net WPM: ${netWPM} | Accuracy: ${accuracy.toFixed(1)}%`, "#10b981");
         }
-        function toastMsg(msg, color = "#1e293b") { let div = document.createElement("div"); div.className = "toast-msg"; div.innerText = msg; div.style.backgroundColor = color; document.body.appendChild(div); setTimeout(() => div.remove(), 2200); }
 
-        function init() {
-            loadUnlocked(); loadHistory();
-            state.timeLimit = 30; state.currentLevel = 1;
-            state.currentText = getParagraphForLevel(1);
-            state.typedStatus = new Array(state.currentText.length).fill(null);
-            renderTextDisplay(); attachEvents(); updateLevelChipsUI(); renderHistoryUI(); resetTest(true);
-            document.getElementById("hiddenInput").focus();
+        function startTimer() { if (testActive || testFinished) return; testActive = true; testFinished = false; timerInterval = setInterval(() => { if (!testActive) return; if (timeLeftSeconds <= 1) { timeLeftSeconds = 0; updateTimerUI(); stopTimerAndFinish(false); } else { timeLeftSeconds--; updateTimerUI(); } }, 1000); }
+
+        function fullReset(keepPassage = true, newPassage = null) {
+            if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+            testActive = false; testFinished = false; timeLeftSeconds = 900; updateTimerUI();
+            userTextarea.value = ""; userTextarea.disabled = false; userTextarea.focus();
+            resultsPanel.classList.remove('show'); finalResults = null;
+            if (!keepPassage && newPassage) currentPassage = newPassage;
+            else if (!keepPassage) { let idx = (PASSAGE_BANK.indexOf(currentPassage) + 1) % PASSAGE_BANK.length; currentPassage = PASSAGE_BANK[idx]; }
+            updatePassageUI();
+            updateRemainingStats();
         }
-        init();
+
+        function handleFirstInput() { if (!testActive && !testFinished && userTextarea.value.length > 0) startTimer(); }
+        function submitEvaluation() { if (testFinished) { toastMsg("Test already finished. Reset to start new.", "#f59e0b"); return; } if (!testActive && userTextarea.value.length === 0) { toastMsg("Please type something before submitting.", "#ef4444"); return; } if (timerInterval) clearInterval(timerInterval); testActive = false; stopTimerAndFinish(true); }
+
+        function renderHistory() {
+            let history = LS.get('ssc_typing_history') || [];
+            if (history.length === 0) { sscHistoryDiv.innerHTML = "✨ No attempts yet. Complete a 15-min test!"; return; }
+            sscHistoryDiv.innerHTML = history.map(h => {
+                const dateObj = new Date(h.date);
+                const formattedDate = `${dateObj.toLocaleDateString()} ${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+                const duration = h.timeTaken || "—";
+                return `<div class="history-item">
+                            <div class="history-stats">
+                                <span class="history-badge">⚡ ${h.netWPM} WPM</span>
+                                <span class="history-badge" style="background:#eef2ff;">🎯 ${h.accuracy}% acc</span>
+                                <span>⏱️ ${duration}</span>
+                            </div>
+                            <div class="history-time">📅 ${formattedDate}</div>
+                        </div>`;
+            }).join("");
+        }
+
+        function copyStatsToClipboard() { if (!finalResults) { toastMsg("No test results yet. Take a test first.", "#64748b"); return; } let text = `📝 SSC Typing Test • Net WPM: ${finalResults.netWPM} • Gross WPM: ${finalResults.grossWPM} • Accuracy: ${finalResults.accuracy}% • Errors: ${finalResults.errors} • Time: ${finalResults.timeTaken}`; navigator.clipboard.writeText(text).then(() => toastMsg("Stats copied to clipboard!", "#10b981")); }
+
+        // ANTI COPY/PASTE: Disable paste/copy/cut/drop in textarea (real exam condition)
+        function disablePasteAndCopy(elem) {
+            elem.addEventListener('paste', (e) => { e.preventDefault(); toastMsg("✋ Paste disabled in environment.", "#ef4444"); });
+            elem.addEventListener('copy', (e) => { e.preventDefault(); toastMsg("Copy action restricted.", "#ef4444"); });
+            elem.addEventListener('cut', (e) => { e.preventDefault(); toastMsg("Cut disabled.", "#ef4444"); });
+            elem.addEventListener('drop', (e) => { e.preventDefault(); toastMsg("Drag & drop not allowed.", "#ef4444"); });
+            elem.addEventListener('contextmenu', (e) => { e.preventDefault(); });
+        }
+
+        userTextarea.addEventListener('input', function () { if (!testFinished) { if (!testActive && !testFinished && userTextarea.value.length > 0) handleFirstInput(); updateRemainingStats(); } });
+        submitBtn.addEventListener('click', submitEvaluation);
+        resetBtn.addEventListener('click', () => { fullReset(true); updateRemainingStats(); });
+        newParaBtn.addEventListener('click', () => { if (testActive && !testFinished) { toastMsg("Please finish or reset current test before changing paragraph.", "#f59e0b"); return; } let idx = (PASSAGE_BANK.indexOf(currentPassage) + 1) % PASSAGE_BANK.length; fullReset(false, PASSAGE_BANK[idx]); toastMsg(`New paragraph loaded! (${PASSAGE_BANK[idx].length} characters)`, "#1e6df2"); });
+        resultsResetBtn.addEventListener('click', () => { fullReset(true); updateRemainingStats(); });
+        copyStatsBtn.addEventListener('click', copyStatsToClipboard);
+
+        function initExam() { currentPassage = PASSAGE_BANK[0]; updatePassageUI(); fullReset(true); renderHistory(); disablePasteAndCopy(userTextarea); }
+        initExam();
+        window.toggleMobileDrawer = toggleMobileDrawer;
+        window.redirectToIndex = redirectToIndex;
+        window.stayOnTypingPage = stayOnTypingPage;
     </script>
 </body>
 
