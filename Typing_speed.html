@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>PreOS Platform – Smart Exam Preparation</title>
+    <title>PreOS Typing Test – SSC Exam Simulator</title>
     <meta name="description"
         content="SSC exam grade typing test: 2000+ character passage, 15 minutes timer, real-time metrics, anti-cheat paste protection, remaining words & characters counter.">
 
@@ -450,6 +450,7 @@
             }
         }
 
+        /* MOBILE BOTTOM NAV - EXACT MATCH FROM INDEX.HTML */
         .mobile-nav {
             display: none;
             position: fixed;
@@ -458,20 +459,27 @@
             right: 0;
             height: 68px;
             background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(28px);
+            backdrop-filter: blur(28px) saturate(160%);
+            -webkit-backdrop-filter: blur(28px) saturate(160%);
             border-top: 1px solid var(--border);
             z-index: 1000;
             justify-content: space-around;
             align-items: center;
+            padding-bottom: env(safe-area-inset-bottom);
+            box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.03);
         }
 
         .mobile-nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             background: none;
             border: none;
             color: #8a8e99;
+            padding: 6px 0;
+            width: 20%;
+            transition: all 0.2s;
             cursor: pointer;
         }
 
@@ -481,16 +489,129 @@
 
         .mobile-nav-icon {
             font-size: 1.4rem;
+            margin-bottom: 2px;
         }
 
         .mobile-nav-label {
             font-size: 0.64rem;
             font-weight: 650;
+            letter-spacing: -0.1px;
         }
 
-        .mobile-drawer-overlay,
-        .mobile-drawer {
+        /* MOBILE DRAWER OVERLAY & DRAWER - SAME AS INDEX.HTML */
+        .mobile-drawer-overlay {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 1001;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-drawer-overlay.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-drawer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-top-left-radius: 28px;
+            border-top-right-radius: 28px;
+            box-shadow: 0 -12px 48px rgba(0, 0, 0, 0.12);
+            z-index: 1002;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 22px 22px calc(22px + env(safe-area-inset-bottom));
+        }
+
+        .mobile-drawer.visible {
+            transform: translateY(0);
+        }
+
+        .mobile-drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 14px;
+        }
+
+        .mobile-drawer-title {
+            font-size: 1.15rem;
+            font-weight: 820;
+            color: var(--text);
+            letter-spacing: -0.3px;
+        }
+
+        .mobile-drawer-close {
+            background: rgba(0, 0, 0, 0.04);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--text2);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+        }
+
+        .mobile-drawer-close:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        .mobile-drawer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .drawer-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.015);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 16px 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .drawer-item:active {
+            background: rgba(0, 102, 245, 0.06);
+            transform: scale(0.94);
+            border-color: var(--accent);
+        }
+
+        .drawer-icon {
+            font-size: 1.5rem;
+            margin-bottom: 7px;
+        }
+
+        .drawer-label {
+            font-size: 0.71rem;
+            font-weight: 650;
+            color: var(--text);
+            text-align: center;
+            white-space: nowrap;
+            letter-spacing: -0.1px;
         }
 
         @media (max-width: 768px) {
@@ -516,7 +637,6 @@
 <body>
     <nav>
         <div class="nav-brand" onclick="redirectToIndex()">
-
             PreOS
         </div>
         <div class="nav-scroll">
@@ -624,31 +744,62 @@
         </div>
     </div>
 
-    <div class="mobile-nav">
-        <button class="mobile-nav-item" onclick="redirectToIndex()"><span class="mobile-nav-icon">🏠</span><span
-                class="mobile-nav-label">Home</span></button>
-        <button class="mobile-nav-item" onclick="redirectToIndex()"><span class="mobile-nav-icon">🔥</span><span
-                class="mobile-nav-label">Errors</span></button>
-        <button class="mobile-nav-item" onclick="redirectToIndex()"><span class="mobile-nav-icon">🏆</span><span
-                class="mobile-nav-label">Simulator</span></button>
-        <button class="mobile-nav-item active" onclick="stayOnTypingPage()"><span class="mobile-nav-icon">⌨️</span><span
-                class="mobile-nav-label">Typing</span></button>
-        <button class="mobile-nav-item" onclick="toggleMobileDrawer()"><span class="mobile-nav-icon">☰</span><span
-                class="mobile-nav-label">More</span></button>
+    <!-- MOBILE BOTTOM NAVIGATION (SAME AS INDEX.HTML) -->
+    <div class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-item" id="mn-home" onclick="redirectToIndex()">
+            <span class="mobile-nav-icon">🏠</span>
+            <span class="mobile-nav-label">Home</span>
+        </button>
+        <button class="mobile-nav-item" id="mn-notebook" onclick="redirectToIndex()">
+            <span class="mobile-nav-icon">🔥</span>
+            <span class="mobile-nav-label">Errors</span>
+        </button>
+        <button class="mobile-nav-item" id="mn-simulator" onclick="redirectToIndex()">
+            <span class="mobile-nav-icon">🏆</span>
+            <span class="mobile-nav-label">Simulator</span>
+        </button>
+        <button class="mobile-nav-item active" id="mn-typing" onclick="stayOnTypingPage()">
+            <span class="mobile-nav-icon">⌨️</span>
+            <span class="mobile-nav-label">Typing</span>
+        </button>
+        <button class="mobile-nav-item" id="mn-more" onclick="toggleMobileDrawer()">
+            <span class="mobile-nav-icon">☰</span>
+            <span class="mobile-nav-label">More</span>
+        </button>
     </div>
+
+    <!-- MOBILE DRAWER (EXACT MATCH FROM INDEX.HTML) -->
     <div class="mobile-drawer-overlay" id="mobile-drawer-overlay" onclick="toggleMobileDrawer()"></div>
     <div class="mobile-drawer" id="mobile-drawer">
         <div class="mobile-drawer-header">
-            <div class="mobile-drawer-title">All Features</div><button class="mobile-drawer-close"
-                onclick="toggleMobileDrawer()">✕</button>
+            <div class="mobile-drawer-title">All Features</div>
+            <button class="mobile-drawer-close" onclick="toggleMobileDrawer()">✕</button>
         </div>
         <div class="mobile-drawer-grid">
-            <div class="drawer-item" onclick="redirectToIndex()">🔍 Search</div>
-            <div class="drawer-item" onclick="redirectToIndex()">🎯 Readiness</div>
-            <div class="drawer-item" onclick="redirectToIndex()">🤖 Coach</div>
-            <div class="drawer-item" onclick="redirectToIndex()">📊 Analytics</div>
-            <div class="drawer-item" onclick="redirectToIndex()">🔖 Bookmarks</div>
-            <div class="drawer-item" onclick="redirectToIndex()">📅 Study Plan</div>
+            <div class="drawer-item" onclick="selectDrawerPage('search')">
+                <div class="drawer-icon">🔍</div>
+                <div class="drawer-label">Search</div>
+            </div>
+            <div class="drawer-item" onclick="selectDrawerPage('readiness')">
+                <div class="drawer-icon">🎯</div>
+                <div class="drawer-label">Readiness</div>
+            </div>
+            <div class="drawer-item" onclick="selectDrawerPage('coach')">
+                <div class="drawer-icon">🤖</div>
+                <div class="drawer-label">Coach</div>
+            </div>
+            <div class="drawer-item" onclick="selectDrawerPage('analytics')">
+                <div class="drawer-icon">📊</div>
+                <div class="drawer-label">Analytics</div>
+            </div>
+            <div class="drawer-item" onclick="selectDrawerPage('bookmarks')">
+                <div class="drawer-icon">🔖</div>
+                <div class="drawer-label">Bookmarks</div>
+            </div>
+            <div class="drawer-item" onclick="selectDrawerPage('plan')">
+                <div class="drawer-icon">📅</div>
+                <div class="drawer-label">Study Plan</div>
+            </div>
         </div>
     </div>
 
@@ -667,17 +818,52 @@
             document.getElementById('nav-streak-val').textContent = streak;
         }
         updateNavDisplay(); window.addEventListener('storage', () => updateNavDisplay());
+        
         function redirectToIndex() { window.location.href = 'index.html'; }
         function stayOnTypingPage() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        
+        // ========== MOBILE DRAWER TOGGLE (EXACT BEHAVIOR FROM INDEX.HTML) ==========
         function toggleMobileDrawer() {
-            const overlay = document.getElementById('mobile-drawer-overlay'), drawer = document.getElementById('mobile-drawer');
-            overlay.classList.toggle('visible'); drawer.classList.toggle('visible');
-            if (overlay.style.display === 'flex') overlay.style.display = 'none';
-            else { overlay.style.display = 'block'; drawer.style.display = 'block'; }
+            const overlay = document.getElementById('mobile-drawer-overlay');
+            const drawer = document.getElementById('mobile-drawer');
+            if (!overlay || !drawer) return;
+            const isVisible = drawer.classList.contains('visible');
+            if (isVisible) {
+                overlay.classList.remove('visible');
+                drawer.classList.remove('visible');
+                document.body.style.overflow = '';
+            } else {
+                overlay.classList.add('visible');
+                drawer.classList.add('visible');
+                document.body.style.overflow = 'hidden';
+            }
         }
-        function toastMsg(msg, color = "#1e293b") { let div = document.createElement("div"); div.className = "toast-msg"; div.innerText = msg; div.style.backgroundColor = color; document.body.appendChild(div); setTimeout(() => div.remove(), 2400); }
+        
+        function selectDrawerPage(pageName) {
+            // Close drawer first
+            toggleMobileDrawer();
+            // Redirect to index with hash or query? For simplicity, we redirect to index and rely on the main app to handle routing.
+            // The main index.html uses showPage() which expects page name.
+            // Since we are on typing page, we need to go back to index and open the specific page.
+            // We'll set a sessionStorage flag to tell index which page to open.
+            sessionStorage.setItem('preos_redirect_page', pageName);
+            window.location.href = 'index.html';
+        }
+        
+        // Ensure overlay and drawer are closed on window resize if needed
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                const overlay = document.getElementById('mobile-drawer-overlay');
+                const drawer = document.getElementById('mobile-drawer');
+                if (overlay && drawer && drawer.classList.contains('visible')) {
+                    overlay.classList.remove('visible');
+                    drawer.classList.remove('visible');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
 
-        // ========== LONG PASSAGES (>2000 chars) ==========
+        // ========== TYPING ENGINE (FULL FEATURED) ==========
         const PASSAGE_BANK = [
             `India's digital transformation journey has redefined governance, financial inclusion, and public service delivery over the past decade. The Digital India initiative, launched with a vision to empower every citizen with digital access, has become one of the world's largest umbrella programs covering multiple government departments. From Aadhaar-based identity to the Unified Payments Interface (UPI), the country has created a robust digital infrastructure that processes billions of transactions monthly. This paradigm shift has not only reduced corruption but also increased transparency in welfare schemes. Furthermore, the rapid adoption of cloud computing and AI-driven analytics is enabling personalized learning, telemedicine, and precision agriculture in rural areas. According to recent reports, India's digital economy is poised to reach one trillion dollars by 2028, driven by startup innovation and widespread smartphone penetration. However, challenges such as digital literacy gaps, cybersecurity threats, and data privacy concerns demand continuous policy refinement. The government's focus on skill development under programs like 'FutureSkills Prime' aims to train millions in emerging technologies. For SSC aspirants, understanding this socio-technical evolution is crucial, as questions related to e-governance, digital rights, and the impact of technology on society frequently appear in general awareness sections. Moreover, typing proficiency remains an essential skill for clerical and administrative roles, where speed and accuracy directly affect productivity. Practicing with comprehensive, examination-oriented passages improves cognitive endurance and typing rhythm, directly translating to better performance in computer-based tests. This passage is designed to simulate the complexity and length of official SSC descriptive typing assessments, requiring sustained attention for 15 minutes. The ability to transcribe lengthy texts with minimal errors is a hallmark of efficient office work, and consistent practice yields measurable improvement over time. As you type this passage, focus on maintaining a steady pace, correct finger placement, and visual tracking to avoid re-reading. Remember, the official exam evaluates net speed (correct keystrokes per minute) and penalizes mistakes heavily. Thus, accuracy should never be sacrificed for raw speed. Adopting a relaxed posture and rhythmic breathing reduces fatigue during long typing sessions. This mock test mirrors real examination conditions, including a strict timer and submission protocol. Embrace the challenge and track your progress with each attempt. Ultimately, mastering typing will boost your confidence and open doors to prestigious government positions where efficiency is paramount.`,
             `Climate resilience and sustainable development have emerged as defining priorities for twenty-first-century governance worldwide. Extreme weather events, rising sea levels, and biodiversity loss demand immediate, coordinated action across nations. In India, the National Action Plan on Climate Change (NAPCC) outlines eight missions that span solar energy, enhanced energy efficiency, water conservation, and sustaining the Himalayan ecosystem. The transition to renewable energy sources, particularly solar and wind, has accelerated rapidly, with India achieving its target of 40% installed electric capacity from non-fossil fuels well ahead of schedule. Additionally, the LiFE movement (Lifestyle for Environment) encourages citizens to adopt eco-friendly habits like reducing waste, conserving water, and using public transport. For SSC examinations, environmental topics are increasingly relevant, as the syllabus includes ecology, biodiversity, climate change agreements (Paris Accord, COP summits), and government schemes like the National Green Tribunal. Typing tests often incorporate such socially relevant themes, requiring candidates to demonstrate awareness alongside technical speed. This passage exceeds 2000 characters, offering ample practice for sustained focus. You must replicate every character, space, and punctuation exactly as shown—the evaluator's algorithm will compare each typed character against the source. Accuracy above 95% with net speed exceeding 35 WPM is considered competitive for most clerical cadre positions. Use the text area below to transcribe meticulously. The timer (15 minutes) begins automatically when you start typing. After time expires or you submit, a detailed performance report will highlight net WPM, gross speed, error count, and accuracy. Review your history to monitor improvements. Developing muscle memory through repeated long-form transcription reduces cognitive load and boosts confidence on exam day. Persistence and deliberate practice are your greatest allies.`,
@@ -732,7 +918,6 @@
         function stopTimerAndFinish(earlySubmit = false) {
             if (testFinished) return;
             if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
-            if (!testActive && !earlySubmit && timeLeftSeconds === 900 && !testFinished) return;
             testFinished = true; testActive = false;
             const typedText = userTextarea.value;
             const source = currentPassage;
@@ -758,19 +943,8 @@
             let verdict = netWPM >= 45 && accuracy >= 92 ? "🏅 Elite performance" : (netWPM >= 35 ? "✅ Good, keep improving" : "📖 Practice more for SSC standards");
             document.getElementById('verdictMsg').innerHTML = verdict;
             resultsPanel.classList.add('show');
-
-            // Store history with timeTaken + remove error field from display (still saved for reference but not shown)
             let history = LS.get('ssc_typing_history') || [];
-            history.unshift({
-                date: Date.now(),
-                netWPM,
-                grossWPM,
-                accuracy: accuracy.toFixed(1),
-                errors: totalErrors,    // kept internally but not rendered
-                charsTyped: totalTyped,
-                passageLen: source.length,
-                timeTaken: timeTakenFormatted  // store duration
-            });
+            history.unshift({ date: Date.now(), netWPM, grossWPM, accuracy: accuracy.toFixed(1), errors: totalErrors, charsTyped: totalTyped, passageLen: source.length, timeTaken: timeTakenFormatted });
             if (history.length > 15) history.pop();
             LS.set('ssc_typing_history', history);
             renderHistory();
@@ -801,20 +975,12 @@
                 const dateObj = new Date(h.date);
                 const formattedDate = `${dateObj.toLocaleDateString()} ${dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
                 const duration = h.timeTaken || "—";
-                return `<div class="history-item">
-                            <div class="history-stats">
-                                <span class="history-badge">⚡ ${h.netWPM} WPM</span>
-                                <span class="history-badge" style="background:#eef2ff;">🎯 ${h.accuracy}% acc</span>
-                                <span>⏱️ ${duration}</span>
-                            </div>
-                            <div class="history-time">📅 ${formattedDate}</div>
-                        </div>`;
+                return `<div class="history-item"><div class="history-stats"><span class="history-badge">⚡ ${h.netWPM} WPM</span><span class="history-badge" style="background:#eef2ff;">🎯 ${h.accuracy}% acc</span><span>⏱️ ${duration}</span></div><div class="history-time">📅 ${formattedDate}</div></div>`;
             }).join("");
         }
 
         function copyStatsToClipboard() { if (!finalResults) { toastMsg("No test results yet. Take a test first.", "#64748b"); return; } let text = `📝 SSC Typing Test • Net WPM: ${finalResults.netWPM} • Gross WPM: ${finalResults.grossWPM} • Accuracy: ${finalResults.accuracy}% • Errors: ${finalResults.errors} • Time: ${finalResults.timeTaken}`; navigator.clipboard.writeText(text).then(() => toastMsg("Stats copied to clipboard!", "#10b981")); }
 
-        // ANTI COPY/PASTE: Disable paste/copy/cut/drop in textarea (real exam condition)
         function disablePasteAndCopy(elem) {
             elem.addEventListener('paste', (e) => { e.preventDefault(); toastMsg("✋ Paste disabled in environment.", "#ef4444"); });
             elem.addEventListener('copy', (e) => { e.preventDefault(); toastMsg("Copy action restricted.", "#ef4444"); });
@@ -832,9 +998,14 @@
 
         function initExam() { currentPassage = PASSAGE_BANK[0]; updatePassageUI(); fullReset(true); renderHistory(); disablePasteAndCopy(userTextarea); }
         initExam();
-        window.toggleMobileDrawer = toggleMobileDrawer;
+        
+        function toastMsg(msg, color = "#1e293b") { let div = document.createElement("div"); div.className = "toast-msg"; div.innerText = msg; div.style.backgroundColor = color; document.body.appendChild(div); setTimeout(() => div.remove(), 2400); }
+        
+        // Expose functions globally
         window.redirectToIndex = redirectToIndex;
         window.stayOnTypingPage = stayOnTypingPage;
+        window.toggleMobileDrawer = toggleMobileDrawer;
+        window.selectDrawerPage = selectDrawerPage;
     </script>
 </body>
 
