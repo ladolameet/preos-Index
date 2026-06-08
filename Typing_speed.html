@@ -626,19 +626,21 @@
             body {
                 padding-bottom: 78px;
             }
+
             .res-grid {
-            grid-template-columns: repeat(1, 1fr);
-            
-        }
-        .btn-ssc {
-    padding: 11px 16px;
-    border-radius: 40px;
-    font-weight: 700;
-    font-size: 0.70rem;
-    transition: 0.2s;
-    border: none;
-    cursor: pointer;
-}
+                grid-template-columns: repeat(1, 1fr);
+
+            }
+
+            .btn-ssc {
+                padding: 11px 16px;
+                border-radius: 40px;
+                font-weight: 700;
+                font-size: 0.70rem;
+                transition: 0.2s;
+                border: 1px solid #dadada;
+                cursor: pointer;
+            }
         }
 
         .hidden-stats {
@@ -831,10 +833,10 @@
             document.getElementById('nav-streak-val').textContent = streak;
         }
         updateNavDisplay(); window.addEventListener('storage', () => updateNavDisplay());
-        
+
         function redirectToIndex() { window.location.href = 'index.html'; }
         function stayOnTypingPage() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-        
+
         // ========== MOBILE DRAWER TOGGLE (EXACT BEHAVIOR FROM INDEX.HTML) ==========
         function toggleMobileDrawer() {
             const overlay = document.getElementById('mobile-drawer-overlay');
@@ -851,7 +853,7 @@
                 document.body.style.overflow = 'hidden';
             }
         }
-        
+
         function selectDrawerPage(pageName) {
             // Close drawer first
             toggleMobileDrawer();
@@ -862,7 +864,7 @@
             sessionStorage.setItem('preos_redirect_page', pageName);
             window.location.href = 'index.html';
         }
-        
+
         // Ensure overlay and drawer are closed on window resize if needed
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
@@ -1011,9 +1013,9 @@
 
         function initExam() { currentPassage = PASSAGE_BANK[0]; updatePassageUI(); fullReset(true); renderHistory(); disablePasteAndCopy(userTextarea); }
         initExam();
-        
+
         function toastMsg(msg, color = "#1e293b") { let div = document.createElement("div"); div.className = "toast-msg"; div.innerText = msg; div.style.backgroundColor = color; document.body.appendChild(div); setTimeout(() => div.remove(), 2400); }
-        
+
         // Expose functions globally
         window.redirectToIndex = redirectToIndex;
         window.stayOnTypingPage = stayOnTypingPage;
