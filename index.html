@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>SSC AI Platform – Smart Exam Preparation</title>
+  <title>PreOS Platform – Smart Exam Preparation</title>
   <meta name="description"
     content="AI-powered SSC CGL & CHSL exam preparation platform with 15,000+ questions, AI explanations, similar question finder, error notebook, revision engine, and personalised study plans." />
 
@@ -2471,18 +2471,7 @@
     <!-- NAV -->
     <nav>
       <div class="nav-brand" onclick="showPage('home')">
-        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" style="margin-right: 6px;">
-          <rect width="28" height="28" rx="8" fill="url(#ng)" />
-          <path d="M8 20L14 8L20 20" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M10 16h8" stroke="white" stroke-width="2" stroke-linecap="round" />
-          <defs>
-            <linearGradient id="ng" x1="0" y1="0" x2="28" y2="28">
-              <stop stop-color="#0066f5" />
-              <stop offset="1" stop-color="#5b4dfb" />
-            </linearGradient>
-          </defs>
-        </svg>
-        SSC AI
+        PreOS
       </div>
       <div class="nav-scroll">
         <span class="nav-link" id="nl-search" onclick="showPage('search')">Search</span>
@@ -2977,7 +2966,7 @@
        SSC AI PLATFORM – FRONTEND ENGINE (localStorage-based persistence)
        All user data stored in localStorage, no backend database required.
        ═══════════════════════════════════════════════════════════════════════ */
-    const API = 'https://preos.onrender.com';
+    const API = 'http://127.0.0.1:8000';
 
     // localStorage wrapper
     const LS = {
