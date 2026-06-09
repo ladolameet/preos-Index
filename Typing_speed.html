@@ -972,7 +972,7 @@
         function fullReset(keepPassage = true, newPassage = null) {
             if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
             testActive = false; testFinished = false; timeLeftSeconds = 900; updateTimerUI();
-            userTextarea.value = ""; userTextarea.disabled = false; userTextarea.focus();
+            userTextarea.value = ""; userTextarea.disabled = false;
             resultsPanel.classList.remove('show'); finalResults = null;
             if (!keepPassage && newPassage) currentPassage = newPassage;
             else if (!keepPassage) { let idx = (PASSAGE_BANK.indexOf(currentPassage) + 1) % PASSAGE_BANK.length; currentPassage = PASSAGE_BANK[idx]; }
